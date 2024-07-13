@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC3983772C431EFD0034D853 /* SolverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983762C431EFD0034D853 /* SolverApp.swift */; };
+		DC3983792C431EFD0034D853 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983782C431EFD0034D853 /* ContentView.swift */; };
+		DC39837B2C431EFD0034D853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC39837A2C431EFD0034D853 /* Assets.xcassets */; };
+		DC39837E2C431EFD0034D853 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */; };
+		DC39838F2C431F100034D853 /* TurnAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983842C431F100034D853 /* TurnAnalyzer.swift */; };
+		DC3983902C431F100034D853 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983852C431F100034D853 /* Solver.swift */; };
+		DC3983912C431F100034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
+		DC3983922C431F100034D853 /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983872C431F100034D853 /* ProgressTracker.swift */; };
+		DC3983932C431F100034D853 /* TurnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983882C431F100034D853 /* TurnState.swift */; };
+		DC3983942C431F100034D853 /* DiceSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983892C431F100034D853 /* DiceSelection.swift */; };
+		DC3983952C431F100034D853 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
+		DC3983962C431F100034D853 /* UpperTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838B2C431F100034D853 /* UpperTotals.swift */; };
+		DC3983972C431F100034D853 /* ScoringOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838C2C431F100034D853 /* ScoringOption.swift */; };
+		DC3983982C431F100034D853 /* TurnValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838D2C431F100034D853 /* TurnValues.swift */; };
+		DC3983992C431F100034D853 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838E2C431F100034D853 /* Dice.swift */; };
+		DC3983AD2C431F780034D853 /* PointsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983A52C431F780034D853 /* PointsTests.swift */; };
+		DC3983AE2C431F780034D853 /* TestCaseWithDice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983A62C431F780034D853 /* TestCaseWithDice.swift */; };
+		DC3983AF2C431F780034D853 /* TurnAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983A72C431F780034D853 /* TurnAnalyzerTests.swift */; };
+		DC3983B02C431F780034D853 /* TurnStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983A82C431F780034D853 /* TurnStateTests.swift */; };
+		DC3983B12C431F780034D853 /* ScoringOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983A92C431F780034D853 /* ScoringOptionTests.swift */; };
+		DC3983B22C431F780034D853 /* DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983AA2C431F780034D853 /* DiceTests.swift */; };
+		DC3983B32C431F780034D853 /* UpperTotalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */; };
+		DC3983B42C431F780034D853 /* DiceSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */; };
+		DC3983B52C431F810034D853 /* TurnValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838D2C431F100034D853 /* TurnValues.swift */; };
+		DC3983B62C431F810034D853 /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983872C431F100034D853 /* ProgressTracker.swift */; };
+		DC3983B72C431F810034D853 /* ScoringOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838C2C431F100034D853 /* ScoringOption.swift */; };
+		DC3983B82C431F810034D853 /* UpperTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838B2C431F100034D853 /* UpperTotals.swift */; };
+		DC3983B92C431F810034D853 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983852C431F100034D853 /* Solver.swift */; };
+		DC3983BA2C431F810034D853 /* TurnAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983842C431F100034D853 /* TurnAnalyzer.swift */; };
+		DC3983BB2C431F810034D853 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838E2C431F100034D853 /* Dice.swift */; };
+		DC3983BC2C431F810034D853 /* DiceSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983892C431F100034D853 /* DiceSelection.swift */; };
+		DC3983BD2C431F810034D853 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
+		DC3983BE2C431F810034D853 /* TurnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983882C431F100034D853 /* TurnState.swift */; };
+		DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DC3983732C431EFD0034D853 /* Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3983762C431EFD0034D853 /* SolverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverApp.swift; sourceTree = "<group>"; };
+		DC3983782C431EFD0034D853 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC39837A2C431EFD0034D853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DC39837F2C431EFD0034D853 /* Solver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solver.entitlements; sourceTree = "<group>"; };
+		DC3983842C431F100034D853 /* TurnAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnAnalyzer.swift; sourceTree = "<group>"; };
+		DC3983852C431F100034D853 /* Solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
+		DC3983862C431F100034D853 /* DicePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DicePattern.swift; sourceTree = "<group>"; };
+		DC3983872C431F100034D853 /* ProgressTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTracker.swift; sourceTree = "<group>"; };
+		DC3983882C431F100034D853 /* TurnState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnState.swift; sourceTree = "<group>"; };
+		DC3983892C431F100034D853 /* DiceSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelection.swift; sourceTree = "<group>"; };
+		DC39838A2C431F100034D853 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
+		DC39838B2C431F100034D853 /* UpperTotals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpperTotals.swift; sourceTree = "<group>"; };
+		DC39838C2C431F100034D853 /* ScoringOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringOption.swift; sourceTree = "<group>"; };
+		DC39838D2C431F100034D853 /* TurnValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnValues.swift; sourceTree = "<group>"; };
+		DC39838E2C431F100034D853 /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
+		DC39839E2C431F5B0034D853 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3983A52C431F780034D853 /* PointsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsTests.swift; sourceTree = "<group>"; };
+		DC3983A62C431F780034D853 /* TestCaseWithDice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCaseWithDice.swift; sourceTree = "<group>"; };
+		DC3983A72C431F780034D853 /* TurnAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnAnalyzerTests.swift; sourceTree = "<group>"; };
+		DC3983A82C431F780034D853 /* TurnStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnStateTests.swift; sourceTree = "<group>"; };
+		DC3983A92C431F780034D853 /* ScoringOptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringOptionTests.swift; sourceTree = "<group>"; };
+		DC3983AA2C431F780034D853 /* DiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTests.swift; sourceTree = "<group>"; };
+		DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpperTotalsTests.swift; sourceTree = "<group>"; };
+		DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelectionTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC3983702C431EFD0034D853 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC39839B2C431F5B0034D853 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC3983682C431EEA0034D853 = {
+			isa = PBXGroup;
+			children = (
+				DC3983832C431F030034D853 /* Analyzer */,
+				DC3983752C431EFD0034D853 /* Solver */,
+				DC39839F2C431F5B0034D853 /* Tests */,
+				DC3983742C431EFD0034D853 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC3983742C431EFD0034D853 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC3983732C431EFD0034D853 /* Solver.app */,
+				DC39839E2C431F5B0034D853 /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC3983752C431EFD0034D853 /* Solver */ = {
+			isa = PBXGroup;
+			children = (
+				DC3983762C431EFD0034D853 /* SolverApp.swift */,
+				DC3983782C431EFD0034D853 /* ContentView.swift */,
+				DC39837A2C431EFD0034D853 /* Assets.xcassets */,
+				DC39837F2C431EFD0034D853 /* Solver.entitlements */,
+				DC39837C2C431EFD0034D853 /* Preview Content */,
+			);
+			path = Solver;
+			sourceTree = "<group>";
+		};
+		DC39837C2C431EFD0034D853 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC3983832C431F030034D853 /* Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				DC39838E2C431F100034D853 /* Dice.swift */,
+				DC3983862C431F100034D853 /* DicePattern.swift */,
+				DC3983892C431F100034D853 /* DiceSelection.swift */,
+				DC39838A2C431F100034D853 /* Points.swift */,
+				DC3983872C431F100034D853 /* ProgressTracker.swift */,
+				DC39838C2C431F100034D853 /* ScoringOption.swift */,
+				DC3983852C431F100034D853 /* Solver.swift */,
+				DC3983842C431F100034D853 /* TurnAnalyzer.swift */,
+				DC3983882C431F100034D853 /* TurnState.swift */,
+				DC39838D2C431F100034D853 /* TurnValues.swift */,
+				DC39838B2C431F100034D853 /* UpperTotals.swift */,
+			);
+			path = Analyzer;
+			sourceTree = "<group>";
+		};
+		DC39839F2C431F5B0034D853 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */,
+				DC3983AA2C431F780034D853 /* DiceTests.swift */,
+				DC3983A52C431F780034D853 /* PointsTests.swift */,
+				DC3983A92C431F780034D853 /* ScoringOptionTests.swift */,
+				DC3983A62C431F780034D853 /* TestCaseWithDice.swift */,
+				DC3983A72C431F780034D853 /* TurnAnalyzerTests.swift */,
+				DC3983A82C431F780034D853 /* TurnStateTests.swift */,
+				DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC3983722C431EFD0034D853 /* Solver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "Solver" */;
+			buildPhases = (
+				DC39836F2C431EFD0034D853 /* Sources */,
+				DC3983702C431EFD0034D853 /* Frameworks */,
+				DC3983712C431EFD0034D853 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Solver;
+			productName = Solver;
+			productReference = DC3983732C431EFD0034D853 /* Solver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DC39839D2C431F5B0034D853 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				DC39839A2C431F5B0034D853 /* Sources */,
+				DC39839B2C431F5B0034D853 /* Frameworks */,
+				DC39839C2C431F5B0034D853 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = DC39839E2C431F5B0034D853 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC3983692C431EEA0034D853 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					DC3983722C431EFD0034D853 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					DC39839D2C431F5B0034D853 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YahtzeeCoach" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC3983682C431EEA0034D853;
+			productRefGroup = DC3983742C431EFD0034D853 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC3983722C431EFD0034D853 /* Solver */,
+				DC39839D2C431F5B0034D853 /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC3983712C431EFD0034D853 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC39837E2C431EFD0034D853 /* Preview Assets.xcassets in Resources */,
+				DC39837B2C431EFD0034D853 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC39839C2C431F5B0034D853 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC39836F2C431EFD0034D853 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC3983982C431F100034D853 /* TurnValues.swift in Sources */,
+				DC3983792C431EFD0034D853 /* ContentView.swift in Sources */,
+				DC3983962C431F100034D853 /* UpperTotals.swift in Sources */,
+				DC3983952C431F100034D853 /* Points.swift in Sources */,
+				DC3983942C431F100034D853 /* DiceSelection.swift in Sources */,
+				DC3983922C431F100034D853 /* ProgressTracker.swift in Sources */,
+				DC39838F2C431F100034D853 /* TurnAnalyzer.swift in Sources */,
+				DC3983912C431F100034D853 /* DicePattern.swift in Sources */,
+				DC3983902C431F100034D853 /* Solver.swift in Sources */,
+				DC3983932C431F100034D853 /* TurnState.swift in Sources */,
+				DC3983772C431EFD0034D853 /* SolverApp.swift in Sources */,
+				DC3983972C431F100034D853 /* ScoringOption.swift in Sources */,
+				DC3983992C431F100034D853 /* Dice.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC39839A2C431F5B0034D853 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC3983B52C431F810034D853 /* TurnValues.swift in Sources */,
+				DC3983B62C431F810034D853 /* ProgressTracker.swift in Sources */,
+				DC3983B72C431F810034D853 /* ScoringOption.swift in Sources */,
+				DC3983B82C431F810034D853 /* UpperTotals.swift in Sources */,
+				DC3983B92C431F810034D853 /* Solver.swift in Sources */,
+				DC3983BA2C431F810034D853 /* TurnAnalyzer.swift in Sources */,
+				DC3983BB2C431F810034D853 /* Dice.swift in Sources */,
+				DC3983BC2C431F810034D853 /* DiceSelection.swift in Sources */,
+				DC3983BD2C431F810034D853 /* Points.swift in Sources */,
+				DC3983BE2C431F810034D853 /* TurnState.swift in Sources */,
+				DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */,
+				DC3983AF2C431F780034D853 /* TurnAnalyzerTests.swift in Sources */,
+				DC3983B22C431F780034D853 /* DiceTests.swift in Sources */,
+				DC3983B02C431F780034D853 /* TurnStateTests.swift in Sources */,
+				DC3983B12C431F780034D853 /* ScoringOptionTests.swift in Sources */,
+				DC3983B42C431F780034D853 /* DiceSelectionTests.swift in Sources */,
+				DC3983AE2C431F780034D853 /* TestCaseWithDice.swift in Sources */,
+				DC3983AD2C431F780034D853 /* PointsTests.swift in Sources */,
+				DC3983B32C431F780034D853 /* UpperTotalsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DC39836D2C431EEA0034D853 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		DC39836E2C431EEA0034D853 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		DC3983812C431EFD0034D853 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Solver/Solver.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"Solver/Preview Content\"";
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DC3983822C431EFD0034D853 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Solver/Solver.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Solver/Preview Content\"";
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DC3983A32C431F5B0034D853 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DC3983A42C431F5B0034D853 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YahtzeeCoach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC39836D2C431EEA0034D853 /* Debug */,
+				DC39836E2C431EEA0034D853 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "Solver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC3983812C431EFD0034D853 /* Debug */,
+				DC3983822C431EFD0034D853 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC3983A32C431F5B0034D853 /* Debug */,
+				DC3983A42C431F5B0034D853 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC3983692C431EEA0034D853 /* Project object */;
+}

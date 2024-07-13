@@ -1,0 +1,101 @@
+//
+// Copyright 2024 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+//
+
+import Foundation
+
+// Different options for scoring in Yahtzee
+enum ScoringOption: Int, CaseIterable {
+    case aces
+    case twos
+    case threes
+    case fours
+    case fives
+    case sixes
+    case threeOfAKind
+    case fourOfAKind
+    case fullHouse
+    case smStraight
+    case lgStraight
+    case yahtzee
+    case chance
+    
+    // Is this option scored in the upper part of the score card?
+    var isUpper: Bool { self.rawValue <= Self.sixes.rawValue }
+}
+
+// Set of ScoringOptions -- useful for tracing which options have already been used.
+struct ScoringOptions {
+    var flags: Int = 0
+    
+    mutating func clear(_ opt: ScoringOption) {
+        flags &= ~Self.flag(opt)
+    }
+    
+    func isSet(_ opt: ScoringOption) -> Bool {
+        flags & Self.flag(opt) != 0
+    }
+    
+    mutating func set(_ opt: ScoringOption) {
+        flags |= Self.flag(opt)
+    }
+
+    mutating func setAll() {
+        flags = 0x1fff
+    }
+    
+    func upper() -> ScoringOptions {
+        ScoringOptions(flags: flags & 0x3f)
+    }
+    
+    static func all(forTurn turn: Int) -> [ScoringOptions] {
+        var result = [ScoringOptions]()
+        
+        // Array of Bools indicating which options have been used.
+        var selectors = [Bool](repeating: false, count: ScoringOption.allCases.count)
+        // Every turn an option must be used.
+        selectors.replaceSubrange(0..<turn, with: [Bool](repeating: true, count: turn))
+        
+        repeat {
+            // Convert the selectors to ScoringOptions and add to result
+            var options = ScoringOptions()
+            ScoringOption.allCases.forEach {
+                if selectors[$0.rawValue] {
+                    options.set($0)
+                }
+            }
+            result.append(options)
+
+            // Cycle through the permutations
+        } while nextPermutation(&selectors)
+        
+        return result
+    }
+    
+    static func flag(_ opt: ScoringOption) -> Int {
+        1 << opt.rawValue
+    }
+    
+    private static func nextPermutation(_ selectors: inout [Bool]) -> Bool {
+        guard selectors.count > 1 else {
+            return false
+        }
+        
+        for i in 0..<selectors.count - 1 {
+            if selectors[i] && !selectors[i+1] {
+                for j in 0..<selectors.count {
+                    if selectors[j]  {
+                        selectors.swapAt(i + 1, j)
+                        selectors.replaceSubrange(0...i, with: selectors[0...i].reversed())
+                        return true
+                    }
+                }
+            }
+        }
+        
+        return false
+    }
+}
