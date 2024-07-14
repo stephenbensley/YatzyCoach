@@ -94,7 +94,7 @@
 		DC3983682C431EEA0034D853 = {
 			isa = PBXGroup;
 			children = (
-				DC3983832C431F030034D853 /* Analyzer */,
+				DC3983832C431F030034D853 /* Yahtzee */,
 				DC9FF1752C4425A800B66485 /* Data */,
 				DC3983742C431EFD0034D853 /* Products */,
 				DC3983752C431EFD0034D853 /* Solver */,
@@ -131,7 +131,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DC3983832C431F030034D853 /* Analyzer */ = {
+		DC3983832C431F030034D853 /* Yahtzee */ = {
 			isa = PBXGroup;
 			children = (
 				DC39838E2C431F100034D853 /* Dice.swift */,
@@ -146,7 +146,7 @@
 				DC39838D2C431F100034D853 /* TurnValues.swift */,
 				DC39838B2C431F100034D853 /* UpperTotals.swift */,
 			);
-			path = Analyzer;
+			path = Yahtzee;
 			sourceTree = "<group>";
 		};
 		DC39839F2C431F5B0034D853 /* Tests */ = {
