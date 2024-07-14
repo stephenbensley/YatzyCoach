@@ -15,7 +15,7 @@ class Solver {
     private let turnValues = TurnValues()
 
     // Main entry point to solve the game of Yahtzee.
-    func solve() async {
+    private func solve() async {
         // Retrograde solution starting from the end and working back to the beginning.
         for turn in stride(from: ScoringOption.allCases.count, through: 0, by: -1) {
             await solveTurn(turn)
@@ -55,12 +55,18 @@ class Solver {
         }
     }
     
-    init(reportProgress: @escaping ReportProgress) {
+    private init(reportProgress: @escaping ReportProgress) {
         self.tracker = ProgressTracker(totalCount: TurnState.stateCount, onUpdate: reportProgress)
         self.workerCount = ProcessInfo.processInfo.activeProcessorCount
         // Create a separate DiceStore for each worker. Retaining and releasing the same object
         // concurrently from multiple threads degrades rapidly as the number of threads increases
         // due to repeatedly evicting the cache line containing the refcount from peer CPU caches.
         self.diceStores = (0..<workerCount).map( { _ in DiceStore() })
+    }
+    
+    static func solve(reportProgress: @escaping ReportProgress) async -> TurnValues {
+        let solver = Solver(reportProgress: reportProgress)
+        await solver.solve()
+        return solver.turnValues
     }
 }
