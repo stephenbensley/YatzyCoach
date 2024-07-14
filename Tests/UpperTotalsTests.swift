@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import XCTest
-@testable import Solver
 
 class UpperTotalsTests: XCTestCase {
     func testAllPossible() throws {

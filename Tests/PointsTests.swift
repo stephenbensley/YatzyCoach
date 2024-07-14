@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import XCTest
-@testable import Solver
 
 class PointsTests: TestCaseWithDice {
     func testComputeFinal() throws {

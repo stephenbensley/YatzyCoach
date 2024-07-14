@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import XCTest
-@testable import Solver
 
 class ScoringOptionTests: XCTestCase {
     func testIsUpper() throws {

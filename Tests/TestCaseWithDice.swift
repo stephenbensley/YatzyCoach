@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import XCTest
-@testable import Solver
 
 // Base class for test cases that use Dice
 class TestCaseWithDice: XCTestCase {
