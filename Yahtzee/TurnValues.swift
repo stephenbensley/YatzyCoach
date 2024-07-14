@@ -9,7 +9,7 @@ import Foundation
 
 // Used to cache the value of each value.
 class TurnValues {
-    private var values = [Double](repeating: 0.0, count: TurnState.maxId + 1)
+    private var values: [Double]
     
     func find(turnState: TurnState) -> Double {
         return values[turnState.id]
@@ -22,5 +22,21 @@ class TurnValues {
     func encode() -> Data {
         // Float is ample precision and it keeps the file smaller
         return try! JSONEncoder().encode(values.map { Float($0) })
+    }
+    
+    init() {
+        self.values = [Double](repeating: 0.0, count: TurnState.maxId + 1)
+    }
+    
+    init(_ values: [Double]) {
+        self.values = values
+    }
+    
+    static func decode(data: Data) -> TurnValues? {
+        guard let floatValues = try? JSONDecoder().decode([Float].self, from: data) else {
+            return nil
+        }
+
+        return TurnValues(floatValues.map { Double($0) })
     }
 }

@@ -41,7 +41,22 @@
 		DC3983BD2C431F810034D853 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
 		DC3983BE2C431F810034D853 /* TurnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983882C431F100034D853 /* TurnState.swift */; };
 		DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
+		DC9FF1782C446B4700B66485 /* TurnValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */; };
+		DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC9FF17A2C446C8F00B66485 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /private/tmp;
+			dstSubfolderSpec = 0;
+			files = (
+				DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DC3983732C431EFD0034D853 /* Yahtzee Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yahtzee Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +86,7 @@
 		DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpperTotalsTests.swift; sourceTree = "<group>"; };
 		DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelectionTests.swift; sourceTree = "<group>"; };
 		DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yahtzeeSolution.json; sourceTree = "<group>"; };
+		DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnValuesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +175,7 @@
 				DC3983A62C431F780034D853 /* TestCaseWithDice.swift */,
 				DC3983A72C431F780034D853 /* TurnAnalyzerTests.swift */,
 				DC3983A82C431F780034D853 /* TurnStateTests.swift */,
+				DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */,
 				DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */,
 			);
 			path = Tests;
@@ -199,6 +216,7 @@
 				DC39839A2C431F5B0034D853 /* Sources */,
 				DC39839B2C431F5B0034D853 /* Frameworks */,
 				DC39839C2C431F5B0034D853 /* Resources */,
+				DC9FF17A2C446C8F00B66485 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -290,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC9FF1782C446B4700B66485 /* TurnValuesTests.swift in Sources */,
 				DC3983B52C431F810034D853 /* TurnValues.swift in Sources */,
 				DC3983B62C431F810034D853 /* ProgressTracker.swift in Sources */,
 				DC3983B72C431F810034D853 /* ScoringOption.swift in Sources */,
