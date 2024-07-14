@@ -18,7 +18,7 @@ struct DiceSelection: Equatable {
             // Clear least significant set bit
             v &= v - 1
             // Count set bits until there are none left
-            count = count + 1
+            count += 1
         }
         return count
     }
