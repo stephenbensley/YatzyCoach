@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DC3983732C431EFD0034D853 /* Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3983732C431EFD0034D853 /* Yahtzee Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yahtzee Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3983762C431EFD0034D853 /* SolverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverApp.swift; sourceTree = "<group>"; };
 		DC3983782C431EFD0034D853 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC39837A2C431EFD0034D853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		DC3983742C431EFD0034D853 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DC3983732C431EFD0034D853 /* Solver.app */,
+				DC3983732C431EFD0034D853 /* Yahtzee Solver.app */,
 				DC39839E2C431F5B0034D853 /* Tests.xctest */,
 			);
 			name = Products;
@@ -179,7 +179,7 @@
 			);
 			name = Solver;
 			productName = Solver;
-			productReference = DC3983732C431EFD0034D853 /* Solver.app */;
+			productReference = DC3983732C431EFD0034D853 /* Yahtzee Solver.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DC39839D2C431F5B0034D853 /* Tests */ = {
@@ -392,7 +392,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Yahtzee Solver";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -469,7 +469,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Yahtzee Solver";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;

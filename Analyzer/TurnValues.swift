@@ -8,7 +8,7 @@
 import Foundation
 
 // Used to cache the value of each value.
-class TurnValues: Codable {
+class TurnValues {
     private var values = [Double](repeating: 0.0, count: TurnState.maxId + 1)
     
     func find(turnState: TurnState) -> Double {
@@ -17,5 +17,10 @@ class TurnValues: Codable {
     
     func insert(turnState: TurnState, value: Double) {
         values[turnState.id] = value
+    }
+    
+    func encode() -> Data {
+        // Float is ample precision and it keeps the file smaller
+        return try! JSONEncoder().encode(values.map { Float($0) })
     }
 }
