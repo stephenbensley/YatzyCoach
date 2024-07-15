@@ -25,11 +25,24 @@ enum ScoringOption: Int, CaseIterable {
     
     // Is this option scored in the upper part of the score card?
     var isUpper: Bool { self.rawValue <= Self.sixes.rawValue }
+    
+    static func fromDieValue(_ dieValue: Int) -> ScoringOption {
+        ScoringOption(rawValue: dieValue - 1)!
+    }
 }
 
 // Set of ScoringOptions -- useful for tracing which options have already been used.
 struct ScoringOptions {
     var flags: Int = 0
+    var allSet: Bool { flags == 0x1fff }
+    var anySet: Bool { flags != 0}
+    
+    var lower: ScoringOptions {
+        ScoringOptions(flags: flags & 0x1fc0)
+    }
+    var upper: ScoringOptions {
+        ScoringOptions(flags: flags & 0x003f)
+    }
     
     mutating func clear(_ opt: ScoringOption) {
         flags &= ~Self.flag(opt)
@@ -39,16 +52,17 @@ struct ScoringOptions {
         flags & Self.flag(opt) != 0
     }
     
+    // Checks if the upper option corresponding to a particular die value is set.
+    func isSet(dieValue: Int) -> Bool {
+        isSet(ScoringOption.fromDieValue(dieValue))
+    }
+    
     mutating func set(_ opt: ScoringOption) {
         flags |= Self.flag(opt)
     }
 
     mutating func setAll() {
         flags = 0x1fff
-    }
-    
-    func upper() -> ScoringOptions {
-        ScoringOptions(flags: flags & 0x3f)
     }
     
     static func all(forTurn turn: Int) -> [ScoringOptions] {

@@ -18,6 +18,15 @@ class Points {
     static let yahtzee = 50
     static let yahtzeeBonus = 100
     
+    // Breaks down points scored according to where they're tallied on the score card.
+    struct ByType {
+        var forOption: Int
+        var upperBonus: Int
+        var yahtzeeBonus: Int
+        
+        var total: Int { forOption + upperBonus + yahtzeeBonus }
+    }
+    
     // Computes points scored without regard to game state, e.g., no bonuses or jokers.
     static func computeBase(
         for dice: [Int],
@@ -68,53 +77,58 @@ class Points {
         return points
     }
     
-    // Updates basePoints to account for current turn state.
-    static func computeFinal(state: TurnState, dice: Dice, option: ScoringOption) -> Int {
+    // Actual points scored accounting for game state and broken down by type.
+    static func computeByType(state: TurnState, dice: Dice, option: ScoringOption) -> ByType {
+        var result = ByType(forOption: 0, upperBonus: 0, yahtzeeBonus: 0)
+        
         // Can't use a scoring option twice
         guard !state.used.isSet(option) else {
-            return 0
+            return result
         }
         
-        let basePoints = dice.basePoints(scoredAs: option)
-        var points = basePoints
+        result.forOption = dice.basePoints(scoredAs: option)
         
         // Are the joker rules in effect?
         if dice.pattern == .fiveOfAKind && state.used.isSet(.yahtzee) {
             // Upper option for this roll
-            let upperOption = ScoringOption(rawValue: dice.value[0] - 1)!
+            let upperOption = ScoringOption.fromDieValue(dice.value[0])
             if state.used.isSet(upperOption) {
                 // Upper option already used, so Yahtzee can be scored as a full house or straight.
                 switch option {
                 case .fullHouse:
-                    points = Points.fullHouse
+                    result.forOption = Points.fullHouse
                 case .smStraight:
-                    points = Points.smStraight
+                    result.forOption = Points.smStraight
                 case .lgStraight:
-                    points = Points.lgStraight
+                    result.forOption = Points.lgStraight
                 default:
                     break
                 }
             } else {
                 // Player must use upper option
                 if option != upperOption {
-                    points = 0
+                    result.forOption = 0
                 }
             }
             
-            // Add in the Yahtzee bonus
+            // Did we earn the Yahtzee bonus?
             if state.yahtzeeScored {
-                points += Points.yahtzeeBonus
+                result.yahtzeeBonus = Points.yahtzeeBonus
             }
         }
         
         // Did we earn the upper bonus?
         if option.isUpper &&
             (state.upperTotal < Points.toEarnUpperBonus) &&
-            ((state.upperTotal + basePoints) >= Points.toEarnUpperBonus) {
-            points += Points.upperBonus
+            ((state.upperTotal + result.forOption) >= Points.toEarnUpperBonus) {
+            result.upperBonus = Points.upperBonus
         }
         
-        return points
+        return result
+    }
+    
+    // Total points scored accounting for game state.
+    static func compute(state: TurnState, dice: Dice, option: ScoringOption) -> Int {
+        return computeByType(state: state, dice: dice, option: option).total
     }
 }
-

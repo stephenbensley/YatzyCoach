@@ -28,15 +28,15 @@ class TurnValues {
         self.values = [Double](repeating: 0.0, count: TurnState.maxId + 1)
     }
     
-    init(_ values: [Double]) {
-        self.values = values
-    }
-    
-    static func decode(data: Data) -> TurnValues? {
+    init?(fileURLWithPath: String) {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: fileURLWithPath)) else {
+            return nil
+        }
+        
         guard let floatValues = try? JSONDecoder().decode([Float].self, from: data) else {
             return nil
         }
-
-        return TurnValues(floatValues.map { Double($0) })
+        
+        self.values = floatValues.map(Double.init)
     }
 }

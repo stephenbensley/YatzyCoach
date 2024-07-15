@@ -10,15 +10,12 @@ import XCTest
 
 class TurnValuesTests: XCTestCase {
     func testDecode() throws {
-        let data = try? Data(contentsOf: URL(fileURLWithPath: "./yahtzeeSolution.json"))
-        XCTAssertNotNil(data)
-        try XCTSkipIf(data == nil)
-        
-        let turnValues = TurnValues.decode(data: data!)
-        XCTAssertNotNil(turnValues)
-        try XCTSkipIf(turnValues == nil)
-        
-        let expectedValue = turnValues!.find(turnState: TurnState())
+        guard let turnValues = TurnValues(fileURLWithPath: "./yahtzeeSolution.json") else {
+            XCTFail()
+            return
+        }
+
+        let expectedValue = turnValues.find(turnState: TurnState())
         XCTAssertEqual(expectedValue, 254.59, accuracy: 0.01)
     }
 }

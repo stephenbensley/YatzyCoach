@@ -37,7 +37,7 @@ class ScoringOptionTests: XCTestCase {
     func testUpper() throws {
         var all = ScoringOptions()
         all.setAll()
-        let upperOnly = all.upper()
+        let upperOnly = all.upper
         for opt in ScoringOption.allCases {
             if opt.isUpper {
                 XCTAssert(upperOnly.isSet(opt))

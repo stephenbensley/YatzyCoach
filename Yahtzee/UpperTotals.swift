@@ -12,7 +12,7 @@ class UpperTotals {
     private let totals: [[Int]]
     
     func allPossible(for options: ScoringOptions) -> [Int] {
-        totals[options.upper().flags]
+        totals[options.upper.flags]
     }
     
     init() {
@@ -63,7 +63,7 @@ class UpperTotals {
         )
         
         // If this scoring option isn't in use, zero points was the only possibility.
-        guard options.isSet(ScoringOption(rawValue:dieValue - 1)!) else {
+        guard options.isSet(dieValue: dieValue) else {
             return
         }
                 

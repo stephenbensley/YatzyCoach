@@ -7,18 +7,6 @@
 
 import Foundation
 
-// Represents an action that a player can take in the game of Yahtzee
-enum Action {
-    case scoreDice(ScoringOption)
-    case rollDice(DiceSelection)
-}
-
-// Combines an Action with its expected value.
-struct ActionValue {
-    var action: Action
-    var value: Double
-}
-
 // Analyzes the various roll states that occur during a turn.
 class TurnAnalyzer {
     private let diceStore: DiceStore
@@ -28,28 +16,19 @@ class TurnAnalyzer {
     
     // Returns all possible action values for the given state
     func analyze(dice: Dice, rollsLeft: Int) -> [ActionValue] {
-        var analysis = [ActionValue]()
-        
-        for option in ScoringOption.allCases {
-            guard !state.used.isSet(option) else {
-                continue
-            }
+        var analysis = ScoringOption.allCases.filter({ !state.used.isSet($0) }).map { option in
             let value = evaluateScoreAction(dice: dice, option: option)
-            analysis.append(ActionValue(action: .scoreDice(option), value: value))
+            return ActionValue(action: .scoreDice(option), value: value)
         }
         
-        guard rollsLeft > 0 else {
-            return analysis
+        if rollsLeft > 0 {
+            zip(dice.keepOptions, dice.keepResults).forEach { option, result in
+                let value = evaluateRollAction(dice: dice, rollsLeft: rollsLeft, kept: result)
+                analysis.append(ActionValue(action: .rollDice(option), value: value))
+            }
         }
         
-        for i in 0..<dice.keepOptions.count {
-            let selection = dice.keepOptions[i]
-            let kept = dice.keepResults[i]
-            let value = evaluateRollAction(dice: dice, rollsLeft: rollsLeft, kept: kept)
-            analysis.append(ActionValue(action: .rollDice(selection), value: value))
-        }
-        
-        return analysis
+        return analysis.sorted(by: { $0.value > $1.value })
     }
     
     // Returns the expected number of points scored during the remainder of the game from the
@@ -87,7 +66,7 @@ class TurnAnalyzer {
     
     private func evaluateScoreAction(dice: Dice, option: ScoringOption) -> Double {
         // This is how many points we'll score right now
-        let points = Points.computeFinal(state: state, dice: dice, option: option)
+        let points = Points.compute(state: state, dice: dice, option: option)
         // Next turn state in the game tree assuming we make this play
         let nextTurn = state.next(scoringAs: option, points: points)
         // Add the expected points we'll score for the rest of the game.

@@ -43,6 +43,9 @@
 		DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
 		DC9FF1782C446B4700B66485 /* TurnValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */; };
 		DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */; };
+		DC9FF17F2C4475F100B66485 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF17E2C4475F100B66485 /* GameModel.swift */; };
+		DC9FF1812C45B8E500B66485 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1802C45B8E500B66485 /* GameModelTests.swift */; };
+		DC9FF1832C45BD6300B66485 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1822C45BD6300B66485 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +90,9 @@
 		DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelectionTests.swift; sourceTree = "<group>"; };
 		DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yahtzeeSolution.json; sourceTree = "<group>"; };
 		DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnValuesTests.swift; sourceTree = "<group>"; };
+		DC9FF17E2C4475F100B66485 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		DC9FF1802C45B8E500B66485 /* GameModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelTests.swift; sourceTree = "<group>"; };
+		DC9FF1822C45BD6300B66485 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +156,11 @@
 		DC3983832C431F030034D853 /* Yahtzee */ = {
 			isa = PBXGroup;
 			children = (
+				DC9FF1822C45BD6300B66485 /* Action.swift */,
 				DC39838E2C431F100034D853 /* Dice.swift */,
 				DC3983862C431F100034D853 /* DicePattern.swift */,
 				DC3983892C431F100034D853 /* DiceSelection.swift */,
+				DC9FF17E2C4475F100B66485 /* GameModel.swift */,
 				DC39838A2C431F100034D853 /* Points.swift */,
 				DC3983872C431F100034D853 /* ProgressTracker.swift */,
 				DC39838C2C431F100034D853 /* ScoringOption.swift */,
@@ -170,6 +178,7 @@
 			children = (
 				DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */,
 				DC3983AA2C431F780034D853 /* DiceTests.swift */,
+				DC9FF1802C45B8E500B66485 /* GameModelTests.swift */,
 				DC3983A52C431F780034D853 /* PointsTests.swift */,
 				DC3983A92C431F780034D853 /* ScoringOptionTests.swift */,
 				DC3983A62C431F780034D853 /* TestCaseWithDice.swift */,
@@ -313,9 +322,12 @@
 				DC3983B62C431F810034D853 /* ProgressTracker.swift in Sources */,
 				DC3983B72C431F810034D853 /* ScoringOption.swift in Sources */,
 				DC3983B82C431F810034D853 /* UpperTotals.swift in Sources */,
+				DC9FF17F2C4475F100B66485 /* GameModel.swift in Sources */,
 				DC3983B92C431F810034D853 /* Solver.swift in Sources */,
+				DC9FF1832C45BD6300B66485 /* Action.swift in Sources */,
 				DC3983BA2C431F810034D853 /* TurnAnalyzer.swift in Sources */,
 				DC3983BB2C431F810034D853 /* Dice.swift in Sources */,
+				DC9FF1812C45B8E500B66485 /* GameModelTests.swift in Sources */,
 				DC3983BC2C431F810034D853 /* DiceSelection.swift in Sources */,
 				DC3983BD2C431F810034D853 /* Points.swift in Sources */,
 				DC3983BE2C431F810034D853 /* TurnState.swift in Sources */,
