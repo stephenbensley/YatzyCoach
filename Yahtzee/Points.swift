@@ -39,7 +39,7 @@ class Points {
         switch opt {
         case .aces, .twos, .threes, .fours, .fives, .sixes:
             let dieValue = opt.rawValue + 1
-            points = dice.reduce(0) { ($1 == dieValue) ? ($0 + dieValue) : $0 }
+            points = dice.filter({ $0 == dieValue }).reduce(0, +)
         case .threeOfAKind:
             switch pattern {
             case .threeOfAKind, .fullHouse, .fourOfAKind, .fiveOfAKind:

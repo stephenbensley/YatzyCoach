@@ -16,14 +16,18 @@ enum Action: Equatable {
     func canonize(from player: [Int], to canonical: Dice) -> Action {
         switch self {
         case .scoreDice:
+            // Scoring doesn't depend on order.
             return self
+            
         case .rollDice(let selection):
+            // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: player))
             for (option, result) in zip(canonical.keepOptions, canonical.keepResults) {
                 if key == result.key {
                     return .rollDice(option)
                 }
             }
+            // keepOptions are exhaustive, so there's guaranteed to be a match.
             assert(false)
             return self
         }
@@ -33,14 +37,18 @@ enum Action: Equatable {
     func uncanonize(from canonical: Dice, to player: [Int]) -> Action {
         switch self {
         case .scoreDice:
+            // Scoring doesn't depend on order.
             return self
+            
         case .rollDice(let selection):
+            // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: canonical.value))
             for option in DiceSelection.all {
                 if key == Dice.computeKey(for: option.apply(to: player)) {
                     return .rollDice(option)
                 }
             }
+            // We tried all DiceSelection, so there's guaranteed to be a match.
             assert(false)
             return self
         }

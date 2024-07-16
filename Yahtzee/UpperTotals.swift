@@ -11,14 +11,15 @@ import Foundation
 class UpperTotals {
     private let totals: [[Int]]
     
-    func allPossible(for options: ScoringOptions) -> [Int] {
-        totals[options.upper.flags]
-    }
+    func allPossible(for options: ScoringOptions) -> [Int] { totals[options.upper.flags] }
     
     init() {
         // Six upper options so 2^6 possibilities.
-        let allUpper = (0..<64).map { ScoringOptions(flags: $0) }
-        totals = allUpper.map { Self.computeUpperTotals(for: $0) }
+        totals = (0..<64).map({
+            ScoringOptions(flags: $0)
+        }).map({
+            Self.computeUpperTotals(for: $0)
+        })
     }
     
     static func computeUpperTotals(for options: ScoringOptions) -> [Int] {
@@ -32,13 +33,7 @@ class UpperTotals {
         addPossiblePoints(for: options, dieValue: Dice.maxDieValue, subTotal: 0, seen: &seen)
         
         // Turn the array of flags into an array of ints.
-        var result = [Int]()
-        for i in 0..<seen.count {
-            if (seen[i]) {
-                result.append(i)
-            }
-        }
-        return result
+        return seen.indices.filter({ seen[$0] })
     }
     
     static func addPossiblePoints(

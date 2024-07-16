@@ -26,6 +26,7 @@ enum ScoringOption: Int, CaseIterable {
     // Is this option scored in the upper part of the score card?
     var isUpper: Bool { self.rawValue <= Self.sixes.rawValue }
     
+    // Maps a die value to the corresponding upper scoring option.
     static func fromDieValue(_ dieValue: Int) -> ScoringOption {
         ScoringOption(rawValue: dieValue - 1)!
     }
@@ -34,36 +35,22 @@ enum ScoringOption: Int, CaseIterable {
 // Set of ScoringOptions -- useful for tracing which options have already been used.
 struct ScoringOptions {
     var flags: Int = 0
+    
     var allSet: Bool { flags == 0x1fff }
     var anySet: Bool { flags != 0}
     
-    var lower: ScoringOptions {
-        ScoringOptions(flags: flags & 0x1fc0)
-    }
-    var upper: ScoringOptions {
-        ScoringOptions(flags: flags & 0x003f)
-    }
+    // Returns just the lower or upper options.
+    var lower: ScoringOptions { ScoringOptions(flags: flags & 0x1fc0) }
+    var upper: ScoringOptions { ScoringOptions(flags: flags & 0x003f) }
     
-    mutating func clear(_ opt: ScoringOption) {
-        flags &= ~Self.flag(opt)
-    }
+    mutating func clear(_ opt: ScoringOption) { flags &= ~Self.flag(opt) }
     
-    func isSet(_ opt: ScoringOption) -> Bool {
-        flags & Self.flag(opt) != 0
-    }
-    
+    func isSet(_ opt: ScoringOption) -> Bool { flags & Self.flag(opt) != 0 }
     // Checks if the upper option corresponding to a particular die value is set.
-    func isSet(dieValue: Int) -> Bool {
-        isSet(ScoringOption.fromDieValue(dieValue))
-    }
+    func isSet(dieValue: Int) -> Bool { isSet(ScoringOption.fromDieValue(dieValue)) }
     
-    mutating func set(_ opt: ScoringOption) {
-        flags |= Self.flag(opt)
-    }
-
-    mutating func setAll() {
-        flags = 0x1fff
-    }
+    mutating func set(_ opt: ScoringOption) { flags |= Self.flag(opt) }
+    mutating func setAll() { flags = 0x1fff }
     
     static func all(forTurn turn: Int) -> [ScoringOptions] {
         var result = [ScoringOptions]()
@@ -76,11 +63,7 @@ struct ScoringOptions {
         repeat {
             // Convert the selectors to ScoringOptions and add to result
             var options = ScoringOptions()
-            ScoringOption.allCases.forEach {
-                if selectors[$0.rawValue] {
-                    options.set($0)
-                }
-            }
+            ScoringOption.allCases.filter({ selectors[$0.rawValue] }).forEach({ options.set($0) })
             result.append(options)
 
             // Cycle through the permutations
@@ -89,9 +72,7 @@ struct ScoringOptions {
         return result
     }
     
-    static func flag(_ opt: ScoringOption) -> Int {
-        1 << opt.rawValue
-    }
+    static func flag(_ opt: ScoringOption) -> Int { 1 << opt.rawValue }
     
     private static func nextPermutation(_ selectors: inout [Bool]) -> Bool {
         guard selectors.count > 1 else {
@@ -100,13 +81,11 @@ struct ScoringOptions {
         
         for i in 0..<selectors.count - 1 {
             if selectors[i] && !selectors[i+1] {
-                for j in 0..<selectors.count {
-                    if selectors[j]  {
-                        selectors.swapAt(i + 1, j)
-                        selectors.replaceSubrange(0...i, with: selectors[0...i].reversed())
-                        return true
-                    }
-                }
+                // Guaranteed to succeed since at least selectors[i] is true.
+                let j = selectors.firstIndex(of: true)!
+                selectors.swapAt(i + 1, j)
+                selectors.replaceSubrange(0...i, with: selectors[0...i].reversed())
+                return true
             }
         }
         

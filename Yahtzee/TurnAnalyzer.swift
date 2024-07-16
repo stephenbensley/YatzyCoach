@@ -28,6 +28,7 @@ class TurnAnalyzer {
             }
         }
         
+        // Return them sorted best to worst.
         return analysis.sorted(by: { $0.value > $1.value })
     }
     
@@ -43,13 +44,11 @@ class TurnAnalyzer {
     func evaluate(dice: Dice, rollsLeft: Int) -> Double {
         guard rollsLeft > 0 else {
             // No rolls left, so our only option is to score.
-            return ScoringOption.allCases.reduce(0.0) { result, option in
-                if (!state.used.isSet(option)) {
-                    let value = evaluateScoreAction(dice: dice, option: option)
-                    return max(result, value)
-                } else {
-                    return result
-                }
+            return ScoringOption.allCases.filter({
+                !state.used.isSet($0)
+            }).reduce(0.0) { result, option in
+                let value = evaluateScoreAction(dice: dice, option: option)
+                return max(result, value)
             }
         }
         

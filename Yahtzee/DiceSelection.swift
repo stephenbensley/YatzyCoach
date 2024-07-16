@@ -11,26 +11,10 @@ import Foundation
 struct DiceSelection: Equatable {
     var flags: Int
     
-    var count: Int {
-        var count = 0
-        var v = UInt32(flags)
-        while v > 0 {
-            // Clear least significant set bit
-            v &= v - 1
-            // Count set bits until there are none left
-            count += 1
-        }
-        return count
-    }
+    var count: Int { flags.nonzeroBitCount }
     
     func apply(to value: [Int]) -> [Int] {
-        var selected = [Int]()
-        for i in 0..<value.count {
-            if isSet(i) {
-                selected.append(value[i])
-            }
-        }
-        return selected
+        value.indices.filter({ isSet($0) }).map({ value[$0] })
     }
     
     func isSet(_ ordinal: Int) -> Bool {

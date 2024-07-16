@@ -56,9 +56,7 @@ class Dice: Equatable {
     var key: Int { Self.computeKey(for: value) }
     
     // Points scored without regard to game state, i.e., no bonuses, wildcards.
-    func basePoints(scoredAs opt: ScoringOption) -> Int {
-        self.basePoints[opt.rawValue]
-    }
+    func basePoints(scoredAs opt: ScoringOption) -> Int { self.basePoints[opt.rawValue] }
     
     // This is fileprivate since only DiceStore creates new Dice.
     // byKey is used to resolve keys to the corresponding Dice object.
@@ -67,8 +65,8 @@ class Dice: Equatable {
         
         // The number of times each die value appears. Include an extra dummy element, so that
         // every run will be zero terminated.
-        var counts = (1...Self.numDieValues + 1).map { (count: 0, value: $0) }
-        value.forEach { if $0 > 0 { counts[$0 - 1].count += 1 }}
+        var counts = (Self.minDieValue...Self.maxDieValue + 1).map { (count: 0, value: $0) }
+        value.forEach { counts[$0 - 1].count += 1 }
         
         // Find the longest run of consecutive values.
         var longestRun = 0
@@ -87,13 +85,7 @@ class Dice: Equatable {
         
         // Fill in the canonical dice values.
         var canonical = [Int]()
-        counts.forEach {
-            if $0.count > 0 {
-                for _ in 0..<$0.count {
-                    canonical.append($0.value)
-                }
-            }
-        }
+        counts.forEach { canonical += repeatElement($0.value, count: $0.count) }
         self.value = canonical
         
         // Determine the pattern type based on the counts.
@@ -152,7 +144,7 @@ class Dice: Equatable {
         value.reduce(0) { $0 + numPermutations[$1 - 1] }
     }
     
-    static func ==(lhs: Dice, rhs: Dice) -> Bool {
+    static func ==(_ lhs: Dice, _ rhs: Dice) -> Bool {
         lhs.count == rhs.count && lhs.ordinal == rhs.ordinal
     }
 }
@@ -164,7 +156,10 @@ class DiceStore {
     private var add23 = [[Dice]]()
     
     func concatenate(_ lhs: Dice, _ rhs: Dice) -> Dice {
+        // Concatenation is only supported if the result has count == Dice.maxCount. There are no
+        // use cases for other counts.
         assert(lhs.count + rhs.count == Dice.maxCount)
+        
         switch lhs.count {
         case 0:
             return rhs
@@ -179,6 +174,7 @@ class DiceStore {
         case 5:
             return lhs
         default:
+            assert(false)
             return lhs
         }
     }
@@ -208,12 +204,10 @@ class DiceStore {
                 // If every die is at its max value, we're done.
                 break
             }
-            // Increment this die's value and all the dice before it.
+            // Increment this die's value and set all the previous values to the same value.
             let newValue = combo[idx] + 1
-            for i in 0...idx {
-                combo[i] = newValue
-            }
-        } while true
+            (0...idx).forEach { combo[$0] = newValue }
+         } while true
         
         assert(combos.count == Dice.numCombinations[count])
         return combos

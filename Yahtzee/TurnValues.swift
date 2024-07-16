@@ -11,13 +11,8 @@ import Foundation
 class TurnValues {
     private var values: [Double]
     
-    func find(turnState: TurnState) -> Double {
-        return values[turnState.id]
-    }
-    
-    func insert(turnState: TurnState, value: Double) {
-        values[turnState.id] = value
-    }
+    func find(turnState: TurnState) -> Double { return values[turnState.id] }
+    func insert(turnState: TurnState, value: Double) { values[turnState.id] = value }
     
     func encode() -> Data {
         // Float is ample precision and it keeps the file smaller
@@ -32,11 +27,9 @@ class TurnValues {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: fileURLWithPath)) else {
             return nil
         }
-        
         guard let floatValues = try? JSONDecoder().decode([Float].self, from: data) else {
             return nil
         }
-        
         self.values = floatValues.map(Double.init)
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Models a game of Yahtzee and provides coaching to the player.
 class GameModel: ObservableObject {
     // Precomputed solution for the game of Yahtzee.
     private let turnValues: TurnValues
@@ -42,7 +43,8 @@ class GameModel: ObservableObject {
         if upper >= Points.toEarnUpperBonus {
             return Points.upperBonus
         }
-        // Do we still have a chance of earning it?
+        // Do we still have a chance of earning it? Stride backwards to improve chances of
+        // early termination.
         for i in stride(from: Dice.maxDieValue, through: Dice.minDieValue, by: -1) {
             if (!turnState.used.isSet(dieValue: i)) {
                 upper += i * Dice.maxCount
@@ -66,18 +68,24 @@ class GameModel: ObservableObject {
         Self.addOptionals(upperTotal, lowerTotal)
     }
     
+    // Returns the best action the player could take.
     var bestAction: Action {
         analysis[0].action.uncanonize(from: canonicalDice, to: playerDice)
     }
     
+    // Returns the value of a proposed action. Value is given relative to the value of the
+    // best action, so highest value is 0.0.
     func actionValue(action: Action) -> Double {
         let canonicalAction = action.canonize(from: playerDice, to: canonicalDice)
-        let match = analysis.first(where: { $0.action == canonicalAction})!
+        let match = analysis.first(where: { $0.action == canonicalAction })!
         return match.value - analysis[0].value
     }
     
+    // Updates the game state based on the player taking the specified action.
     func takeAction(action: Action) {
         assert(!gameOver)
+        
+        // This is the only method that triggers changes to the object. All others are read-only.
         objectWillChange.send()
         
         switch action {
@@ -116,7 +124,7 @@ class GameModel: ObservableObject {
     
     private func rollDice(keep: DiceSelection = DiceSelection(flags: 0)) {
         playerDice.indices.filter({ !keep.isSet($0) }).forEach {
-            playerDice[$0] = Int.random(in: 1...6)
+            playerDice[$0] = Self.rollDie()
         }
         canonicalDice = diceStore.find(byValue: playerDice)
         analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
@@ -133,7 +141,7 @@ class GameModel: ObservableObject {
             turnState: turnState
         )
         self.rollsLeft = Dice.extraRolls
-        self.playerDice = (0..<Dice.maxCount).map { _ in Int.random(in: 1...6) }
+        self.playerDice = (0..<Dice.maxCount).map { _ in Self.rollDie() }
         self.canonicalDice = diceStore.find(byValue: playerDice)
         self.analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
     }
@@ -149,5 +157,9 @@ class GameModel: ObservableObject {
         case (true, true):
             return lhs! + rhs!
         }
+    }
+    
+    private static func rollDie() -> Int {
+        Int.random(in: Dice.minDieValue...Dice.maxDieValue)
     }
 }
