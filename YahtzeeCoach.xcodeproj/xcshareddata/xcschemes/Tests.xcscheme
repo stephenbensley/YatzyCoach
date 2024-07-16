@@ -24,11 +24,6 @@
                BlueprintName = "Tests"
                ReferencedContainer = "container:YahtzeeCoach.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "GameModelTests/testGamePlay()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

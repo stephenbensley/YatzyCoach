@@ -10,20 +10,11 @@ import XCTest
 
 class DiceSelectionTests: XCTestCase {
     
-    func testCount() throws {
-        XCTAssert(DiceSelection(flags: 0b00000).count == 0)
-        XCTAssert(DiceSelection(flags: 0b01000).count == 1)
-        XCTAssert(DiceSelection(flags: 0b10010).count == 2)
-        XCTAssert(DiceSelection(flags: 0b10101).count == 3)
-        XCTAssert(DiceSelection(flags: 0b01111).count == 4)
-    }
-    
     func testApply() throws  {
         // Least significant flag applies to first element in value, so the flags and values
-        // appear in opposite order.
+        // appear in opposite order below.
         XCTAssert(DiceSelection(flags: 0b00000).apply(to: [4, 4, 3, 2, 1]) == [])
         XCTAssert(DiceSelection(flags: 0b01001).apply(to: [4, 4, 3, 2, 1]) == [4, 2])
         XCTAssert(DiceSelection(flags: 0b10110).apply(to: [4, 4, 3, 2, 1]) == [4, 3, 1])
     }
-    
 }

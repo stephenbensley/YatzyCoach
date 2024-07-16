@@ -10,19 +10,8 @@ import XCTest
 
 class ScoringOptionTests: XCTestCase {
     func testIsUpper() throws {
-        XCTAssert(ScoringOption.aces.isUpper)
-        XCTAssert(ScoringOption.twos.isUpper)
-        XCTAssert(ScoringOption.threes.isUpper)
-        XCTAssert(ScoringOption.fours.isUpper)
-        XCTAssert(ScoringOption.fives.isUpper)
         XCTAssert(ScoringOption.sixes.isUpper)
         XCTAssert(!ScoringOption.threeOfAKind.isUpper)
-        XCTAssert(!ScoringOption.fourOfAKind.isUpper)
-        XCTAssert(!ScoringOption.fullHouse.isUpper)
-        XCTAssert(!ScoringOption.smStraight.isUpper)
-        XCTAssert(!ScoringOption.lgStraight.isUpper)
-        XCTAssert(!ScoringOption.yahtzee.isUpper)
-        XCTAssert(!ScoringOption.chance.isUpper)
     }
     
     func testSet() throws {

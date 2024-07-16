@@ -63,8 +63,9 @@ final class Dice: Equatable {
     fileprivate init(value: [Int], ordinal: Int, byKey: (Int) -> Dice) {
         self.ordinal = ordinal
         
-        // The number of times each die value appears. Include an extra dummy element, so that
-        // every run will be zero terminated.
+        // Count the number of times each die value appears. We include an extra dummy element, so
+        // that every run will be zero terminated -- it makes the run determination a bit
+        // simpler.
         var counts = (Self.minDieValue...Self.maxDieValue + 1).map { (count: 0, value: $0) }
         value.forEach { counts[$0 - 1].count += 1 }
         
@@ -179,17 +180,10 @@ final class DiceStore {
         }
     }
     
-    func all(withCount count: Int) -> [Dice] {
-        byCount[count]
-    }
-    
-    func find(byKey key: Int) -> Dice {
-        byKey[key]!
-    }
-    
-    func find(byValue value: [Int]) -> Dice {
-        find(byKey: Dice.computeKey(for: value))
-    }
+    // Various functions to retrieve cached Dice objects
+    func all(withCount count: Int) -> [Dice] { byCount[count] }
+    func find(byKey key: Int) -> Dice { byKey[key]! }
+    func find(byValue value: [Int]) -> Dice { find(byKey: Dice.computeKey(for: value)) }
     
     static func generateCombos(withCount count: Int) -> [[Int]] {
         var combos = [[Int]]()

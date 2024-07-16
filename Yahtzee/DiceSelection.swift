@@ -13,13 +13,12 @@ struct DiceSelection: Equatable {
     
     var count: Int { flags.nonzeroBitCount }
     
+    // Returns only the selected values.
     func apply(to value: [Int]) -> [Int] {
         value.indices.filter({ isSet($0) }).map({ value[$0] })
     }
     
-    func isSet(_ ordinal: Int) -> Bool {
-        flags & Self.flag(ordinal) != 0
-    }
+    func isSet(_ ordinal: Int) -> Bool { flags & Self.flag(ordinal) != 0 }
     
     // We only select proper subsets (keeping all dice isn't an option in Yahtzee)
     static let all: [DiceSelection] = (0..<31).map { DiceSelection(flags: $0) }
@@ -42,17 +41,18 @@ struct DiceSelection: Equatable {
 final class DiceSelectionSets {
     private let distinctSets: [[DiceSelection]]
     
-    func distinct(for pattern: DicePattern) -> [DiceSelection] {
-        distinctSets[pattern.rawValue]
-    }
+    func distinct(for pattern: DicePattern) -> [DiceSelection] { distinctSets[pattern.rawValue] }
     
     init() {
         distinctSets = DicePattern.allCases.map { pattern in
             let example = pattern.canonicalExample
             var seen = Set<Int>()
+            // Search all possible DiceSelections to guarantee the result is sufficient.
             return DiceSelection.all.compactMap { selection in
                 let remainder = selection.apply(to: example)
                 let key = Dice.computeKey(for: remainder)
+                // If this selection produces a remainder that has already been seen, then it's
+                // unnecessary and can be ignored.
                 guard !seen.contains(key) else { return nil }
                 seen.insert(key)
                 return selection

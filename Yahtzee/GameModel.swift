@@ -27,9 +27,11 @@ final class GameModel: ObservableObject {
     private var canonicalDice: Dice
     // Analysis of the current roll state
     private var analysis: [ActionValue]
-
+    
     var gameOver: Bool { turnState.used.allSet }
-
+    
+    // Various boxes on the scorecard -- these return nil if the box should be blank.
+    
     subscript(index: ScoringOption) -> Int? {
         turnState.used.isSet(index) ? optionPoints[index.rawValue] : nil
     }
@@ -45,13 +47,15 @@ final class GameModel: ObservableObject {
         }
         // Do we still have a chance of earning it? Stride backwards to improve chances of
         // early termination.
-        for i in stride(from: Dice.maxDieValue, through: Dice.minDieValue, by: -1) {
-            if (!turnState.used.isSet(dieValue: i)) {
-                upper += i * Dice.maxCount
-                if upper >= Points.toEarnUpperBonus {
-                    // It's still in play, so leave it blank for now.
-                    return nil
-                }
+        for i in stride(
+            from: Dice.maxDieValue,
+            through: Dice.minDieValue,
+            by: -1
+        ) where !turnState.used.isSet(dieValue: i) {
+            upper += i * Dice.maxCount
+            if upper >= Points.toEarnUpperBonus {
+                // It's still in play, so leave it blank for now.
+                return nil
             }
         }
         // Upper bonus is impossible, so return 0
@@ -68,7 +72,7 @@ final class GameModel: ObservableObject {
         Self.addOptionals(upperTotal, lowerTotal)
     }
     
-    // Returns the best action the player could take.
+    // Returns the best action the player can take.
     var bestAction: Action {
         analysis[0].action.uncanonize(from: canonicalDice, to: playerDice)
     }
@@ -77,6 +81,7 @@ final class GameModel: ObservableObject {
     // best action, so highest value is 0.0.
     func actionValue(action: Action) -> Double {
         let canonicalAction = action.canonize(from: playerDice, to: canonicalDice)
+        // There is guaranteed to be a match since analysis is exhaustive
         let match = analysis.first(where: { $0.action == canonicalAction })!
         return match.value - analysis[0].value
     }
@@ -114,7 +119,7 @@ final class GameModel: ObservableObject {
             
             // Roll the dice for the next turn
             rollDice()
-
+            
         case .rollDice(let selection):
             assert(rollsLeft > 0)
             rollsLeft -= 1
@@ -129,7 +134,7 @@ final class GameModel: ObservableObject {
         canonicalDice = diceStore.find(byValue: playerDice)
         analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
     }
-         
+    
     init(turnValues: TurnValues, diceStore: DiceStore) {
         self.turnValues = turnValues
         self.diceStore = diceStore

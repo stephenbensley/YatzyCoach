@@ -22,14 +22,16 @@ enum Action: Equatable {
         case .rollDice(let selection):
             // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: player))
-            for (option, result) in zip(canonical.keepOptions, canonical.keepResults) {
-                if key == result.key {
-                    return .rollDice(option)
-                }
-            }
+     
             // keepOptions are exhaustive, so there's guaranteed to be a match.
-            assert(false)
-            return self
+            let (option, _) = zip(
+                canonical.keepOptions,
+                canonical.keepResults
+            ).first(where: { (_, result) in
+                result.key == key
+            })!
+            
+            return .rollDice(option)
         }
     }
     
@@ -43,14 +45,11 @@ enum Action: Equatable {
         case .rollDice(let selection):
             // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: canonical.value))
-            for option in DiceSelection.all {
-                if key == Dice.computeKey(for: option.apply(to: player)) {
-                    return .rollDice(option)
-                }
+            let option = DiceSelection.all.first { selection in
+                Dice.computeKey(for: selection.apply(to: player)) == key
             }
             // We tried all DiceSelection, so there's guaranteed to be a match.
-            assert(false)
-            return self
+            return .rollDice(option!)
         }
     }
 }

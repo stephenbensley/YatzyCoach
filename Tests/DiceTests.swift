@@ -73,12 +73,10 @@ class DiceTests: TestCaseWithDice {
                 seen.insert(key)
             }
             // Ensure they're sufficient.
-            DiceSelection.all.forEach { action in
-                if !actions.contains(action) {
-                    let key = Dice.computeKey(for: action.apply(to: dice.value))
-                    if !seen.contains(key) {
-                        missing += 1
-                    }
+            DiceSelection.all.filter({ !actions.contains($0) }).forEach { action in
+                let key = Dice.computeKey(for: action.apply(to: dice.value))
+                if !seen.contains(key) {
+                    missing += 1
                 }
             }
         }

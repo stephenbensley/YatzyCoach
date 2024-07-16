@@ -16,11 +16,13 @@ final class TurnAnalyzer {
     
     // Returns all possible action values for the given state
     func analyze(dice: Dice, rollsLeft: Int) -> [ActionValue] {
+        // We can always score.
         var analysis = ScoringOption.allCases.filter({ !state.used.isSet($0) }).map { option in
             let value = evaluateScoreAction(dice: dice, option: option)
             return ActionValue(action: .scoreDice(option), value: value)
         }
         
+        // Now add the roll actions if appropriate.
         if rollsLeft > 0 {
             zip(dice.keepOptions, dice.keepResults).forEach { option, result in
                 let value = evaluateRollAction(dice: dice, rollsLeft: rollsLeft, kept: result)
@@ -87,6 +89,9 @@ final class TurnAnalyzer {
         self.state = turnState
         
         let combos = diceStore.all(withCount: Dice.maxCount)
+        // We must solve these in forward order since the rollsLeft == 0 states are reachable from
+        // rollsLeft == 1 states. No need to cache rollsLeft == 2 since we'll see these states at
+        // most once.
         for rollsLeft in 0..<Dice.extraRolls {
             rollValues.append(combos.map { evaluate(dice: $0, rollsLeft: rollsLeft) })
         }

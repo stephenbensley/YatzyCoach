@@ -16,6 +16,7 @@ class GameModelTests: XCTestCase {
             return
         }
         
+        // Let the test run for 15 seconds.
         let deadline = DispatchTime.now().uptimeNanoseconds + (15 * 1_000_000_000)
         var total = 0
         var count = 0
@@ -46,8 +47,12 @@ class GameModelTests: XCTestCase {
             }
         }
         
+        // From "An Optimal Strategy for Yahtzee" by James Glenn.
+        let mean = 254.59
+        let stdDev = 59.64 / sqrt(Double(count))
+        
         let avgScore = Double(total)/Double(count)
-        XCTAssertEqual(avgScore, 254.59, accuracy: 5.0)
+        XCTAssertEqual(avgScore, mean, accuracy: 3.0 * stdDev)
     }
 }
 

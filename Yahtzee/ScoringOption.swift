@@ -63,9 +63,9 @@ struct ScoringOptions {
         repeat {
             // Convert the selectors to ScoringOptions and add to result
             var options = ScoringOptions()
-            ScoringOption.allCases.filter({ selectors[$0.rawValue] }).forEach({ options.set($0) })
+            ScoringOption.allCases.filter({ selectors[$0.rawValue] }).forEach { options.set($0) }
             result.append(options)
-
+            
             // Cycle through the permutations
         } while nextPermutation(&selectors)
         
@@ -75,20 +75,24 @@ struct ScoringOptions {
     static func flag(_ opt: ScoringOption) -> Int { 1 << opt.rawValue }
     
     private static func nextPermutation(_ selectors: inout [Bool]) -> Bool {
+        // Counts of 0 and 1 only have one permutation, and the loop below can't handle these
+        // cases.
         guard selectors.count > 1 else {
             return false
         }
         
-        for i in 0..<selectors.count - 1 {
-            if selectors[i] && !selectors[i+1] {
-                // Guaranteed to succeed since at least selectors[i] is true.
-                let j = selectors.firstIndex(of: true)!
-                selectors.swapAt(i + 1, j)
-                selectors.replaceSubrange(0...i, with: selectors[0...i].reversed())
-                return true
-            }
+        // Find first selector that's set where following selector isn't set.
+        for i in 0..<selectors.count - 1 where selectors[i] && !selectors[i+1] {
+            // Find first selector that's set. Guaranteed to succeed since count > 0
+            let j = selectors.firstIndex(of: true)!
+            // Swap these ...
+            selectors.swapAt(i + 1, j)
+            // ... and reverse all the preceding elements.
+            selectors[0...i].reverse()
+            return true
         }
         
+        // All the true selectors have been pushed to the end of the array, so we're done.
         return false
     }
 }

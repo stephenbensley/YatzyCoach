@@ -38,7 +38,9 @@ final class Solver {
     }
     
     private func solveTurnStates(workerIndex: Int, turnStates: [TurnState]) async {
+        // Each worker uses there own DiceStore to avoid ARC thrashing.
         let diceStore = diceStores[workerIndex]
+        // Since each worker starts from a different index, they won't collide.
         for i in stride(from: workerIndex, to: turnStates.count, by: workerCount) {
             let turnState = turnStates[i]
             let analyzer = TurnAnalyzer(

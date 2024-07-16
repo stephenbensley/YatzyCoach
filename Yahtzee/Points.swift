@@ -20,9 +20,9 @@ final class Points {
     
     // Breaks down points scored according to where they're tallied on the score card.
     struct ByType {
-        var forOption: Int
-        var upperBonus: Int
-        var yahtzeeBonus: Int
+        var forOption = 0
+        var upperBonus = 0
+        var yahtzeeBonus = 0
         
         var total: Int { forOption + upperBonus + yahtzeeBonus }
     }
@@ -79,7 +79,7 @@ final class Points {
     
     // Actual points scored accounting for game state and broken down by type.
     static func computeByType(state: TurnState, dice: Dice, option: ScoringOption) -> ByType {
-        var result = ByType(forOption: 0, upperBonus: 0, yahtzeeBonus: 0)
+        var result = ByType()
         
         // Can't use a scoring option twice
         guard !state.used.isSet(option) else {
