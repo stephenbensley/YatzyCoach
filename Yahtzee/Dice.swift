@@ -9,7 +9,7 @@ import Foundation
 
 // Represents a roll of the dice. The Dice objects are read-only and shared. Dice can not be
 // created directly; they must be retrieved from the DiceStore.
-class Dice: Equatable {
+final class Dice: Equatable {
     static let minDieValue = 1
     static let maxDieValue = 6
     static let numDieValues = 6
@@ -149,7 +149,7 @@ class Dice: Equatable {
     }
 }
 
-class DiceStore {
+final class DiceStore {
     private var byCount = [[Dice]](repeating: [Dice](), count: Dice.maxCount + 1)
     private var byKey = [Int: Dice]()
     private var add14 = [[Dice]]()

@@ -8,7 +8,7 @@
 import Foundation
 
 // Analyzes the various roll states that occur during a turn.
-class TurnAnalyzer {
+final class TurnAnalyzer {
     private let diceStore: DiceStore
     private let turnValues: TurnValues
     private let state: TurnState

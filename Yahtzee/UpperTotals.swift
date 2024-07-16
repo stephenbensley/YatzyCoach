@@ -8,7 +8,7 @@
 import Foundation
 
 // Computes all upper totals that can results from a given set of ScoringOptions
-class UpperTotals {
+final class UpperTotals {
     private let totals: [[Int]]
     
     func allPossible(for options: ScoringOptions) -> [Int] { totals[options.upper.flags] }

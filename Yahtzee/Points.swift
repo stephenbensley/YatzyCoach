@@ -8,7 +8,7 @@
 import Foundation
 
 // Implements the scoring rules for Yahtzee
-class Points {
+final class Points {
     // Points scored for various scoring options
     static let toEarnUpperBonus = 63
     static let upperBonus = 35

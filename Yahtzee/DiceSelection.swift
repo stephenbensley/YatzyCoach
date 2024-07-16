@@ -39,7 +39,7 @@ struct DiceSelection: Equatable {
 
 // For each dice pattern, computes a necessary and sufficient set of DiceSelections that
 // will produce all possible results.
-class DiceSelectionSets {
+final class DiceSelectionSets {
     private let distinctSets: [[DiceSelection]]
     
     func distinct(for pattern: DicePattern) -> [DiceSelection] {

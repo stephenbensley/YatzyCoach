@@ -8,7 +8,7 @@
 import Foundation
 
 // Models a game of Yahtzee and provides coaching to the player.
-class GameModel: ObservableObject {
+final class GameModel: ObservableObject {
     // Precomputed solution for the game of Yahtzee.
     private let turnValues: TurnValues
     // DiceStore used for manipulating and evaluating dice rolls.

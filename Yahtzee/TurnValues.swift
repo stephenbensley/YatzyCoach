@@ -8,7 +8,7 @@
 import Foundation
 
 // Used to cache the value of each value.
-class TurnValues {
+final class TurnValues {
     private var values: [Double]
     
     func find(turnState: TurnState) -> Double { return values[turnState.id] }

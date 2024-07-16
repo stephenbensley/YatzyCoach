@@ -8,7 +8,7 @@
 import Foundation
 
 // Solves all turn states for the game of Yahtzee.
-class Solver {
+final class Solver {
     private let tracker: ProgressTracker
     private let workerCount: Int
     private let diceStores: [DiceStore]
