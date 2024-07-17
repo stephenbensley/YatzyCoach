@@ -9,20 +9,19 @@ import Foundation
 
 // Represents an action that a player can take in the game of Yahtzee
 enum Action: Equatable {
-    case scoreDice(ScoringOption)
     case rollDice(DiceSelection)
+    case scoreDice(ScoringOption)
+    
+    var isRoll: Bool { if case .rollDice = self { true } else { false } }
+    var isScore: Bool { !isRoll }
     
     // Convert from player space to canonical space.
     func canonize(from player: [Int], to canonical: Dice) -> Action {
         switch self {
-        case .scoreDice:
-            // Scoring doesn't depend on order.
-            return self
-            
         case .rollDice(let selection):
             // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: player))
-     
+            
             // keepOptions are exhaustive, so there's guaranteed to be a match.
             let (option, _) = zip(
                 canonical.keepOptions,
@@ -32,16 +31,16 @@ enum Action: Equatable {
             })!
             
             return .rollDice(option)
+            
+        case .scoreDice:
+            // Scoring doesn't depend on order.
+            return self
         }
     }
     
     // Convert from canonical space to player space
     func uncanonize(from canonical: Dice, to player: [Int]) -> Action {
         switch self {
-        case .scoreDice:
-            // Scoring doesn't depend on order.
-            return self
-            
         case .rollDice(let selection):
             // Keys don't depend on order, so if the keys match, we have equivalent selections.
             let key = Dice.computeKey(for: selection.apply(to: canonical.value))
@@ -50,6 +49,10 @@ enum Action: Equatable {
             }
             // We tried all DiceSelection, so there's guaranteed to be a match.
             return .rollDice(option!)
+            
+        case .scoreDice:
+            // Scoring doesn't depend on order.
+            return self
         }
     }
 }
