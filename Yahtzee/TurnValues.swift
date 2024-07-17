@@ -23,13 +23,30 @@ final class TurnValues {
         self.values = [Double](repeating: 0.0, count: TurnState.maxId + 1)
     }
     
-    init?(fileURLWithPath: String) {
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: fileURLWithPath)) else {
-            return nil
-        }
+    init?(data: Data) {
         guard let floatValues = try? JSONDecoder().decode([Float].self, from: data) else {
             return nil
         }
         self.values = floatValues.map(Double.init)
+    }
+    
+    convenience init?(fileURLWithPath: String) {
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: fileURLWithPath)) else {
+            return nil
+        }
+        self.init(data: data)
+    }
+    
+    convenience init?(forResource: String, withExtension: String) {
+        guard let url = Bundle.main.url(
+            forResource: forResource,
+            withExtension: withExtension
+        ) else {
+            return nil
+        }
+        guard let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+        self.init(data: data)
     }
 }
