@@ -88,7 +88,6 @@ final class GameModel: ObservableObject {
     func takeAction(action: Action) {
         assert(!gameOver)
         
-        // This is the only method that triggers changes to the object. All others are read-only.
         objectWillChange.send()
         
         switch action {
@@ -122,7 +121,22 @@ final class GameModel: ObservableObject {
         }
     }
     
-    private func rollDice(keep: DiceSelection = DiceSelection(flags: 0)) {
+    func newGame() {
+        objectWillChange.send()
+
+        optionPoints = [Int?](repeating: nil, count: ScoringOption.allCases.count)
+        derivedPoints = [Int?](repeating: nil, count: DerivedScore.allCases.count)
+        turnState = TurnState()
+        turnAnalyzer = TurnAnalyzer(
+            diceStore: diceStore,
+            turnValues: turnValues,
+            turnState: turnState
+        )
+        rollsLeft = Dice.extraRolls
+        rollDice()
+    }
+    
+    private func rollDice(keep: DiceSelection = DiceSelection()) {
         playerDice.indices.filter({ !keep.isSet($0) }).forEach {
             playerDice[$0] = Self.rollDie()
         }
