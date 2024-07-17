@@ -7,6 +7,15 @@
 
 import Foundation
 
+// Derived scores that are reported on the scorecard. These are in addition to the ScoringOptions.
+enum DerivedScore: Int, CaseIterable {
+    case upperTotalBeforeBonus
+    case upperBonus
+    case upperTotal
+    case lowerTotal
+    case grandTotal
+}
+
 // Models a game of Yahtzee and provides coaching to the player.
 final class GameModel: ObservableObject {
     // Precomputed solution for the game of Yahtzee.
@@ -14,7 +23,9 @@ final class GameModel: ObservableObject {
     // DiceStore used for manipulating and evaluating dice rolls.
     private let diceStore: DiceStore
     // Points scored for each ScoringOption
-    private var optionPoints: [Int]
+    private var optionPoints: [Int?]
+    // Points for each each DerivedScore case
+    private var derivedPoints: [Int?]
     // State of the current turn
     private var turnState = TurnState()
     // Analyzer used to coach the player
@@ -30,23 +41,16 @@ final class GameModel: ObservableObject {
     
     var gameOver: Bool { turnState.used.allSet }
     
-    // Various boxes on the scorecard -- these return nil if the box should be blank.
-    
-    subscript(index: ScoringOption) -> Int? {
-        turnState.used.isSet(index) ? optionPoints[index.rawValue] : nil
-    }
-    var upperTotalBeforeBonus: Int? {
-        let upperRange = (0..<Dice.numDieValues)
-        return turnState.used.upper.anySet ? optionPoints[upperRange].reduce(0, +) : nil
-    }
-    var upperBonus: Int? {
-        var upper = upperTotalBeforeBonus ?? 0
-        // If we've already earned the bonus, return it
-        if upper >= Points.toEarnUpperBonus {
-            return Points.upperBonus
+    // Return true if the player has earned or could still earn the upper bonus.
+    var upperBonusPossible: Bool {
+        var upper = derivedPoints(.upperTotalBeforeBonus) ?? 0
+        
+        // If we've already earned the bonus, there's nothing more to do.
+        guard upper < Points.toEarnUpperBonus else {
+            return true
         }
-        // Do we still have a chance of earning it? Stride backwards to improve chances of
-        // early termination.
+        
+        // Stride backwards to improve chances of early termination.
         for i in stride(
             from: Dice.maxDieValue,
             through: Dice.minDieValue,
@@ -54,23 +58,17 @@ final class GameModel: ObservableObject {
         ) where !turnState.used.isSet(dieValue: i) {
             upper += i * Dice.maxCount
             if upper >= Points.toEarnUpperBonus {
-                // It's still in play, so leave it blank for now.
-                return nil
+                // It's still in play.
+                return true
             }
         }
-        // Upper bonus is impossible, so return 0
-        return 0
+        // Upper bonus is impossible
+        return false
     }
-    var upperTotal: Int? {
-        Self.addOptionals(upperTotalBeforeBonus, upperBonus)
-    }
-    var lowerTotal: Int? {
-        let lowerRange = (Dice.numDieValues..<ScoringOption.allCases.count)
-        return turnState.used.lower.anySet ? optionPoints[lowerRange].reduce(0, +) : nil
-    }
-    var grandTotal: Int? {
-        Self.addOptionals(upperTotal, lowerTotal)
-    }
+    
+    // Various boxes on the scorecard -- these return nil if the box should be blank.
+    func optionPoints(_ option: ScoringOption) -> Int? { optionPoints[option.rawValue] }
+    func derivedPoints(_ type: DerivedScore) -> Int? { derivedPoints[type.rawValue] }
     
     // Returns the best action the player can take.
     var bestAction: Action {
@@ -97,16 +95,13 @@ final class GameModel: ObservableObject {
         case .scoreDice(let option):
             assert(!turnState.used.isSet(option))
             
-            // Compute points scored.
+            // Compute points scored and update score card
             let points = Points.computeByType(
                 state: turnState,
                 dice: canonicalDice,
                 option: option
             )
-            
-            // Update the scorecard.
-            optionPoints[option.rawValue] = points.forOption
-            optionPoints[ScoringOption.yahtzee.rawValue] += points.yahtzeeBonus
+            updateScoreCard(option: option, points: points)
             
             // Advance to the next turnState
             turnState = turnState.next(scoringAs: option, points: points.total)
@@ -135,10 +130,66 @@ final class GameModel: ObservableObject {
         analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
     }
     
+    private func setOptionPoints(_ option: ScoringOption, _ points: Int) {
+        optionPoints[option.rawValue] = points
+    }
+    
+    private func setDerivedPoints(_ type: DerivedScore, _ points: Int) {
+        derivedPoints[type.rawValue] = points
+    }
+    
+    private func updateScoreCard(option: ScoringOption, points: Points.ByType) {
+        setOptionPoints(option, points.forOption)
+        if (points.upperBonus > 0) {
+            setDerivedPoints(.upperBonus, points.upperBonus)
+        }
+        if points.yahtzeeBonus > 0 {
+            // If we earned the bonus, yahtzee can't be nil
+            optionPoints[ScoringOption.yahtzee.rawValue]! += points.yahtzeeBonus
+        }
+        
+        if option.isUpper {
+            let upperRange = (0..<Dice.numDieValues)
+            setDerivedPoints(
+                .upperTotalBeforeBonus,
+                optionPoints[upperRange].compactMap({ $0 }).reduce(0, +)
+            )
+            
+            // If upperBonus is still nil, see if we have a chance of earning it.
+            if derivedPoints(.upperBonus) == nil && !upperBonusPossible {
+                setDerivedPoints(.upperBonus, 0)
+            }
+            
+            // upperTotalBeforeBonus must be non-nil since we just scored an upper option
+            setDerivedPoints(
+                .upperTotal,
+                Self.addOptionals(
+                    derivedPoints(.upperTotalBeforeBonus),
+                    derivedPoints(.upperBonus)
+                )!
+            )
+        } else {
+            let lowerRange = (Dice.numDieValues..<ScoringOption.allCases.count)
+            setDerivedPoints(
+                .lowerTotal,
+                optionPoints[lowerRange].compactMap({ $0 }).reduce(0, +)
+            )
+        }
+        
+        setDerivedPoints(
+            .grandTotal,
+            Self.addOptionals(
+                derivedPoints(.upperTotal),
+                derivedPoints(.lowerTotal)
+            )!
+        )
+    }
+    
     init(turnValues: TurnValues, diceStore: DiceStore) {
         self.turnValues = turnValues
         self.diceStore = diceStore
-        self.optionPoints = [Int](repeating: 0, count: ScoringOption.allCases.count)
+        self.optionPoints = [Int?](repeating: nil, count: ScoringOption.allCases.count)
+        self.derivedPoints = [Int?](repeating: nil, count: DerivedScore.allCases.count)
         self.turnState = TurnState()
         self.turnAnalyzer = TurnAnalyzer(
             diceStore: diceStore,

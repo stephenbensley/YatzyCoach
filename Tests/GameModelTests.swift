@@ -34,7 +34,7 @@ class GameModelTests: XCTestCase {
                             model.takeAction(action: action)
                         } while !model.gameOver
                         
-                        total += model.grandTotal!
+                        total += model.derivedPoints(.grandTotal)!
                         count += 1
                     }
                     return (total, count)
