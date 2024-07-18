@@ -20,9 +20,7 @@ struct DiceSelection: Equatable {
     
     func isSet(_ ordinal: Int) -> Bool { flags & Self.flag(ordinal) != 0 }
     
-    func toggle(_ ordinal: Int) -> DiceSelection {
-        DiceSelection(flags: flags ^ Self.flag(ordinal))
-    }
+    mutating func toggle(_ ordinal: Int) { flags ^= Self.flag(ordinal) }
     
     // We only select proper subsets (keeping all dice isn't an option in Yahtzee)
     static let all: [DiceSelection] = (0..<31).map { DiceSelection(flags: $0) }
