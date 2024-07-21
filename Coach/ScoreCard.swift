@@ -1,16 +1,38 @@
 //
-//  ScoreCardView.swift
-//  Coach
+// Copyright 2024 Stephen E. Bensley
 //
-//  Created by Stephen Bensley on 7/19/24.
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
 
+// Displays the title above the scorecard
+struct ScoreCardTitle: View {
+    private var scale: Double
+    
+    init(width: Double) {
+        scale = width / 300.0
+    }
+    
+    var body: some View {
+        HStack {
+            Text("Yatzy")
+                .font(.custom(Fonts.yahtzeeBrand, size: 30 * scale))
+                .baselineOffset(9 * scale)
+             Text("SCORE CARD")
+                .font(.custom(Fonts.scoreCard, size: 20 * scale))
+         }
+    }
+}
+
+// Displays a column of scores
 struct ScoreColumn<Content>: View where Content: View {
+    private let rowCount: Int
     private let content: Content
     
-    init(@ViewBuilder content: () -> Content) {
+    init(rowCount: Int, @ViewBuilder content: () -> Content) {
+        self.rowCount = rowCount
         self.content = content()
     }
     
@@ -18,87 +40,155 @@ struct ScoreColumn<Content>: View where Content: View {
         VStack(spacing: 0) {
             content
         }
-        .frame(width: 510, height: 1215)
         .background(
-            GridLines(rowCount: 9, columnWidths: [120.0, 50.0])
-                .stroke(lineWidth: 3.0)
-            )
+            GridLines(rowCount: rowCount, columnWidths: Score.columnWidths)
+                .stroke()
+        )
     }
 }
 
-struct ScoreItem: View {
-    let title: LocalizedStringKey
-    let points: Int?
-    private var pointsAsString: String { points?.description ?? "" }
-    
-    init(_ title: LocalizedStringKey, _ points: Int?) {
-        self.title = title
-        self.points = points
-    }
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Text(title)
-                .padding(20)
-                .frame(width: 360, height: 135, alignment: .leading)
-                .font(.custom("Futura-Medium", size: 50))
-                .lineLimit(1)
-                .minimumScaleFactor(0.1)
-            Text(pointsAsString)
-                .padding(20)
-                .frame(width: 150, height: 135, alignment: .trailing)
-                .font(.custom("ChalkboardSE-Regular", size: 60))
-                .foregroundStyle(Color(red: 92.0/255.0, green: 98.0/255.0, blue: 116.0/255.0))
-          }
-
-    }
-}
-
+// Displays a Yahtzee scorecard
 struct ScoreCard: View {
+    @ObservedObject private var model: GameModel
+    @Binding private var action: Action
+    
+    init(model: GameModel, action: Binding<Action>) {
+        self.model = model
+        self._action = action
+    }
+    
     var body: some View {
-        VStack {
-            HStack {
-                  Text("Yatzy")
-                    .font(.custom("MarkerFelt-wide", size: 85))
-                    .baselineOffset(17)
-                    .padding(.trailing, 12.0)
-                 Text("SCORE CARD")
-                    .font(.custom("Futura-Medium", size: 70))
-                }
-            .padding(.bottom, 40)
-            
-            HStack(spacing: 30) {
-                ScoreColumn {
-                    ScoreItem("Aces", nil)
-                    ScoreItem("Twos", 10)
-                    ScoreItem("Threes", nil)
-                    ScoreItem("Fours", 20)
-                    ScoreItem("Fives", 10)
-                    ScoreItem("Sixes", nil)
-                    ScoreItem("*Total*", 40)
-                    ScoreItem("*Bonus*", nil)
-                    ScoreItem("***Upper Total***", 40)
-                }
-                ScoreColumn {
-                    ScoreItem("3 of a kind", nil)
-                    ScoreItem("4 of a kind", 10)
-                    ScoreItem("Full House", nil)
-                    ScoreItem("Sm. Straight", 20)
-                    ScoreItem("Lg. Straight", 10)
-                    ScoreItem("Yatzy", nil)
-                    ScoreItem("Chance", 40)
-                    ScoreItem("*Lower Total*", nil)
-                    ScoreItem("**GRAND TOTAL**", 40)
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                ScoreCardTitle(width: geo.size.width)
+                
+                HStack {
+                    ScoreColumn(rowCount: 9) {
+                        ScoringOptionView(
+                            "Aces",
+                            option: .aces,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Twos",
+                            option: .twos,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Threes",
+                            option: .threes,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Fours",
+                            option: .fours,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Fives",
+                            option: .fives,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Sixes",
+                            option: .sixes,
+                            model: model,
+                            action: $action
+                        )
+                        DerivedScoreView(
+                            "*Total*",
+                            type: .upperTotalBeforeBonus,
+                            model: model
+                        )
+                        DerivedScoreView(
+                            "*Bonus*",
+                            type: .upperBonus,
+                            model: model
+                        )
+                        DerivedScoreView(
+                            "*Upper Total*",
+                            type: .upperTotal,
+                            model: model
+                        )
+                    }
+                    ScoreColumn(rowCount: 9) {
+                        ScoringOptionView(
+                            "3 of a kind",
+                            option: .threeOfAKind,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "4 of a kind",
+                            option: .fourOfAKind,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Full House",
+                            option: .fullHouse,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Sm. Straight",
+                            option: .smStraight,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Lg. Straight",
+                            option: .lgStraight,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Yatzy",
+                            option: .yahtzee,
+                            model: model,
+                            action: $action
+                        )
+                        ScoringOptionView(
+                            "Chance",
+                            option: .chance,
+                            model: model,
+                            action: $action
+                        )
+                        DerivedScoreView(
+                            "*Lower Total*",
+                            type: .lowerTotal,
+                            model: model
+                        )
+                        DerivedScoreView(
+                            "**GRAND TOTAL**",
+                            type: .grandTotal,
+                            model: model
+                        )
+                    }
                 }
             }
+            .padding()
+            .background(Palette.scoreCardBackground)
         }
-        .frame(width: 1110, height: 1500)
-        .background(.white)
     }
-        
+    
 }
 
 #Preview {
-    ScoreCard()
-        .scaleEffect(1.0/3.0)
+    struct ScoreCardPreview: View {
+        @StateObject private var model = GameModel()
+        @State private var action: Action = .rollDice(DiceSelection())
+        
+        var body: some View {
+            ScoreCard(model: model, action: $action)
+                .frame(width: 350, height: 550)
+        }
+    }
+    
+    return ScoreCardPreview()
 }

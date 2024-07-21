@@ -5,13 +5,18 @@
 // license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
 //
 
-import Foundation
 import SwiftUI
 
+// Shape representing a simple 2D grid.
 struct GridLines: Shape {
-    var rowCount: Int
-    var columnWidths: [Double]
-    var totalWidth: Double { columnWidths.reduce(0.0, +) }
+    private let rowCount: Int
+    private let columnWidths: [Double]
+    private var totalWidth: Double { columnWidths.reduce(0.0, +) }
+    
+    init(rowCount: Int, columnWidths: [Double]) {
+        self.rowCount = rowCount
+        self.columnWidths = columnWidths
+    }
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -43,4 +48,9 @@ struct GridLines: Shape {
     }
 }
 
+#Preview {
+    GridLines(rowCount: 9, columnWidths: [0.7, 0.3])
+        .stroke()
+        .frame(width: 200, height: 450)
+}
 

@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct YahtzeeButton: View {
+// Button used as part of GameControls.
+struct ControlButton: View {
     private var label: LocalizedStringKey
     private var disabled: Bool
     private var action: () -> Void
@@ -40,6 +41,15 @@ struct GameControls: View {
     @State private var confirmMoveMessage: LocalizedStringKey = ""
     @State private var showingGameOver = false
     
+    private var isRollDisabled: Bool {
+        if case .rollDice(let selection) = action {
+            return selection.allSet || model.rollsLeft == 0 || model.gameOver
+        } else {
+            return true
+        }
+    }
+    private var isScoreDisabled: Bool { action.isRoll || model.gameOver }
+    
     init(model: GameModel, action: Binding<Action>) {
         self.model = model
         self._action = action
@@ -47,9 +57,9 @@ struct GameControls: View {
     
     var body: some View {
         HStack {
-            YahtzeeButton("Roll", disabled: action.isScore || model.rollsLeft == 0, action: takeAction)
-            YahtzeeButton("Score", disabled: action.isRoll || model.gameOver, action: takeAction)
-            YahtzeeButton("New Game", action: model.newGame)
+            ControlButton("Roll", disabled: isRollDisabled, action: takeAction)
+            ControlButton("Score", disabled: isScoreDisabled, action: takeAction)
+            ControlButton("New Game", action: model.newGame)
          }
         .alert("Game Over", isPresented: $showingGameOver) {
             Button("New Game") { model.newGame() }
@@ -57,7 +67,7 @@ struct GameControls: View {
         }
         .alert("Better Move Available", isPresented: $showingConfirmMove) {
             Button("Make my move anyway") {
-                //takeAction()
+                takeActionAlways()
             }
             Button("Let me try again", role: .cancel) {
                 
@@ -71,7 +81,7 @@ struct GameControls: View {
 
     }
     
-    func takeAction() {
+    private func takeAction() {
         let value = model.actionValue(action: action)
         guard value >= -0.05 else {
             confirmMoveMessage = """
@@ -82,6 +92,10 @@ over the course of the game.
             return
         }
         
+        takeActionAlways()
+    }
+    
+    private func takeActionAlways() {
         model.takeAction(action: action)
         if action.isScore {
             action = .rollDice(DiceSelection())
@@ -92,7 +106,7 @@ over the course of the game.
 
 
 #Preview  {
-    struct ButtonsPreview: View {
+    struct GameControlsPreview: View {
         @StateObject private var model = GameModel()
         @State private var action: Action = .rollDice(DiceSelection())
         
@@ -101,5 +115,5 @@ over the course of the game.
         }
     }
     
-    return ButtonsPreview()
+    return GameControlsPreview()
 }

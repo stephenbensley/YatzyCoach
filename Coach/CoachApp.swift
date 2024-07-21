@@ -1,8 +1,8 @@
 //
-//  CoachApp.swift
-//  Coach
+// Copyright 2024 Stephen E. Bensley
 //
-//  Created by Stephen Bensley on 7/16/24.
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct CoachApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView()
         }
     }
 }

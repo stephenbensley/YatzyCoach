@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct GameView: View {
+    @StateObject private var model = GameModel()
+    @State private var action: Action = .rollDice(DiceSelection())
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                ScoreCard(model: model, action: $action)
+                    .padding()
+                DiceView(model: model, action: $action)
+                    .padding()
+                StatusText(model: model)
+                GameControls(model: model, action: $action)
+                    .padding()
+            }
+            .background(Palette.background)
+            .toolbar {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                Button {
+                    
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+                Button {
+                    
+                } label: {
+                    Image(systemName: "gearshape")
+                }
+            }
+            .accentColor(Palette.toolbar)
+        }
     }
 }
 
