@@ -12,6 +12,7 @@ struct DiceSelection: Equatable {
     var flags: Int = 0
     
     var count: Int { flags.nonzeroBitCount }
+    var allSet: Bool { flags == 0x1f }
     
     // Returns only the selected values.
     func apply(to value: [Int]) -> [Int] {
