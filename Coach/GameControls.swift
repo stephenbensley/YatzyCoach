@@ -25,7 +25,7 @@ struct ControlButton: View {
         Button(action: action, label: {
             Text(label)
                 .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
-                .foregroundStyle(.black)
+                .foregroundStyle(Palette.buttonText)
                 .frame(minWidth: 85 * scaleFactor)
                 .frame(height: 30.0 * scaleFactor)
                 .padding(.horizontal, 5.0 * scaleFactor)

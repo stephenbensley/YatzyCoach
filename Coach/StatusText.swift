@@ -34,7 +34,7 @@ struct StatusText: View {
     
     var body: some View {
         Text(text)
-            .foregroundStyle(.white)
+            .foregroundStyle(Palette.statusText)
             .font(.custom(Fonts.scoreCard, size: 18.0 * scaleFactor))
             .yahtzeeShadow()
             .frame(height: 30.0 * scaleFactor)

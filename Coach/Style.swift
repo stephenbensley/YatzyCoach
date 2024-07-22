@@ -25,7 +25,8 @@ struct Palette {
     static let toolbar = Color.white
     static let buttonEnabled = hexColor(0xe1b351)
     static let buttonDisabled = hexColor(0x57400f)
-
+    static let statusText = Color.white
+    static let buttonText = Color.black
 }
 
 struct Fonts {

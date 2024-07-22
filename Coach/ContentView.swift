@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 Palette.background
                     .ignoresSafeArea()
                 GeometryReader { proxy in
@@ -42,7 +41,7 @@ struct ContentView: View {
                                 Image(systemName: "gearshape")
                             }
                         }
-                        .accentColor(.white)
+                        .accentColor(Palette.toolbar)
                 }
             }
         }
