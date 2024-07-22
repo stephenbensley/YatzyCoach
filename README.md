@@ -7,4 +7,4 @@ YahtzeeCoach is an iOS app that lets you play a solo game of [Yahtzee](https://e
 - Tests: unit tests
 - Yahtzee: core Yahtzee logic &mdash; shared between Coach and Solver
 
-The iOS app is still a work in progress. The Solver is complete.
+The iOS app is still a work in progress (but it's playable). The Solver is complete.
