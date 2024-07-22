@@ -50,14 +50,12 @@ struct GameView: View {
     
     var body: some View {
         VStack(spacing: 15.0 * scaleFactor) {
-            Spacer()
             ScoreCard(model: model, action: $action)
             DiceView(model: model, action: $action)
             StatusText(model: model)
             GameControls(model: model, action: $action)
-            Spacer()
-            Spacer()
-        }
+         }
+        .padding(10.0 * scaleFactor)
         .environment(\.scaleFactor, scaleFactor)
     }
 }
