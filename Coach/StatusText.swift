@@ -9,6 +9,8 @@ import SwiftUI
 
 // Displays a line of status.
 struct StatusText: View {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+
     @ObservedObject private var model: GameModel
     
     init(model: GameModel) {
@@ -33,8 +35,9 @@ struct StatusText: View {
     var body: some View {
         Text(text)
             .foregroundStyle(.white)
-            .font(.custom(Fonts.scoreCard, size: 20.0))
+            .font(.custom(Fonts.scoreCard, size: 18.0 * scaleFactor))
             .yahtzeeShadow()
+            .frame(height: 30.0 * scaleFactor)
     }
 }
 

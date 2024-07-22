@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// Display a DerivedScore
 struct DerivedScoreView: View {
     private let title: LocalizedStringKey
     private let type: DerivedScore

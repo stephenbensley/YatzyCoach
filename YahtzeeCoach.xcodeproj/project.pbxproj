@@ -57,6 +57,7 @@
 		DC9FF17F2C4475F100B66485 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF17E2C4475F100B66485 /* GameModel.swift */; };
 		DC9FF1812C45B8E500B66485 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1802C45B8E500B66485 /* GameModelTests.swift */; };
 		DC9FF1832C45BD6300B66485 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1822C45BD6300B66485 /* Action.swift */; };
+		DCBBA8832C4DE23D0096FFE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */; };
 		DCDB02582C4807C80049E6CD /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
 		DCDB02592C4807C80049E6CD /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983872C431F100034D853 /* ProgressTracker.swift */; };
 		DCDB025A2C4807C80049E6CD /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
@@ -129,6 +130,7 @@
 		DC9FF17E2C4475F100B66485 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		DC9FF1802C45B8E500B66485 /* GameModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelTests.swift; sourceTree = "<group>"; };
 		DC9FF1822C45BD6300B66485 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DCF4A8572C470DBD00E428AE /* Coach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF4A8592C470DBD00E428AE /* CoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachApp.swift; sourceTree = "<group>"; };
 		DCF4A85D2C470DBE00E428AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				DCF4A85D2C470DBE00E428AE /* Assets.xcassets */,
 				DCF4A8592C470DBD00E428AE /* CoachApp.swift */,
+				DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */,
 				DC1EA7B92C4B401B007F0895 /* DiceView.swift */,
 				DC1EA7BD2C4C8F66007F0895 /* GameControls.swift */,
 				DC1EA7C82C4D6084007F0895 /* GameModel+.swift */,
@@ -447,6 +450,7 @@
 			files = (
 				DCDB02582C4807C80049E6CD /* Points.swift in Sources */,
 				DCDB02592C4807C80049E6CD /* ProgressTracker.swift in Sources */,
+				DCBBA8832C4DE23D0096FFE0 /* ContentView.swift in Sources */,
 				DC1EA7C52C4D55F8007F0895 /* ScoreWrappers.swift in Sources */,
 				DCDB025A2C4807C80049E6CD /* DicePattern.swift in Sources */,
 				DC1EA7B82C4B4012007F0895 /* ScoreCard.swift in Sources */,
@@ -846,7 +850,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -926,7 +930,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

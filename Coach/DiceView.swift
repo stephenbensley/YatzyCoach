@@ -9,6 +9,8 @@ import SwiftUI
 
 // Displays an individual die
 struct DieView: View {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+
     private let index: Int
     private let value: Int
     @Binding private var action: Action
@@ -30,16 +32,16 @@ struct DieView: View {
     var body: some View {
         Image(systemName: "die.face.\(value).fill")
             .resizable()
-            .aspectRatio(contentMode: .fit)
+            .frame(width: 45.0 * scaleFactor, height: 45 * scaleFactor)
             .symbolRenderingMode(.palette)
             .foregroundStyle(Palette.dicePips, Palette.diceFill)
             .yahtzeeShadow()
             .contentShape(Rectangle())
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 7.0 * scaleFactor)
                     .stroke(
                         selected ? Palette.selected : .clear,
-                        lineWidth: Lengths.selectionWidth
+                        lineWidth: Lengths.selectionWidth * scaleFactor
                     )
             )
             .onTapGesture(perform: onTap)
@@ -59,6 +61,8 @@ struct DieView: View {
 
 // Displays all the dice
 struct DiceView: View {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+
     @ObservedObject private var model: GameModel
     @Binding private var action: Action
     
@@ -68,7 +72,7 @@ struct DiceView: View {
     }
     
     var body: some View {
-        HStack(spacing: Lengths.diceSpacing) {
+        HStack(spacing: 10.0 * scaleFactor) {
             ForEach(0..<5) {
                 DieView(index: $0, value: model.playerDice[$0], action: $action)
             }

@@ -36,13 +36,19 @@ struct Fonts {
 
 struct Lengths {
     static let selectionWidth = 4.0
-    static let diceSpacing = 15.0
-}
+ }
 
 struct YahtzeeShadow: ViewModifier {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+
     func body(content: Content) -> some View {
         content
-            .shadow(color: .black, radius: 3, x: 3, y: 3)
+            .shadow(
+                color: .black,
+                radius: 3.0 * scaleFactor,
+                x: 3.0 * scaleFactor,
+                y: 3.0 * scaleFactor
+            )
     }
 }
 

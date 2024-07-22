@@ -9,6 +9,8 @@ import SwiftUI
 
 // Button used as part of GameControls.
 struct ControlButton: View {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+    
     private var label: LocalizedStringKey
     private var disabled: Bool
     private var action: () -> Void
@@ -22,9 +24,11 @@ struct ControlButton: View {
     var body: some View {
         Button(action: action, label: {
             Text(label)
-                .font(.custom(Fonts.scoreCard, size: 16.0))
+                .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
                 .foregroundStyle(.black)
-                .frame(width: 90)
+                .frame(minWidth: 85 * scaleFactor)
+                .frame(height: 30.0 * scaleFactor)
+                .padding(.horizontal, 5.0 * scaleFactor)
         })
         .buttonStyle(.bordered)
         .background(disabled ? Palette.buttonDisabled : Palette.buttonEnabled)
@@ -35,6 +39,8 @@ struct ControlButton: View {
 }
 
 struct GameControls: View {
+    @Environment(\.scaleFactor) private var scaleFactor: Double
+    
     @ObservedObject private var model: GameModel
     @Binding private var action: Action
     @State private var showingConfirmMove = false
@@ -56,12 +62,16 @@ struct GameControls: View {
     }
     
     var body: some View {
-        HStack {
-            ControlButton("Roll", disabled: isRollDisabled, action: takeAction)
-            ControlButton("Score", disabled: isScoreDisabled, action: takeAction)
-            ControlButton("New Game", action: model.newGame)
-         }
-        .alert("Game Over", isPresented: $showingGameOver) {
+        HStack(spacing: 20 * scaleFactor) {
+            if model.gameOver {
+                ControlButton("New Game", action: model.newGame)
+
+            } else {
+                ControlButton("Roll", disabled: isRollDisabled, action: takeAction)
+                ControlButton("Score", disabled: isScoreDisabled, action: takeAction)
+            }
+          }
+         .alert("Game Over", isPresented: $showingGameOver) {
             Button("New Game") { model.newGame() }
             Button("Dismiss") { }
         }
