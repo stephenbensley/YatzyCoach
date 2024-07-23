@@ -32,11 +32,11 @@ final class GameModel {
     // Analyzer used to coach the player
     private var turnAnalyzer: TurnAnalyzer
     // Number of rolls left this turn.
-    var rollsLeft: Int
+    private(set) var rollsLeft: Int
     // Dice values as displayed to the player, i.e., not in canonical order.
-    var playerDice: [Int]
+    private(set) var playerDice: [Int]
     // The number of times each die has been rolled. Useful for triggering animations.
-    var rollCount: [Int]
+    private(set) var rollCount: [Int]
     // Canonical represetation of the dice
     private var canonicalDice: Dice
     // Analysis of the current roll state

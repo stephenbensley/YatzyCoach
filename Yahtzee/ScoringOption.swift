@@ -34,7 +34,7 @@ enum ScoringOption: Int, CaseIterable, Codable {
 
 // Set of ScoringOptions -- useful for tracing which options have already been used.
 struct ScoringOptions: Codable {
-    var flags: Int = 0
+    private(set) var flags: Int = 0
     
     var allSet: Bool { flags == 0x1fff }
     var anySet: Bool { flags != 0}

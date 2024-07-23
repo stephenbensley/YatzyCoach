@@ -9,7 +9,7 @@ import Foundation
 
 // Specifies a proper subset of the current dice, e.g., which dice to keep when rerolling.
 struct DiceSelection: Codable, Equatable {
-    var flags: Int = 0
+    private(set) var flags: Int = 0
     
     var count: Int { flags.nonzeroBitCount }
     var allSet: Bool { flags == 0x1f }

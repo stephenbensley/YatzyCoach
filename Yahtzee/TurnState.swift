@@ -9,9 +9,9 @@ import Foundation
 
 // Represents the minimal state needed to evaluate a turn in Yahtzee.
 struct TurnState: Codable {
-    var used: ScoringOptions = ScoringOptions()
-    var upperTotal: Int = 0
-    var yahtzeeScored: Bool = false
+    private(set) var used: ScoringOptions = ScoringOptions()
+    private(set) var upperTotal: Int = 0
+    private(set) var yahtzeeScored: Bool = false
     
     var id: Int {
         // Take all the option bits except Yahtzee (12 bits).
