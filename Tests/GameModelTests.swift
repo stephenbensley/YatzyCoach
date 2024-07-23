@@ -54,5 +54,37 @@ class GameModelTests: XCTestCase {
         let avgScore = Double(total)/Double(count)
         XCTAssertEqual(avgScore, mean, accuracy: 3.0 * stdDev)
     }
+    
+    func testEncode() throws {
+        // Create a GameModel
+        guard let turnValues = TurnValues(fileURLWithPath: "./yahtzeeSolution.json") else {
+            XCTFail()
+            return
+        }
+        let diceStore = DiceStore()
+        let model = GameModel(turnValues: turnValues, diceStore: diceStore)
+        
+        // Make a move
+        model.takeAction(action: model.bestAction)
+        
+        // Save some state
+        let beforeRollsLeft = model.rollsLeft
+        let beforePlayerDice = model.playerDice
+        
+        // Encode/decode the model
+        let data = model.encode()
+        guard let restoredModel = GameModel(
+            turnValues: turnValues,
+            diceStore: diceStore,
+            data: data
+        ) else {
+            XCTFail()
+            return
+        }
+        
+        // Make sure the state was preserved.
+        XCTAssert(beforeRollsLeft == restoredModel.rollsLeft)
+        XCTAssert(beforePlayerDice == restoredModel.playerDice)
+    }
 }
 
