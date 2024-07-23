@@ -27,7 +27,7 @@ struct ContentView: View {
                 Palette.background
                     .ignoresSafeArea()
                 GeometryReader { proxy in
-                    GameView(appModel: appModel, size: proxy.size)
+                    GameView(appModel: appModel)
                         .frame(width: proxy.size.width, height: proxy.size.height)
                         .background(Palette.background)
                         .toolbar {
@@ -69,6 +69,7 @@ struct ContentView: View {
                         .onChange(of: scenePhase) { _, phase in
                             if phase == .inactive { appModel.save() }
                         }
+                        .scaleView(design: GameView.designSize, actual: proxy.size)
                 }
             }
         }

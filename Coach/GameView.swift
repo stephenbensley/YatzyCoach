@@ -7,45 +7,15 @@
 
 import SwiftUI
 
-extension CGSize {
-    var aspectRatio: CGFloat {
-        return height / width
-    }
-}
-
-struct ScaleFactorKey: EnvironmentKey {
-    static let defaultValue = 1.0
-}
-
-extension EnvironmentValues {
-    var scaleFactor: Double {
-        get { self[ScaleFactorKey.self] }
-        set { self[ScaleFactorKey.self] = newValue }
-    }
-}
-
-extension View {
-    func scaleFactor(_ value: Double) -> some View {
-        environment(\.scaleFactor, value)
-    }
-}
-
 struct GameView: View {
+    // GameView was designed assuming this screen resolution.
+    static let designSize = CGSize(width: 390.0, height: 667.0)
+
+    @Environment(\.scaleFactor) private var scaleFactor: Double
     private var appModel: Coach
-    let scaleFactor: Double
     
-    init(appModel: Coach, size actual: CGSize) {
+    init(appModel: Coach) {
         self.appModel = appModel
-         
-        // Size GameView was designed for
-        let design = CGSize(width: 390, height: 667)
-        if actual.aspectRatio > design.aspectRatio {
-            // View is skinnier that design, so width is bottleneck
-            scaleFactor = actual.width / design.width
-        } else {
-            // View is fatter, so height is bottleneck
-            scaleFactor = actual.height / design.height
-        }
     }
     
     var body: some View {
@@ -54,9 +24,8 @@ struct GameView: View {
             DiceView(appModel: appModel)
             StatusText(appModel: appModel)
             GameControlsView(appModel: appModel)
-         }
+        }
         .padding(10.0 * scaleFactor)
-        .environment(\.scaleFactor, scaleFactor)
     }
 }
 
@@ -65,7 +34,7 @@ struct GameView: View {
         @State var appModel = Coach.create()
         
         var body: some View {
-            GameView(appModel: appModel, size: CGSize(width: 390, height: 667))
+            GameView(appModel: appModel)
                 .background(Palette.background)
         }
     }
