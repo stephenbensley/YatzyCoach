@@ -34,6 +34,8 @@ final class GameModel: ObservableObject {
     var rollsLeft: Int
     // Dice values as displayed to the player, i.e., not in canonical order.
     var playerDice: [Int]
+    // The number of times each die has been rolled. Useful for triggering animations.
+    var rollCount: [Int]
     // Canonical represetation of the dice
     private var canonicalDice: Dice
     // Analysis of the current roll state
@@ -136,9 +138,30 @@ final class GameModel: ObservableObject {
         rollDice()
     }
     
+    // Subset of the object's state that needs to be persisted.
+    struct CodableState: Codable {
+        let optionPoints: [Int?]
+        let derivedPoints: [Int?]
+        let turnState: TurnState
+        let rollsLeft: Int
+        let playerDice: [Int]
+    }
+    
+    func encode() -> Data {
+        let state = CodableState(
+            optionPoints: optionPoints,
+            derivedPoints: derivedPoints,
+            turnState: turnState,
+            rollsLeft: rollsLeft,
+            playerDice: playerDice
+        )
+        return try! JSONEncoder().encode(state)
+    }
+    
     private func rollDice(keep: DiceSelection = DiceSelection()) {
         playerDice.indices.filter({ !keep.isSet($0) }).forEach {
             playerDice[$0] = Self.rollDie()
+            rollCount[$0] += 1
         }
         canonicalDice = diceStore.find(byValue: playerDice)
         analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
@@ -199,21 +222,41 @@ final class GameModel: ObservableObject {
         )
     }
     
-    init(turnValues: TurnValues, diceStore: DiceStore) {
+    private init(turnValues: TurnValues, diceStore: DiceStore, state: CodableState) {
         self.turnValues = turnValues
         self.diceStore = diceStore
-        self.optionPoints = [Int?](repeating: nil, count: ScoringOption.allCases.count)
-        self.derivedPoints = [Int?](repeating: nil, count: DerivedScore.allCases.count)
-        self.turnState = TurnState()
+        self.optionPoints = state.optionPoints
+        self.derivedPoints = state.derivedPoints
+        self.turnState = state.turnState
         self.turnAnalyzer = TurnAnalyzer(
             diceStore: diceStore,
             turnValues: turnValues,
             turnState: turnState
         )
-        self.rollsLeft = Dice.extraRolls
-        self.playerDice = (0..<Dice.maxCount).map { _ in Self.rollDie() }
+        self.rollsLeft = state.rollsLeft
+        self.playerDice = state.playerDice
+        self.rollCount = [Int](repeating: 0, count: Dice.maxCount)
         self.canonicalDice = diceStore.find(byValue: playerDice)
         self.analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
+    }
+    
+    convenience init(turnValues: TurnValues, diceStore: DiceStore) {
+        // Initialize a default CodableState
+        let state = CodableState(
+            optionPoints: [Int?](repeating: nil, count: ScoringOption.allCases.count),
+            derivedPoints: [Int?](repeating: nil, count: DerivedScore.allCases.count),
+            turnState: TurnState(),
+            rollsLeft: Dice.extraRolls,
+            playerDice: (0..<Dice.maxCount).map { _ in Self.rollDie() }
+        )
+        self.init(turnValues: turnValues, diceStore: diceStore, state: state)
+    }
+    
+    convenience init?(turnValues: TurnValues, diceStore: DiceStore, data: Data) {
+        guard let state = try? JSONDecoder().decode(CodableState.self, from: data) else {
+            return nil
+        }
+        self.init(turnValues: turnValues, diceStore: diceStore, state: state)
     }
     
     private static func addOptionals(_ lhs: Int?, _ rhs: Int?) -> Int? {
