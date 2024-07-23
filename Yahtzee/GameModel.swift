@@ -113,8 +113,8 @@ final class GameModel: ObservableObject {
             )
             rollsLeft = Dice.extraRolls
             
-            // Roll the dice for the next turn
-            rollDice()
+            // Roll the dice for the next turn if necessary
+            if !gameOver { rollDice() }
             
         case .rollDice(let selection):
             assert(rollsLeft > 0)
