@@ -8,7 +8,7 @@
 import Foundation
 
 // Specifies a proper subset of the current dice, e.g., which dice to keep when rerolling.
-struct DiceSelection: Equatable {
+struct DiceSelection: Codable, Equatable {
     var flags: Int = 0
     
     var count: Int { flags.nonzeroBitCount }

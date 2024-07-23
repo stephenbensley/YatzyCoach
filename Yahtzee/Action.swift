@@ -8,7 +8,7 @@
 import Foundation
 
 // Represents an action that a player can take in the game of Yahtzee
-enum Action: Equatable {
+enum Action: Codable, Equatable {
     case rollDice(DiceSelection)
     case scoreDice(ScoringOption)
     

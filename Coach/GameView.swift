@@ -29,39 +29,46 @@ extension View {
         environment(\.scaleFactor, value)
     }
 }
+
 struct GameView: View {
-    @ObservedObject private var model: GameModel
-    @State private var action: Action = .rollDice(DiceSelection())
+    private var appModel: Coach
     let scaleFactor: Double
     
-    init(model: GameModel, size actual: CGSize) {
-        self.model = model
-        
+    init(appModel: Coach, size actual: CGSize) {
+        self.appModel = appModel
+         
         // Size GameView was designed for
         let design = CGSize(width: 390, height: 667)
         if actual.aspectRatio > design.aspectRatio {
             // View is skinnier that design, so width is bottleneck
             scaleFactor = actual.width / design.width
         } else {
-            // Frame is fatter, so height is bottleneck
+            // View is fatter, so height is bottleneck
             scaleFactor = actual.height / design.height
         }
     }
     
     var body: some View {
         VStack(spacing: 15.0 * scaleFactor) {
-            ScoreCard(model: model, action: $action)
-            DiceView(model: model, action: $action)
-            StatusText(model: model)
-            GameControls(model: model, action: $action)
+            ScoreCard(appModel: appModel)
+            DiceView(appModel: appModel)
+            StatusText(appModel: appModel)
+            GameControlsView(appModel: appModel)
          }
         .padding(10.0 * scaleFactor)
         .environment(\.scaleFactor, scaleFactor)
     }
 }
 
-
 #Preview {
-    GameView(model: GameModel(), size: CGSize(width: 390, height: 667))
-        .background(Palette.background)
+    struct GamePreview: View {
+        @State var appModel = Coach.create()
+        
+        var body: some View {
+            GameView(appModel: appModel, size: CGSize(width: 390, height: 667))
+                .background(Palette.background)
+        }
+    }
+    
+    return GamePreview()
 }

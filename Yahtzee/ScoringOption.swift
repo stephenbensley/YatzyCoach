@@ -8,7 +8,7 @@
 import Foundation
 
 // Different options for scoring in Yahtzee
-enum ScoringOption: Int, CaseIterable {
+enum ScoringOption: Int, CaseIterable, Codable {
     case aces
     case twos
     case threes

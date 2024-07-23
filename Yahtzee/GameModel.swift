@@ -17,7 +17,8 @@ enum DerivedScore: Int, CaseIterable {
 }
 
 // Models a game of Yahtzee and provides coaching to the player.
-final class GameModel: ObservableObject {
+@Observable
+final class GameModel {
     // Precomputed solution for the game of Yahtzee.
     private let turnValues: TurnValues
     // DiceStore used for manipulating and evaluating dice rolls.
@@ -90,8 +91,6 @@ final class GameModel: ObservableObject {
     func takeAction(action: Action) {
         assert(!gameOver)
         
-        objectWillChange.send()
-        
         switch action {
         case .scoreDice(let option):
             assert(!turnState.used.isSet(option))
@@ -124,8 +123,6 @@ final class GameModel: ObservableObject {
     }
     
     func newGame() {
-        objectWillChange.send()
-
         optionPoints = [Int?](repeating: nil, count: ScoringOption.allCases.count)
         derivedPoints = [Int?](repeating: nil, count: DerivedScore.allCases.count)
         turnState = TurnState()
@@ -223,21 +220,25 @@ final class GameModel: ObservableObject {
     }
     
     private init(turnValues: TurnValues, diceStore: DiceStore, state: CodableState) {
+        // Construct derived objects
+        let turnAnalyzer = TurnAnalyzer(
+            diceStore: diceStore,
+            turnValues: turnValues,
+            turnState: state.turnState
+        )
+        let canonicalDice = diceStore.find(byValue: state.playerDice)
+        
         self.turnValues = turnValues
         self.diceStore = diceStore
         self.optionPoints = state.optionPoints
         self.derivedPoints = state.derivedPoints
         self.turnState = state.turnState
-        self.turnAnalyzer = TurnAnalyzer(
-            diceStore: diceStore,
-            turnValues: turnValues,
-            turnState: turnState
-        )
+        self.turnAnalyzer = turnAnalyzer
         self.rollsLeft = state.rollsLeft
         self.playerDice = state.playerDice
         self.rollCount = [Int](repeating: 0, count: Dice.maxCount)
-        self.canonicalDice = diceStore.find(byValue: playerDice)
-        self.analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: rollsLeft)
+        self.canonicalDice = canonicalDice
+        self.analysis = turnAnalyzer.analyze(dice: canonicalDice, rollsLeft: state.rollsLeft)
     }
     
     convenience init(turnValues: TurnValues, diceStore: DiceStore) {

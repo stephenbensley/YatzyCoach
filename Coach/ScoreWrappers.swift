@@ -15,11 +15,11 @@ struct DerivedScoreView: View {
     init(
         _ title: LocalizedStringKey,
         type: DerivedScore,
-        model: GameModel
+        gameModel: GameModel
     ) {
         self.title = title
         self.type = type
-        self.points = model.derivedPoints(type)
+        self.points = gameModel.derivedPoints(type)
     }
     
     var body: some View {
@@ -39,12 +39,12 @@ struct ScoringOptionView: View {
     init(
         _ title: LocalizedStringKey,
         option: ScoringOption,
-        model: GameModel,
+        gameModel: GameModel,
         action: Binding<Action>
     ) {
         self.title = title
         self.option = option
-        self.points = model.optionPoints(option)
+        self.points = gameModel.optionPoints(option)
         self._action = action
     }
     

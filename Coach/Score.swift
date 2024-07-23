@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Score: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    
     private let title: LocalizedStringKey
     private let points: Int?
     private let selected: Bool
@@ -83,6 +82,7 @@ struct Score: View {
             )
         }
     }
+    
     return ScorePreview()
 }
 

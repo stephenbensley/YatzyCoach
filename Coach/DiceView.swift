@@ -10,11 +10,13 @@ import SwiftUI
 // Displays an individual die
 struct DieView: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
-
     private let index: Int
     private let value: Int
+    private let rollCount: Int
     @Binding private var action: Action
-    
+    // Used to animate the die when it's rolled.
+    @State private var rotation = 0.0
+
     private var selected: Bool {
         if case .rollDice(let selection) = action {
             return selection.isSet(index)
@@ -23,9 +25,10 @@ struct DieView: View {
         }
     }
     
-    init(index: Int, value: Int, action: Binding<Action>) {
+    init(index: Int, value: Int, rollCount: Int, action: Binding<Action>) {
         self.index = index
         self.value = value
+        self.rollCount = rollCount
         self._action = action
     }
     
@@ -45,6 +48,12 @@ struct DieView: View {
                     )
             )
             .onTapGesture(perform: onTap)
+            .rotationEffect(.degrees(rotation))
+            .onChange(of: rollCount) {
+                withAnimation(.linear(duration: 0.4)) {
+                    rotation += 360.0
+                }
+            }
     }
     
     private func onTap() {
@@ -62,19 +71,21 @@ struct DieView: View {
 // Displays all the dice
 struct DiceView: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
-
-    @ObservedObject private var model: GameModel
-    @Binding private var action: Action
+    @Bindable private var appModel: Coach
     
-    init(model: GameModel, action: Binding<Action>) {
-        self.model = model
-        self._action = action
+    init(appModel: Coach) {
+        self.appModel = appModel
     }
     
     var body: some View {
         HStack(spacing: 10.0 * scaleFactor) {
             ForEach(0..<5) {
-                DieView(index: $0, value: model.playerDice[$0], action: $action)
+                DieView(
+                    index: $0,
+                    value: appModel.gameModel.playerDice[$0],
+                    rollCount: appModel.gameModel.rollCount[$0],
+                    action: $appModel.action
+                )
             }
         }
     }
@@ -82,14 +93,18 @@ struct DiceView: View {
 
 #Preview {
     struct DicePreview: View {
-        @StateObject private var model = GameModel()
-        @State private var action: Action = .rollDice(DiceSelection())
+        @State private var appModel = Coach.create()
         
         var body: some View {
-            DiceView(model: model, action: $action)
+            VStack(spacing: 50.0) {
+                DiceView(appModel: appModel)
+                // Useful for triggering the roll animation.
+                Button("Play") {
+                    appModel.gameModel.takeAction(action: appModel.gameModel.bestAction)
+                }
+            }
         }
     }
     
     return DicePreview()
 }
-
