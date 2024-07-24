@@ -70,14 +70,11 @@ struct DieView: View {
 
 // Displays all the dice
 struct DiceView: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    @Bindable private var appModel: Coach
-    
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
     
     var body: some View {
+        @Bindable var appModel = appModel
         HStack(spacing: 10.0 * scaleFactor) {
             ForEach(0..<5) {
                 DieView(
@@ -93,16 +90,8 @@ struct DiceView: View {
 
 #Preview {
     struct DicePreview: View {
-        @State private var appModel = Coach.create()
-        
         var body: some View {
-            VStack(spacing: 50.0) {
-                DiceView(appModel: appModel)
-                // Useful for triggering the roll animation.
-                Button("Play") {
-                    appModel.gameModel.takeAction(action: appModel.gameModel.bestAction)
-                }
-            }
+            DiceView()
         }
     }
     

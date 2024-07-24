@@ -9,13 +9,9 @@ import SwiftUI
 
 // Displays a line of status.
 struct StatusText: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    private var appModel: Coach
     
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
-
     private var text: String {
         if appModel.gameModel.gameOver {
             return "Game Over!"
@@ -42,10 +38,8 @@ struct StatusText: View {
 
 #Preview {
     struct StatusTextPreview: View {
-        @State private var appModel = Coach.create()
-        
         var body: some View {
-            StatusText(appModel: appModel)
+            StatusText()
         }
     }
     

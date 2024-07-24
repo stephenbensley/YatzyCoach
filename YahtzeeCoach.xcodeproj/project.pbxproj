@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC0ABA4E2C518D8F00E5082B /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = DC0ABA4D2C518D8F00E5082B /* Help.md */; };
 		DC0ABA4F2C518E3600E5082B /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = DC0ABA4D2C518D8F00E5082B /* Help.md */; };
+		DC0ABA512C5191A100E5082B /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0ABA502C5191A100E5082B /* AnalysisView.swift */; };
 		DC1EA7B42C496759007F0895 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7B32C496759007F0895 /* GridLines.swift */; };
 		DC1EA7B82C4B4012007F0895 /* ScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */; };
 		DC1EA7C12C4D4C80007F0895 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7BF2C4D4A9B007F0895 /* Score.swift */; };
@@ -55,7 +56,7 @@
 		DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
 		DC761F872C4EF58C00B7BEB2 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F862C4EF58C00B7BEB2 /* InfoView.swift */; };
 		DC761F892C4FEFFA00B7BEB2 /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F882C4FEFFA00B7BEB2 /* Coach.swift */; };
-		DC761F8B2C4FFDA400B7BEB2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F8A2C4FFDA400B7BEB2 /* Persistence.swift */; };
+		DC761F8B2C4FFDA400B7BEB2 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */; };
 		DC9FEBBA2C4ECBF000571BC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */; };
 		DC9FF1782C446B4700B66485 /* TurnValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */; };
 		DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		DC0ABA4D2C518D8F00E5082B /* Help.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
+		DC0ABA502C5191A100E5082B /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
 		DC1EA7B32C496759007F0895 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
 		DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCard.swift; sourceTree = "<group>"; };
 		DC1EA7B92C4B401B007F0895 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 		DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelectionTests.swift; sourceTree = "<group>"; };
 		DC761F862C4EF58C00B7BEB2 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DC761F882C4FEFFA00B7BEB2 /* Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
-		DC761F8A2C4FFDA400B7BEB2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yahtzeeSolution.json; sourceTree = "<group>"; };
 		DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnValuesTests.swift; sourceTree = "<group>"; };
@@ -267,6 +269,8 @@
 		DCF4A8582C470DBD00E428AE /* Coach */ = {
 			isa = PBXGroup;
 			children = (
+				DC0ABA502C5191A100E5082B /* AnalysisView.swift */,
+				DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */,
 				DCF4A85D2C470DBE00E428AE /* Assets.xcassets */,
 				DCF4A8592C470DBD00E428AE /* CoachApp.swift */,
 				DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */,
@@ -275,7 +279,6 @@
 				DC1EA7BB2C4B403F007F0895 /* GameView.swift */,
 				DC1EA7B32C496759007F0895 /* GridLines.swift */,
 				DC761F862C4EF58C00B7BEB2 /* InfoView.swift */,
-				DC761F8A2C4FFDA400B7BEB2 /* Persistence.swift */,
 				DCCE90642C501E6000A571CD /* ScaleFactor.swift */,
 				DC1EA7BF2C4D4A9B007F0895 /* Score.swift */,
 				DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */,
@@ -480,6 +483,7 @@
 				DCDB025B2C4807C80049E6CD /* ScoringOption.swift in Sources */,
 				DCDB025C2C4807C80049E6CD /* TurnState.swift in Sources */,
 				DCDB025D2C4807C80049E6CD /* Action.swift in Sources */,
+				DC0ABA512C5191A100E5082B /* AnalysisView.swift in Sources */,
 				DC1EA7C32C4D4C9C007F0895 /* Style.swift in Sources */,
 				DCDB025E2C4807C80049E6CD /* Dice.swift in Sources */,
 				DCDB025F2C4807C80049E6CD /* TurnAnalyzer.swift in Sources */,
@@ -497,7 +501,7 @@
 				DC1EA7CB2C4D7AD7007F0895 /* DiceView.swift in Sources */,
 				DC1EA7CD2C4D831E007F0895 /* StatusText.swift in Sources */,
 				DC1EA7B42C496759007F0895 /* GridLines.swift in Sources */,
-				DC761F8B2C4FFDA400B7BEB2 /* Persistence.swift in Sources */,
+				DC761F8B2C4FFDA400B7BEB2 /* AppModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

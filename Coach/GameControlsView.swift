@@ -38,8 +38,8 @@ struct ControlButton: View {
 }
 
 struct GameControlsView: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    private var appModel: Coach
     
     // Prompt the player to confirm their move.
     @State private var confirmMove = false
@@ -48,10 +48,6 @@ struct GameControlsView: View {
     // Alert the player that the game is over.
     @State private var showGameOver = false
     @State private var gameOverMsg: LocalizedStringKey = ""
-    
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
     
     var body: some View {
         HStack(spacing: 20.0 * scaleFactor) {
@@ -102,10 +98,8 @@ struct GameControlsView: View {
 
 #Preview  {
     struct GameControlsPreview: View {
-        @State private var appModel = Coach.create()
-        
         var body: some View {
-            GameControlsView(appModel: appModel)
+            GameControlsView()
         }
     }
     

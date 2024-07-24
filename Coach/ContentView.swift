@@ -18,6 +18,7 @@ struct ContentView: View {
     // These control the various alerts and sheets activated from the toolbar.
     @State private var confirmNewGame = false
     @State private var showAbout = false
+    @State private var showAnalysis = false
     @State private var showHelp = false
     @State private var showSettings = false
     
@@ -27,10 +28,15 @@ struct ContentView: View {
                 Palette.background
                     .ignoresSafeArea()
                 GeometryReader { proxy in
-                    GameView(appModel: appModel)
+                    GameView()
                         .frame(width: proxy.size.width, height: proxy.size.height)
                         .background(Palette.background)
                         .toolbar {
+                            Button {
+                                showAnalysis = true
+                            } label: {
+                                Image(systemName: "list.bullet.circle")
+                            }
                             Button {
                                 confirmNewGame = true
                             } label: {
@@ -60,16 +66,20 @@ struct ContentView: View {
                         .sheet(isPresented: $showAbout) {
                             InfoView(title: "About")
                         }
+                        .sheet(isPresented: $showAnalysis) {
+                            AnalysisView()
+                        }
                         .sheet(isPresented: $showHelp) {
                             InfoView(title: "Help")
                         }
                         .sheet(isPresented: $showSettings) {
-                            SettingsView(appModel: appModel)
+                            SettingsView()
                         }
                         .onChange(of: scenePhase) { _, phase in
                             if phase == .inactive { appModel.save() }
                         }
                         .scaleView(design: GameView.designSize, actual: proxy.size)
+                        .appModel(appModel)
                 }
             }
         }

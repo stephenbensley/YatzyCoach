@@ -12,18 +12,13 @@ struct GameView: View {
     static let designSize = CGSize(width: 390.0, height: 667.0)
 
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    private var appModel: Coach
-    
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
     
     var body: some View {
         VStack(spacing: 15.0 * scaleFactor) {
-            ScoreCard(appModel: appModel)
-            DiceView(appModel: appModel)
-            StatusText(appModel: appModel)
-            GameControlsView(appModel: appModel)
+            ScoreCard()
+            DiceView()
+            StatusText()
+            GameControlsView()
         }
         .padding(10.0 * scaleFactor)
     }
@@ -31,10 +26,8 @@ struct GameView: View {
 
 #Preview {
     struct GamePreview: View {
-        @State var appModel = Coach.create()
-        
         var body: some View {
-            GameView(appModel: appModel)
+            GameView()
                 .background(Palette.background)
         }
     }

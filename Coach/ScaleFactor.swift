@@ -13,7 +13,7 @@ extension CGSize {
     }
 }
 
-struct ScaleFactorKey: EnvironmentKey {
+private struct ScaleFactorKey: EnvironmentKey {
     static let defaultValue = 1.0
 }
 

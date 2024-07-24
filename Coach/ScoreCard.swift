@@ -46,14 +46,11 @@ struct ScoreColumn<Content>: View where Content: View {
 
 // Displays a Yahtzee scorecard
 struct ScoreCard: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
-    @Bindable private var appModel: Coach
-    
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
     
     var body: some View {
+        @Bindable var appModel = appModel
         VStack(spacing: 15.0 * scaleFactor) {
             ScoreCardTitle()
             
@@ -174,10 +171,8 @@ struct ScoreCard: View {
 
 #Preview {
     struct ScoreCardPreview: View {
-        @State private var appModel = Coach.create()
-        
         var body: some View {
-            ScoreCard(appModel: appModel)
+            ScoreCard()
         }
     }
     

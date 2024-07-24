@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.dismiss) private var dismiss
-    @Bindable private var appModel: Coach
-    
-    init(appModel: Coach) {
-        self.appModel = appModel
-    }
     
     var body: some View {
+        @Bindable var appModel = appModel
         NavigationStack {
             Form {
                 Toggle("Enable coach", isOn: $appModel.enabled)
@@ -30,17 +27,14 @@ struct SettingsView: View {
             .toolbar {
                 Button("Done") { dismiss() }
             }
-            
         }
     }
 }
 
 #Preview {
     struct SettingsPreview: View {
-        @State private var appModel = Coach.create()
-        
         var body: some View {
-            SettingsView(appModel: appModel)
+            SettingsView()
         }
     }
     
