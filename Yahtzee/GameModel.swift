@@ -38,9 +38,9 @@ final class GameModel {
     // The number of times each die has been rolled. Useful for triggering animations.
     private(set) var rollCount: [Int]
     // Canonical represetation of the dice
-    private var canonicalDice: Dice
+    private(set) var canonicalDice: Dice
     // Analysis of the current roll state
-    private var analysis: [ActionValue]
+    private(set) var analysis: [ActionValue]
     
     var gameOver: Bool { turnState.used.allSet }
     
@@ -87,6 +87,11 @@ final class GameModel {
         return match.value - analysis[0].value
     }
     
+    // Determines how many points will be scored by the current option
+    func computePoints(option: ScoringOption) -> Points.ByType {
+        return Points.computeByType(state: turnState, dice: canonicalDice, option: option)
+    }
+
     // Updates the game state based on the player taking the specified action.
     func takeAction(action: Action) {
         assert(!gameOver)
@@ -96,11 +101,7 @@ final class GameModel {
             assert(!turnState.used.isSet(option))
             
             // Compute points scored and update score card
-            let points = Points.computeByType(
-                state: turnState,
-                dice: canonicalDice,
-                option: option
-            )
+            let points = computePoints(option: option)
             updateScoreCard(option: option, points: points)
             
             // Advance to the next turnState

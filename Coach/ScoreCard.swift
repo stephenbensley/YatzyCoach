@@ -49,6 +49,8 @@ struct ScoreCard: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
+    var gameModel: GameModel { appModel.gameModel }
+    
     var body: some View {
         @Bindable var appModel = appModel
         VStack(spacing: 15.0 * scaleFactor) {
@@ -59,107 +61,107 @@ struct ScoreCard: View {
                     ScoringOptionView(
                         "Aces",
                         option: .aces,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Twos",
                         option: .twos,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Threes",
                         option: .threes,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Fours",
                         option: .fours,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Fives",
                         option: .fives,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Sixes",
                         option: .sixes,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     DerivedScoreView(
                         "**Total**",
                         type: .upperTotalBeforeBonus,
-                        gameModel: appModel.gameModel
+                        gameModel: gameModel
                     )
                     DerivedScoreView(
                         "**Bonus**",
                         type: .upperBonus,
-                        gameModel: appModel.gameModel
+                        gameModel: gameModel
                     )
                     DerivedScoreView(
                         "**Upper Total**",
                         type: .upperTotal,
-                        gameModel: appModel.gameModel
+                        gameModel: gameModel
                     )
                 }
                 ScoreColumn(rowCount: 9) {
                     ScoringOptionView(
                         "3 of a kind",
                         option: .threeOfAKind,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "4 of a kind",
                         option: .fourOfAKind,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Full House",
                         option: .fullHouse,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Sm. Straight",
                         option: .smStraight,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Lg. Straight",
                         option: .lgStraight,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Yatzy",
                         option: .yahtzee,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     ScoringOptionView(
                         "Chance",
                         option: .chance,
-                        gameModel: appModel.gameModel,
+                        gameModel: gameModel,
                         action: $appModel.action
                     )
                     DerivedScoreView(
                         "**Lower Total**",
                         type: .lowerTotal,
-                        gameModel: appModel.gameModel
+                        gameModel: gameModel
                     )
                     DerivedScoreView(
                         "**GRAND TOTAL**",
                         type: .grandTotal,
-                        gameModel: appModel.gameModel
+                        gameModel: gameModel
                     )
                 }
             }

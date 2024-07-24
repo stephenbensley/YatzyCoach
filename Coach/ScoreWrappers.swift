@@ -44,7 +44,11 @@ struct ScoringOptionView: View {
     ) {
         self.title = title
         self.option = option
-        self.points = gameModel.optionPoints(option)
+        if action.wrappedValue == .scoreDice(option) {
+            self.points = gameModel.computePoints(option: option).forOption
+        } else {
+            self.points = gameModel.optionPoints(option)
+        }
         self._action = action
     }
     

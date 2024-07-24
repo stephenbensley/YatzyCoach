@@ -48,7 +48,7 @@ struct Score: View {
             Text(pointsString)
                 .font(.custom(Fonts.score, size: 25.0 * scaleFactor))
                 .baselineOffset(3.0 * scaleFactor)
-                .foregroundStyle(Palette.score)
+                .foregroundStyle(selected ? Palette.selected : Palette.score)
                 .minimumScaleFactor(0.1)
                 .padding(.horizontal, Self.paddingLength * scaleFactor)
                 .frame(

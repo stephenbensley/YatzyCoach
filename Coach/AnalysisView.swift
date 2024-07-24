@@ -9,17 +9,85 @@ import SwiftUI
 
 // Displays a detailed analysis of the current game state.
 struct AnalysisView: View {
+    @Environment(\.appModel) private var appModel
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.scaleFactor) private var scaleFactor: Double
-    
+ 
+    var gameModel: GameModel { appModel.gameModel }
+     
     var body: some View {
         NavigationStack {
-            Text("Hello, World!")
-                .navigationTitle("Analysis")
-                .toolbar {
-                    Button("Done") { dismiss() }
+            List {
+                Section {
+                    ForEach(gameModel.analysis) { actionValue in
+                        HStack {
+                            toText(actionValue.action)
+                            Spacer()
+                            toText(actionValue.value)
+                        }
+                    }
+                } header: {
+                    Text("Expected final score for each move")
                 }
+            }
+            .navigationTitle("Analysis")
+            .toolbar {
+                Button("Done") { dismiss() }
+            }
         }
+    }
+    
+    func toString(_ option: ScoringOption) -> String {
+        switch option {
+        case .aces:
+            return "Aces"
+        case .twos:
+            return "Twos"
+        case .threes:
+            return "Threes"
+        case .fours:
+            return "Fours"
+        case .fives:
+            return "Fives"
+        case .sixes:
+            return "Sixes"
+        case .threeOfAKind:
+            return "3 of a kind"
+        case .fourOfAKind:
+            return "4 of a kind"
+        case .fullHouse:
+            return "Full House"
+        case .smStraight:
+            return "Sm. Straight"
+        case .lgStraight:
+            return "Lg. Straight"
+        case .yahtzee:
+            return "Yatzy"
+        case .chance:
+            return "Chance"
+        }
+    }
+ 
+    func toText(_ action: Action) -> Text {
+        switch action {
+        case .rollDice(let selection):
+            guard selection.count > 0 else {
+                return Text("Roll all dice")
+            }
+            let values = gameModel.canonicalDice.value
+            return selection.apply(to: values).sorted().reduce(Text("Keep ")) { result, value in
+                result + Text(Image(systemName: "die.face.\(value)"))
+            }
+              
+        case .scoreDice(let option):
+            let points = gameModel.computePoints(option: option).forOption
+            return Text("Play **\(toString(option))** for \(points) points")
+        }
+    }
+    
+    func toText(_ value: Double) -> Text {
+        let grandTotal = gameModel.derivedPoints(.grandTotal) ?? 0
+        let totalValue = value + Double(grandTotal)
+        return Text("\(totalValue, specifier: "%.1f")")
     }
 }
 

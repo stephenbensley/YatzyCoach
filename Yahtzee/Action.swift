@@ -8,9 +8,19 @@
 import Foundation
 
 // Represents an action that a player can take in the game of Yahtzee
-enum Action: Codable, Equatable {
+enum Action: Codable, Equatable, Identifiable {
     case rollDice(DiceSelection)
     case scoreDice(ScoringOption)
+    
+    var id: Int {
+        // Use low-order bit to differentiate cases.
+        switch self {
+        case .rollDice(let selection):
+            return (selection.flags << 1) | 0
+        case .scoreDice(let option):
+            return (option.rawValue << 1) | 1
+        }
+    }
     
     var isRoll: Bool { if case .rollDice = self { true } else { false } }
     var isScore: Bool { !isRoll }
@@ -58,7 +68,9 @@ enum Action: Codable, Equatable {
 }
 
 // Combines an Action with its expected value.
-struct ActionValue {
+struct ActionValue: Identifiable {
     var action: Action
     var value: Double
+    
+    var id: Int { action.id }
 }
