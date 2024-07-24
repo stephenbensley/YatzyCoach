@@ -58,10 +58,10 @@ struct ContentView: View {
                             Button("Cancel") { }
                         }
                         .sheet(isPresented: $showAbout) {
-                            AboutView()
+                            InfoView(title: "About")
                         }
                         .sheet(isPresented: $showHelp) {
-                            HelpView()
+                            InfoView(title: "Help")
                         }
                         .sheet(isPresented: $showSettings) {
                             SettingsView(appModel: appModel)
