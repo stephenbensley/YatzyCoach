@@ -18,7 +18,7 @@ struct AnalysisView: View {
         NavigationStack {
             VStack {
                 Text("""
-                    The computer analyzes each legal play for the current position and  computes \
+                    The computer analyzes each legal play for the current position and computes \
                     the expected final score assuming optimal play for the remainder of the game.
                     """)
                 .font(.footnote)

@@ -75,7 +75,8 @@ final class GameModel {
     
     // Returns the best action the player can take.
     var bestAction: Action {
-        analysis[0].action.uncanonize(from: canonicalDice, to: playerDice)
+        assert(!gameOver)
+        return analysis[0].action.uncanonize(from: canonicalDice, to: playerDice)
     }
     
     // Returns the value of a proposed action. Value is given relative to the value of the
@@ -111,10 +112,16 @@ final class GameModel {
                 turnValues: turnValues,
                 turnState: turnState
             )
-            rollsLeft = Dice.extraRolls
             
             // Roll the dice for the next turn if necessary
-            if !gameOver { rollDice() }
+            if !gameOver {
+                rollsLeft = Dice.extraRolls
+                rollDice()
+            } else {
+                // No more moves allowed
+                rollsLeft = 0
+                analysis = [ActionValue]()
+            }
             
         case .rollDice(let selection):
             assert(rollsLeft > 0)
