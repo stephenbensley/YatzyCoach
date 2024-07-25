@@ -59,16 +59,16 @@ struct GameControlsView: View {
             }
         }
         .alert("Game Over", isPresented: $showGameOver) {
-            Button("New Game", action: appModel.newGame)
-            Button("Dismiss") { }
+            Button("Play again", action: appModel.newGame)
+            Button("Admire my scorecard") { }
         } message: {
             Text(gameOverMsg)
         }
         .alert("Better Move Available", isPresented: $confirmMove) {
-            Button("Make my move anyway", action: takeAction)
+            Button("Yes, show me the best move", action: appModel.showBestAction)
+            Button("No, I'll stick with my choice", action: takeAction)
             Button("Let me try again") { }
-            Button("Show me the best", action: appModel.showBestAction)
-        } message: {
+         } message: {
             Text(confirmMoveMsg)
         }
     }
@@ -82,7 +82,7 @@ struct GameControlsView: View {
                     """
                     There is a better move that would score an average of \
                     \(appModel.actionCost, specifier: "%.1f") more points \
-                    over the course of the game.
+                    over the course of the game. Do you want to see it?
                     """
         }
     }
@@ -93,7 +93,9 @@ struct GameControlsView: View {
             Task {
                 try await Task.sleep(nanoseconds: 250_000_000)
                 showGameOver = true
-                gameOverMsg = "You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points."
+                gameOverMsg = """
+                You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points.
+                """
             }
         }
     }
