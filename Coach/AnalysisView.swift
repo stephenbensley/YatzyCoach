@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -73,7 +73,7 @@ struct AnalysisView: View {
             return "Sm. Straight"
         case .lgStraight:
             return "Lg. Straight"
-        case .yahtzee:
+        case .Yatzy:
             return "Yatzy"
         case .chance:
             return "Chance"

@@ -59,7 +59,7 @@
 		DC761F8B2C4FFDA400B7BEB2 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */; };
 		DC9FEBBA2C4ECBF000571BC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */; };
 		DC9FF1782C446B4700B66485 /* TurnValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */; };
-		DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */; };
+		DC9FF17B2C446C9800B66485 /* yatzySolution.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yatzySolution.json */; };
 		DC9FF17F2C4475F100B66485 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF17E2C4475F100B66485 /* GameModel.swift */; };
 		DC9FF1812C45B8E500B66485 /* GameModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1802C45B8E500B66485 /* GameModelTests.swift */; };
 		DC9FF1832C45BD6300B66485 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1822C45BD6300B66485 /* Action.swift */; };
@@ -79,7 +79,7 @@
 		DCDB02622C4807C80049E6CD /* UpperTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838B2C431F100034D853 /* UpperTotals.swift */; };
 		DCDB02632C4807C80049E6CD /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF17E2C4475F100B66485 /* GameModel.swift */; };
 		DCDB02642C4807E70049E6CD /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1822C45BD6300B66485 /* Action.swift */; };
-		DCDB02652C480BA60049E6CD /* yahtzeeSolution.json in Resources */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */; };
+		DCDB02652C480BA60049E6CD /* yatzySolution.json in Resources */ = {isa = PBXBuildFile; fileRef = DC9FF1762C4425C700B66485 /* yatzySolution.json */; };
 		DCF4A85E2C470DBE00E428AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF4A85D2C470DBE00E428AE /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 			dstPath = /private/tmp;
 			dstSubfolderSpec = 0;
 			files = (
-				DC9FF17B2C446C9800B66485 /* yahtzeeSolution.json in CopyFiles */,
+				DC9FF17B2C446C9800B66485 /* yatzySolution.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 		DC761F882C4FEFFA00B7BEB2 /* Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
 		DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yahtzeeSolution.json; sourceTree = "<group>"; };
+		DC9FF1762C4425C700B66485 /* yatzySolution.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yatzySolution.json; sourceTree = "<group>"; };
 		DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnValuesTests.swift; sourceTree = "<group>"; };
 		DC9FF17E2C4475F100B66485 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		DC9FF1802C45B8E500B66485 /* GameModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelTests.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 			children = (
 				DCCE90662C51338700A571CD /* About.md */,
 				DC0ABA4D2C518D8F00E5082B /* Help.md */,
-				DC9FF1762C4425C700B66485 /* yahtzeeSolution.json */,
+				DC9FF1762C4425C700B66485 /* yatzySolution.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YahtzeeCoach" */;
+			buildConfigurationList = DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YatzyCoach" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -412,7 +412,7 @@
 			files = (
 				DCCE90672C51338700A571CD /* About.md in Resources */,
 				DC0ABA4F2C518E3600E5082B /* Help.md in Resources */,
-				DCDB02652C480BA60049E6CD /* yahtzeeSolution.json in Resources */,
+				DCDB02652C480BA60049E6CD /* yatzySolution.json in Resources */,
 				DCF4A85E2C470DBE00E428AE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,7 +986,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YahtzeeCoach" */ = {
+		DC39836C2C431EEA0034D853 /* Build configuration list for PBXProject "YatzyCoach" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC39836D2C431EEA0034D853 /* Debug */,

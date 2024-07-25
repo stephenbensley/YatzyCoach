@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
@@ -23,7 +23,7 @@ struct DiceSelection: Codable, Equatable {
     
     mutating func toggle(_ ordinal: Int) { flags ^= Self.flag(ordinal) }
     
-    // We only select proper subsets (keeping all dice isn't an option in Yahtzee)
+    // We only select proper subsets (keeping all dice isn't an option in Yatzy)
     static let all: [DiceSelection] = (0..<31).map { DiceSelection(flags: $0) }
     
     private static let distinctSets = DiceSelectionSets()

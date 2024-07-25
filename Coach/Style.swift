@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -32,16 +32,16 @@ struct Palette {
 }
 
 struct Fonts {
-    static let yahtzeeBrand = "MarkerFelt-wide"
-    static let scoreCard = "Futura-Medium"
     static let score =  "ChalkboardSE-Regular"
+    static let scoreCard = "Futura-Medium"
+    static let yatzyBrand = "MarkerFelt-wide"
 }
 
 struct Lengths {
     static let selectionWidth = 4.0
  }
 
-struct YahtzeeShadow: ViewModifier {
+struct YatzyShadow: ViewModifier {
     @Environment(\.scaleFactor) private var scaleFactor: Double
 
     func body(content: Content) -> some View {
@@ -56,7 +56,7 @@ struct YahtzeeShadow: ViewModifier {
 }
 
 extension View {
-    func yahtzeeShadow() -> some View {
-        modifier(YahtzeeShadow())
+    func yatzyShadow() -> some View {
+        modifier(YatzyShadow())
     }
 }

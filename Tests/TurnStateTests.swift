@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
@@ -41,7 +41,7 @@ class TurnStateTests: XCTestCase {
         XCTAssert(state.upperTotal == 53)
         state = state.next(scoringAs: .fours, points: 16)
         XCTAssert(state.upperTotal == Points.toEarnUpperBonus)
-        XCTAssert(state.next(scoringAs: .yahtzee, points: 50).yahtzeeScored)
-        XCTAssert(!state.next(scoringAs: .yahtzee, points: 0).yahtzeeScored)
+        XCTAssert(state.next(scoringAs: .Yatzy, points: 50).YatzyScored)
+        XCTAssert(!state.next(scoringAs: .Yatzy, points: 0).YatzyScored)
     }
 }

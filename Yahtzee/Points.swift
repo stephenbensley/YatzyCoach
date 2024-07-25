@@ -2,12 +2,12 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
 
-// Implements the scoring rules for Yahtzee
+// Implements the scoring rules for Yatzy
 final class Points {
     // Points scored for various scoring options
     static let toEarnUpperBonus = 63
@@ -15,16 +15,16 @@ final class Points {
     static let fullHouse = 25
     static let smStraight = 30
     static let lgStraight = 40
-    static let yahtzee = 50
-    static let yahtzeeBonus = 100
+    static let Yatzy = 50
+    static let YatzyBonus = 100
     
     // Breaks down points scored according to where they're tallied on the scorecard.
     struct ByType {
         var forOption = 0
         var upperBonus = 0
-        var yahtzeeBonus = 0
+        var YatzyBonus = 0
         
-        var total: Int { forOption + upperBonus + yahtzeeBonus }
+        var total: Int { forOption + upperBonus + YatzyBonus }
     }
     
     // Computes points scored without regard to game state, e.g., no bonuses or jokers.
@@ -66,9 +66,9 @@ final class Points {
             if longestRun == 5 {
                 points = Self.lgStraight
             }
-        case .yahtzee:
+        case .Yatzy:
             if pattern == .fiveOfAKind {
-                points = Self.yahtzee
+                points = Self.Yatzy
             }
         case .chance:
             points = dice.reduce(0, +)
@@ -89,11 +89,11 @@ final class Points {
         result.forOption = dice.basePoints(scoredAs: option)
         
         // Are the joker rules in effect?
-        if dice.pattern == .fiveOfAKind && state.used.isSet(.yahtzee) {
+        if dice.pattern == .fiveOfAKind && state.used.isSet(.Yatzy) {
             // Upper option for this roll
             let upperOption = ScoringOption.fromDieValue(dice.value[0])
             if state.used.isSet(upperOption) {
-                // Upper option already used, so Yahtzee can be scored as a full house or straight.
+                // Upper option already used, so Yatzy can be scored as a full house or straight.
                 switch option {
                 case .fullHouse:
                     result.forOption = Points.fullHouse
@@ -111,9 +111,9 @@ final class Points {
                 }
             }
             
-            // Did we earn the Yahtzee bonus?
-            if state.yahtzeeScored {
-                result.yahtzeeBonus = Points.yahtzeeBonus
+            // Did we earn the Yatzy bonus?
+            if state.YatzyScored {
+                result.YatzyBonus = Points.YatzyBonus
             }
         }
         

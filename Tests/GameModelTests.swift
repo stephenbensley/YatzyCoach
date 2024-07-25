@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import XCTest
 class GameModelTests: XCTestCase {
     
     func testGamePlay() async throws {
-        guard let turnValues = TurnValues(fileURLWithPath: "./yahtzeeSolution.json") else {
+        guard let turnValues = TurnValues(fileURLWithPath: "./YatzySolution.json") else {
             XCTFail()
             return
         }
@@ -47,7 +47,7 @@ class GameModelTests: XCTestCase {
             }
         }
         
-        // From "An Optimal Strategy for Yahtzee" by James Glenn.
+        // From "An Optimal Strategy for Yatzy" by James Glenn.
         let mean = 254.59
         let stdDev = 59.64 / sqrt(Double(count))
         
@@ -57,7 +57,7 @@ class GameModelTests: XCTestCase {
     
     func testEncode() throws {
         // Create a GameModel
-        guard let turnValues = TurnValues(fileURLWithPath: "./yahtzeeSolution.json") else {
+        guard let turnValues = TurnValues(fileURLWithPath: "./YatzySolution.json") else {
             XCTFail()
             return
         }

@@ -22,7 +22,7 @@
                BlueprintIdentifier = "DC39839D2C431F5B0034D853"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:YahtzeeCoach.xcodeproj">
+               ReferencedContainer = "container:YatzyCoach.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

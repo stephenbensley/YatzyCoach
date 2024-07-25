@@ -2,19 +2,19 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
 
-// Solves all turn states for the game of Yahtzee.
+// Solves all turn states for the game of Yatzy.
 final class Solver {
     private let tracker: ProgressTracker
     private let workerCount: Int
     private let diceStores: [DiceStore]
     private let turnValues = TurnValues()
 
-    // Main entry point to solve the game of Yahtzee.
+    // Main entry point to solve the game of Yatzy.
     private func solve() async {
         // Retrograde solution starting from the end and working back to the beginning.
         for turn in stride(from: ScoringOption.allCases.count, through: 0, by: -1) {

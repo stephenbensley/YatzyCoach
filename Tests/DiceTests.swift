@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
@@ -53,7 +53,7 @@ class DiceTests: TestCaseWithDice {
         XCTAssert(dice10(33366).basePoints(scoredAs: .fullHouse) == Points.fullHouse)
         XCTAssert(dice10(34456).basePoints(scoredAs: .smStraight) == Points.smStraight)
         XCTAssert(dice10(23456).basePoints(scoredAs: .lgStraight) == Points.lgStraight)
-        XCTAssert(dice10(33333).basePoints(scoredAs: .yahtzee) == Points.yahtzee)
+        XCTAssert(dice10(33333).basePoints(scoredAs: .Yatzy) == Points.Yatzy)
         XCTAssert(dice10(33366).basePoints(scoredAs: .chance) == 21)
     }
     

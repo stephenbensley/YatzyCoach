@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ struct ScoreCardTitle: View {
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
             Text("Yatzy")
-                .font(.custom(Fonts.yahtzeeBrand, size: 30.0 * scaleFactor))
+                .font(.custom(Fonts.yatzyBrand, size: 30.0 * scaleFactor))
             Text("SCORECARD")
                 .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
         }
@@ -44,7 +44,7 @@ struct ScoreVStack<Content>: View where Content: View {
     }
 }
 
-// Displays a Yahtzee scorecard
+// Displays a Yatzy scorecard
 struct ScoreCardView: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
@@ -143,7 +143,7 @@ struct ScoreCardView: View {
                     )
                     ScoringOptionView(
                         "Yatzy",
-                        option: .yahtzee,
+                        option: .Yatzy,
                         gameModel: gameModel,
                         action: $appModel.action
                     )

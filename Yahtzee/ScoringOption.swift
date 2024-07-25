@@ -2,12 +2,12 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
 
-// Different options for scoring in Yahtzee
+// Different options for scoring in Yatzy
 enum ScoringOption: Int, CaseIterable, Codable {
     case aces
     case twos
@@ -20,7 +20,7 @@ enum ScoringOption: Int, CaseIterable, Codable {
     case fullHouse
     case smStraight
     case lgStraight
-    case yahtzee
+    case Yatzy
     case chance
     
     // Is this option scored in the upper part of the scorecard?

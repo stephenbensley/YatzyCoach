@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import Foundation
@@ -16,10 +16,10 @@ enum DerivedScore: Int, CaseIterable {
     case grandTotal
 }
 
-// Models a game of Yahtzee and provides coaching to the player.
+// Models a game of Yatzy and provides coaching to the player.
 @Observable
 final class GameModel {
-    // Precomputed solution for the game of Yahtzee.
+    // Precomputed solution for the game of Yatzy.
     private let turnValues: TurnValues
     // DiceStore used for manipulating and evaluating dice rolls.
     private let diceStore: DiceStore
@@ -185,9 +185,9 @@ final class GameModel {
         if (points.upperBonus > 0) {
             setDerivedPoints(.upperBonus, points.upperBonus)
         }
-        if points.yahtzeeBonus > 0 {
-            // If we earned the bonus, yahtzee can't be nil
-            optionPoints[ScoringOption.yahtzee.rawValue]! += points.yahtzeeBonus
+        if points.YatzyBonus > 0 {
+            // If we earned the bonus, Yatzy can't be nil
+            optionPoints[ScoringOption.Yatzy.rawValue]! += points.YatzyBonus
         }
         
         if option.isUpper {

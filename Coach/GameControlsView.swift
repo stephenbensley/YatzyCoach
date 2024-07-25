@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -33,7 +33,7 @@ struct ControlButton: View {
         .background(disabled ? Palette.buttonDisabled : Palette.buttonEnabled)
         .clipShape(Capsule())
         .disabled(disabled)
-        .yahtzeeShadow()
+        .yatzyShadow()
     }
 }
 

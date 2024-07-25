@@ -2,7 +2,7 @@
 // Copyright 2024 Stephen E. Bensley
 //
 // This file is licensed under the MIT License. You may obtain a copy of the
-// license at https://github.com/stephenbensley/YahtzeeCoach/blob/main/LICENSE.
+// license at https://github.com/stephenbensley/YatzyCoach/blob/main/LICENSE.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ import SwiftUI
 extension GameModel {
     static func create() -> GameModel {
         guard let turnValues = TurnValues(
-            forResource: "yahtzeeSolution",
+            forResource: "yatzySolution",
             withExtension: "json"
         ) else {
             // There's no possible recovery if the app bundle is corrupt.
