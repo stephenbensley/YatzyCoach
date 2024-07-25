@@ -11,24 +11,38 @@ import SwiftUI
 struct AnalysisView: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.dismiss) private var dismiss
- 
+    
     var gameModel: GameModel { appModel.gameModel }
-     
+    
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(gameModel.analysis) { actionValue in
-                        HStack {
-                            toText(actionValue.action)
-                            Spacer()
-                            toText(actionValue.value)
+            VStack {
+                Text("""
+The computer analyzes each legal play for the current position and computes the expected final \
+score assuming optimal play for the remainder of the game.
+""")
+                .font(.footnote)
+                .padding(.bottom)
+                ScrollView {
+                    Grid(alignment: .leading) {
+                        GridRow {
+                            Text("Play")
+                            Text("Score")
+                        }
+                        .font(.title2)
+                        
+                        // Divider to separate headings from items
+                        Divider()
+                        ForEach(gameModel.analysis) { item in
+                            GridRow {
+                                toText(item.action)
+                                toText(item.value)
+                            }
                         }
                     }
-                } header: {
-                    Text("Expected final score for each move")
                 }
             }
+            .padding(.horizontal)
             .navigationTitle("Analysis")
             .toolbar {
                 Button("Done") { dismiss() }
@@ -66,7 +80,7 @@ struct AnalysisView: View {
             return "Chance"
         }
     }
- 
+    
     func toText(_ action: Action) -> Text {
         switch action {
         case .rollDice(let selection):
@@ -77,7 +91,7 @@ struct AnalysisView: View {
             return selection.apply(to: values).sorted().reduce(Text("Keep ")) { result, value in
                 result + Text(Image(systemName: "die.face.\(value)"))
             }
-              
+            
         case .scoreDice(let option):
             let points = gameModel.computePoints(option: option).forOption
             return Text("Play **\(toString(option))** for \(points) points")
