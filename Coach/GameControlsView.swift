@@ -66,8 +66,8 @@ struct GameControlsView: View {
             Text(gameOverMsg)
         }
         .alert("Better Move Available", isPresented: $confirmMove) {
-            Button("Yes, show me the best move", action: appModel.showBestAction)
-            Button("No, I'll stick with my choice", action: takeAction)
+            Button("Show me the best move", action: appModel.showBestAction)
+            Button("I'll stick with my choice", action: takeAction)
             Button("Let me try again") { }
         } message: {
             Text(confirmMoveMsg)
