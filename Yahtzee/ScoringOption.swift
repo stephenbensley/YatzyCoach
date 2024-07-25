@@ -23,7 +23,7 @@ enum ScoringOption: Int, CaseIterable, Codable {
     case yahtzee
     case chance
     
-    // Is this option scored in the upper part of the score card?
+    // Is this option scored in the upper part of the scorecard?
     var isUpper: Bool { self.rawValue <= Self.sixes.rawValue }
     
     // Maps a die value to the corresponding upper scoring option.

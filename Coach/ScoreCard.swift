@@ -15,7 +15,7 @@ struct ScoreCardTitle: View {
         HStack(alignment: .lastTextBaseline) {
             Text("Yatzy")
                 .font(.custom(Fonts.yahtzeeBrand, size: 30.0 * scaleFactor))
-            Text("SCORE CARD")
+            Text("SCORECARD")
                 .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
         }
         .frame(height: 45.0 * scaleFactor)

@@ -18,7 +18,7 @@ final class Points {
     static let yahtzee = 50
     static let yahtzeeBonus = 100
     
-    // Breaks down points scored according to where they're tallied on the score card.
+    // Breaks down points scored according to where they're tallied on the scorecard.
     struct ByType {
         var forOption = 0
         var upperBonus = 0

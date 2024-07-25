@@ -100,7 +100,7 @@ final class GameModel {
         case .scoreDice(let option):
             assert(!turnState.used.isSet(option))
             
-            // Compute points scored and update score card
+            // Compute points scored and update scorecard
             let points = computePoints(option: option)
             updateScoreCard(option: option, points: points)
             
