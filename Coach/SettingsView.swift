@@ -15,13 +15,40 @@ struct SettingsView: View {
         @Bindable var appModel = appModel
         NavigationStack {
             Form {
-                Toggle("Enable coach", isOn: $appModel.enabled)
-                Text("Feedback threshold: \(appModel.feedbackThreshold, specifier: "%.1f") points")
-                    .listRowSeparator(.hidden, edges: [.bottom])
-                Slider(value: $appModel.feedbackThreshold, in: 0.1...5.0, step: 0.1)
-                    .disabled(!appModel.enabled)
-                Toggle("Always show best move", isOn: $appModel.alwaysShowBest)
-                    .disabled(!appModel.enabled)
+                Section {
+                    Toggle("Enable coaching", isOn: $appModel.enabled)
+                } footer: {
+                    if appModel.enabled {
+                        Text("Notify the player when a better move is available.")
+                    } else {
+                        Text("Do not provide coaching to the player.")
+                    }
+                }
+                
+                Section {
+                    Text("""
+                    Feedback threshold: \(appModel.feedbackThreshold, specifier: "%.1f") points
+                    """)
+                        .listRowSeparator(.hidden, edges: [.bottom])
+                    Slider(value: $appModel.feedbackThreshold, in: 0.1...5.0, step: 0.1)
+                        .disabled(!appModel.enabled)
+                } footer: {
+                    Text("""
+                    Notify the player only if a better move would score at least this many \
+                    additional points.
+                    """)
+                }
+                
+                Section {
+                    Toggle("Always show best move", isOn: $appModel.alwaysShowBest)
+                        .disabled(!appModel.enabled)
+                } footer: {
+                    if appModel.alwaysShowBest {
+                        Text("Show the best move automatically.")
+                    } else {
+                        Text("Show the best move when the player requests it.")
+                    }
+                }
             }
             .navigationTitle("Settings")
             .toolbar {
