@@ -89,9 +89,12 @@ struct GameControlsView: View {
     
     private func takeAction() {
         appModel.takeAction()
-        showGameOver = appModel.gameModel.gameOver
-        if showGameOver {
-            gameOverMsg = "You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points."
+        if appModel.gameModel.gameOver {
+            Task {
+                try await Task.sleep(nanoseconds: 250_000_000)
+                showGameOver = true
+                gameOverMsg = "You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points."
+            }
         }
     }
 }
