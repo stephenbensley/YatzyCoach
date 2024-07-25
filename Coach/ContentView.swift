@@ -33,14 +33,14 @@ struct ContentView: View {
                         .background(Palette.background)
                         .toolbar {
                             Button {
-                                showAnalysis = true
-                            } label: {
-                                Image(systemName: "list.bullet.circle")
-                            }
-                            Button {
                                 confirmNewGame = true
                             } label: {
                                 Image(systemName: "arrow.clockwise.circle")
+                            }
+                            Button {
+                                showAnalysis = true
+                            } label: {
+                                Image(systemName: "list.bullet.circle")
                             }
                             Button {
                                 showAbout = true
