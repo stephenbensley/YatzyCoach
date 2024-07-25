@@ -23,7 +23,7 @@ struct ControlButton: View {
     var body: some View {
         Button(action: action, label: {
             Text(label)
-                .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
+                .font(.custom(Fonts.scoreCard, fixedSize: 20.0 * scaleFactor))
                 .foregroundStyle(Palette.buttonText)
                 .frame(minWidth: 85.0 * scaleFactor)
                 .frame(height: 30.0 * scaleFactor)

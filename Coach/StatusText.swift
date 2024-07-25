@@ -30,7 +30,7 @@ struct StatusText: View {
     var body: some View {
         Text(text)
             .foregroundStyle(Palette.statusText)
-            .font(.custom(Fonts.scoreCard, size: 18.0 * scaleFactor))
+            .font(.custom(Fonts.scoreCard, fixedSize: 18.0 * scaleFactor))
             .yatzyShadow()
             .frame(height: 30.0 * scaleFactor)
     }

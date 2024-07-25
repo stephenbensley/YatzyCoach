@@ -36,7 +36,7 @@ struct ScoreView: View {
     var body: some View {
         HStack(spacing: 0) {
             Text(title)
-                .font(.custom(Fonts.scoreCard, size: 18.0 * scaleFactor))
+                .font(.custom(Fonts.scoreCard, fixedSize: 18.0 * scaleFactor))
                 .foregroundStyle(Palette.scoreCard)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
@@ -47,7 +47,7 @@ struct ScoreView: View {
                     alignment: .leading
                 )
             Text(pointsString)
-                .font(.custom(Fonts.score, size: 25.0 * scaleFactor))
+                .font(.custom(Fonts.score, fixedSize: 25.0 * scaleFactor))
                 .baselineOffset(3.0 * scaleFactor)
                 .foregroundStyle(selected ? Palette.selected : Palette.score)
                 .minimumScaleFactor(0.1)

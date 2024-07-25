@@ -14,9 +14,9 @@ struct ScoreCardTitle: View {
     var body: some View {
         HStack(alignment: .lastTextBaseline) {
             Text("Yatzy")
-                .font(.custom(Fonts.yatzyBrand, size: 30.0 * scaleFactor))
+                .font(.custom(Fonts.yatzyBrand, fixedSize: 30.0 * scaleFactor))
             Text("SCORECARD")
-                .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
+                .font(.custom(Fonts.scoreCard, fixedSize: 20.0 * scaleFactor))
         }
         .foregroundStyle(Palette.scoreCard)
         .frame(height: 45.0 * scaleFactor)
