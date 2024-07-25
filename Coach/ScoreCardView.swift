@@ -23,7 +23,7 @@ struct ScoreCardTitle: View {
 }
 
 // Displays a column of scores
-struct ScoreColumn<Content>: View where Content: View {
+struct ScoreVStack<Content>: View where Content: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
     private let rowCount: Int
     private let content: Content
@@ -38,14 +38,14 @@ struct ScoreColumn<Content>: View where Content: View {
             content
         }
         .background(
-            GridLines(rowCount: rowCount, columnWidths: Score.columnWidths)
+            GridLines(rowCount: rowCount, columnWidths: ScoreView.columnWidths)
                 .stroke(lineWidth: scaleFactor)
         )
     }
 }
 
 // Displays a Yahtzee scorecard
-struct ScoreCard: View {
+struct ScoreCardView: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
@@ -57,7 +57,7 @@ struct ScoreCard: View {
             ScoreCardTitle()
             
             HStack(spacing: 16.0 * scaleFactor) {
-                ScoreColumn(rowCount: 9) {
+                ScoreVStack(rowCount: 9) {
                     ScoringOptionView(
                         "Aces",
                         option: .aces,
@@ -110,7 +110,7 @@ struct ScoreCard: View {
                         gameModel: gameModel
                     )
                 }
-                ScoreColumn(rowCount: 9) {
+                ScoreVStack(rowCount: 9) {
                     ScoringOptionView(
                         "3 of a kind",
                         option: .threeOfAKind,
@@ -174,9 +174,8 @@ struct ScoreCard: View {
 #Preview {
     struct ScoreCardPreview: View {
         var body: some View {
-            ScoreCard()
+            ScoreCardView()
         }
     }
-    
     return ScoreCardPreview()
 }

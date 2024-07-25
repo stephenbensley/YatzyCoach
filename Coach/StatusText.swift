@@ -42,6 +42,5 @@ struct StatusText: View {
             StatusText()
         }
     }
-    
     return StatusTextPreview()
 }

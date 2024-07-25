@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Displays the Settings sheet.
 struct SettingsView: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.dismiss) private var dismiss
@@ -27,16 +28,16 @@ struct SettingsView: View {
                 
                 Section {
                     Text("""
-                    Feedback threshold: \(appModel.feedbackThreshold, specifier: "%.1f") points
-                    """)
+                        Feedback threshold: \(appModel.feedbackThreshold, specifier: "%.1f") points
+                        """)
                         .listRowSeparator(.hidden, edges: [.bottom])
                     Slider(value: $appModel.feedbackThreshold, in: 0.1...5.0, step: 0.1)
                         .disabled(!appModel.enabled)
                 } footer: {
                     Text("""
-                    Notify the player only if a better move would score at least this many \
-                    additional points.
-                    """)
+                        Notify the player only if a better move would score at least this many \
+                        additional points.
+                        """)
                 }
                 
                 Section {
@@ -51,9 +52,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .toolbar {
-                Button("Done") { dismiss() }
-            }
+            .toolbar { Button("Done") { dismiss() } }
         }
     }
 }
@@ -64,6 +63,5 @@ struct SettingsView: View {
             SettingsView()
         }
     }
-    
     return SettingsPreview()
 }

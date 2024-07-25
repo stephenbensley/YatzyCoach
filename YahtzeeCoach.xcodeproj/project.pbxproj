@@ -11,8 +11,8 @@
 		DC0ABA4F2C518E3600E5082B /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = DC0ABA4D2C518D8F00E5082B /* Help.md */; };
 		DC0ABA512C5191A100E5082B /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0ABA502C5191A100E5082B /* AnalysisView.swift */; };
 		DC1EA7B42C496759007F0895 /* GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7B32C496759007F0895 /* GridLines.swift */; };
-		DC1EA7B82C4B4012007F0895 /* ScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */; };
-		DC1EA7C12C4D4C80007F0895 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7BF2C4D4A9B007F0895 /* Score.swift */; };
+		DC1EA7B82C4B4012007F0895 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7B72C4B4012007F0895 /* ScoreCardView.swift */; };
+		DC1EA7C12C4D4C80007F0895 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7BF2C4D4A9B007F0895 /* ScoreView.swift */; };
 		DC1EA7C32C4D4C9C007F0895 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7C22C4D4C9C007F0895 /* Style.swift */; };
 		DC1EA7C52C4D55F8007F0895 /* ScoreWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EA7C42C4D55F8007F0895 /* ScoreWrappers.swift */; };
 		DC1EA7C62C4D5BD8007F0895 /* CoachApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF4A8592C470DBD00E428AE /* CoachApp.swift */; };
@@ -101,11 +101,11 @@
 		DC0ABA502C5191A100E5082B /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
 		DC0ABA522C51DF1600E5082B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC1EA7B32C496759007F0895 /* GridLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLines.swift; sourceTree = "<group>"; };
-		DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCard.swift; sourceTree = "<group>"; };
+		DC1EA7B72C4B4012007F0895 /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		DC1EA7B92C4B401B007F0895 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
 		DC1EA7BB2C4B403F007F0895 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		DC1EA7BD2C4C8F66007F0895 /* GameControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlsView.swift; sourceTree = "<group>"; };
-		DC1EA7BF2C4D4A9B007F0895 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		DC1EA7BF2C4D4A9B007F0895 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		DC1EA7C22C4D4C9C007F0895 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DC1EA7C42C4D55F8007F0895 /* ScoreWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreWrappers.swift; sourceTree = "<group>"; };
 		DC1EA7CC2C4D831E007F0895 /* StatusText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusText.swift; sourceTree = "<group>"; };
@@ -282,8 +282,8 @@
 				DC1EA7B32C496759007F0895 /* GridLines.swift */,
 				DC761F862C4EF58C00B7BEB2 /* InfoView.swift */,
 				DCCE90642C501E6000A571CD /* ScaleFactor.swift */,
-				DC1EA7BF2C4D4A9B007F0895 /* Score.swift */,
-				DC1EA7B72C4B4012007F0895 /* ScoreCard.swift */,
+				DC1EA7BF2C4D4A9B007F0895 /* ScoreView.swift */,
+				DC1EA7B72C4B4012007F0895 /* ScoreCardView.swift */,
 				DC1EA7C42C4D55F8007F0895 /* ScoreWrappers.swift */,
 				DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */,
 				DC1EA7CC2C4D831E007F0895 /* StatusText.swift */,
@@ -480,7 +480,7 @@
 				DCBBA8832C4DE23D0096FFE0 /* ContentView.swift in Sources */,
 				DC1EA7C52C4D55F8007F0895 /* ScoreWrappers.swift in Sources */,
 				DCDB025A2C4807C80049E6CD /* DicePattern.swift in Sources */,
-				DC1EA7B82C4B4012007F0895 /* ScoreCard.swift in Sources */,
+				DC1EA7B82C4B4012007F0895 /* ScoreCardView.swift in Sources */,
 				DC1EA7CE2C4D966B007F0895 /* GameControlsView.swift in Sources */,
 				DCDB025B2C4807C80049E6CD /* ScoringOption.swift in Sources */,
 				DCDB025C2C4807C80049E6CD /* TurnState.swift in Sources */,
@@ -494,7 +494,7 @@
 				DC1EA7CA2C4D7699007F0895 /* GameView.swift in Sources */,
 				DC9FEBBA2C4ECBF000571BC1 /* SettingsView.swift in Sources */,
 				DC1EA7C62C4D5BD8007F0895 /* CoachApp.swift in Sources */,
-				DC1EA7C12C4D4C80007F0895 /* Score.swift in Sources */,
+				DC1EA7C12C4D4C80007F0895 /* ScoreView.swift in Sources */,
 				DC761F892C4FEFFA00B7BEB2 /* Coach.swift in Sources */,
 				DCDB02612C4807C80049E6CD /* DiceSelection.swift in Sources */,
 				DCDB02622C4807C80049E6CD /* UpperTotals.swift in Sources */,

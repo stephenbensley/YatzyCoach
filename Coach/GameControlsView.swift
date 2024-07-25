@@ -37,6 +37,7 @@ struct ControlButton: View {
     }
 }
 
+// Presents the ControlButtons and implements most of the behavior of the app.
 struct GameControlsView: View {
     @Environment(\.appModel) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
@@ -68,7 +69,7 @@ struct GameControlsView: View {
             Button("Yes, show me the best move", action: appModel.showBestAction)
             Button("No, I'll stick with my choice", action: takeAction)
             Button("Let me try again") { }
-         } message: {
+        } message: {
             Text(confirmMoveMsg)
         }
     }
@@ -78,12 +79,11 @@ struct GameControlsView: View {
             takeAction()
         } else {
             confirmMove = true
-            confirmMoveMsg =
-                    """
-                    There is a better move that would score an average of \
-                    \(appModel.actionCost, specifier: "%.1f") more points \
-                    over the course of the game. Do you want to see it?
-                    """
+            confirmMoveMsg = """
+                There is a better move that would score an average of \
+                \(appModel.actionCost, specifier: "%.1f") more points \
+                over the course of the game. Do you want to see it?
+                """
         }
     }
     
@@ -91,11 +91,12 @@ struct GameControlsView: View {
         appModel.takeAction()
         if appModel.gameModel.gameOver {
             Task {
+                // Introduce a slight delay, so the game over alert isn't quite so jarring.
                 try await Task.sleep(nanoseconds: 250_000_000)
                 showGameOver = true
                 gameOverMsg = """
-                You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points.
-                """
+                    You scored \(appModel.gameModel.derivedPoints(.grandTotal) ?? 0) points.
+                    """
             }
         }
     }
@@ -106,7 +107,6 @@ struct GameControlsView: View {
         var body: some View {
             GameControlsView()
         }
-    }
-    
+    }    
     return GameControlsPreview()
 }

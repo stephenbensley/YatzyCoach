@@ -35,12 +35,14 @@ struct DieView: View {
     var body: some View {
         Image(systemName: "die.face.\(value).fill")
             .resizable()
-            .frame(width: 45.0 * scaleFactor, height: 45 * scaleFactor)
+            .frame(width: 45.0 * scaleFactor, height: 45.0 * scaleFactor)
             .symbolRenderingMode(.palette)
             .foregroundStyle(Palette.dicePips, Palette.diceFill)
             .yahtzeeShadow()
             .contentShape(Rectangle())
             .overlay(
+                // cornerRadius was determined through experiment to match the corner radius of
+                // the SF Symbol
                 RoundedRectangle(cornerRadius: 7.0 * scaleFactor)
                     .stroke(
                         selected ? Palette.selected : .clear,
@@ -58,6 +60,8 @@ struct DieView: View {
     
     private func onTap() {
         var newSelection: DiceSelection
+        // If we already have a roll action, start with the existing selection; otherwise, use an
+        // empty selection.
         if case .rollDice(let selection) = action {
             newSelection = selection
         } else {
@@ -94,6 +98,5 @@ struct DiceView: View {
             DiceView()
         }
     }
-    
     return DicePreview()
 }

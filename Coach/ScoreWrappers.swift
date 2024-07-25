@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Displays a score that is derived form other scores and thus can't be selected by the player.
 struct DerivedScoreView: View {
     private let title: LocalizedStringKey
     private let type: DerivedScore
@@ -23,7 +24,7 @@ struct DerivedScoreView: View {
     }
     
     var body: some View {
-        Score(title, points: points)
+        ScoreView(title, points: points)
     }
 }
 
@@ -44,6 +45,8 @@ struct ScoringOptionView: View {
     ) {
         self.title = title
         self.option = option
+        // If this is selected, we show how many points it would score. If it's not selected, we
+        // show how many points it has already scored.
         if action.wrappedValue == .scoreDice(option) {
             self.points = gameModel.computePoints(option: option).forOption
         } else {
@@ -53,7 +56,7 @@ struct ScoringOptionView: View {
     }
     
     var body: some View {
-        Score(title, points: points, selected: selected, onTap: onTap)
+        ScoreView(title, points: points, selected: selected, onTap: onTap)
     }
 
     private func onTap() {

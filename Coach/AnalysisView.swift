@@ -18,9 +18,9 @@ struct AnalysisView: View {
         NavigationStack {
             VStack {
                 Text("""
-                The computer analyzes each legal play for the current position and  computes \
-                the expected final score assuming optimal play for the remainder of the game.
-                """)
+                    The computer analyzes each legal play for the current position and  computes \
+                    the expected final score assuming optimal play for the remainder of the game.
+                    """)
                 .font(.footnote)
                 .padding(.bottom)
                 ScrollView {
@@ -33,6 +33,7 @@ struct AnalysisView: View {
                         
                         // Divider to separate headings from items
                         Divider()
+                        
                         ForEach(gameModel.analysis) { item in
                             GridRow {
                                 toText(item.action)
@@ -44,9 +45,7 @@ struct AnalysisView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Analysis")
-            .toolbar {
-                Button("Done") { dismiss() }
-            }
+            .toolbar { Button("Done") { dismiss() } }
         }
     }
     
@@ -111,6 +110,5 @@ struct AnalysisView: View {
             AnalysisView()
         }
     }
-    
     return AnalysisPreview()
 }

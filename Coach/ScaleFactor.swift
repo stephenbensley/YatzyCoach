@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// Implements view modifiers to automatically compute a scale factor based on the size the
+// view was designed for vs. the actual size being displayed. Makes the view as large as possible
+// without cropping and while preserving the aspect ratio.
+
 extension CGSize {
     var aspectRatio: CGFloat {
         return height / width

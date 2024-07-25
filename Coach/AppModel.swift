@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// The Coach class is our app model. This file provides some additional functionality to make it
+// easier to use the Coach as the app model.
+
 // Allow GameModel to be saved and restored from UserDefaults
 extension GameModel {
     static func create() -> GameModel {
@@ -14,6 +17,7 @@ extension GameModel {
             forResource: "yahtzeeSolution",
             withExtension: "json"
         ) else {
+            // There's no possible recovery if the app bundle is corrupt.
             fatalError("Unable to load solution file.")
         }
         

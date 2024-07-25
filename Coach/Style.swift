@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Global style constants
+
 func hexColor(_ hex: UInt) -> Color {
     let r = Double((hex & 0xff0000) >> 16) / 255
     let g = Double((hex & 0x00ff00) >>  8) / 255

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Displays the game of Yahtzee.
 struct GameView: View {
     // GameView was designed assuming this screen resolution.
     static let designSize = CGSize(width: 390.0, height: 667.0)
@@ -15,7 +16,7 @@ struct GameView: View {
     
     var body: some View {
         VStack(spacing: 15.0 * scaleFactor) {
-            ScoreCard()
+            ScoreCardView()
             DiceView()
             StatusText()
             GameControlsView()
@@ -31,6 +32,5 @@ struct GameView: View {
                 .background(Palette.background)
         }
     }
-    
     return GamePreview()
 }

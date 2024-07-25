@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct Score: View {
+// Displays a single score on the scorecard
+struct ScoreView: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
     private let title: LocalizedStringKey
     private let points: Int?
@@ -73,16 +74,24 @@ struct Score: View {
         
         var body: some View {
             VStack(spacing: 0) {
-                Score("Sm. Straight", points: 30, selected: selected, onTap: { selected.toggle() })
-                Score("Lg. Straight", points: nil, selected: false)
+                ScoreView(
+                    "Sm. Straight",
+                    points: 30,
+                    selected: selected,
+                    onTap: { selected.toggle() }
+                )
+                ScoreView(
+                    "Lg. Straight",
+                    points: nil,
+                    selected: false
+                )
             }
             .background(
-                GridLines(rowCount: 2, columnWidths: Score.columnWidths)
+                GridLines(rowCount: 2, columnWidths: ScoreView.columnWidths)
                     .stroke()
             )
         }
     }
-    
     return ScorePreview()
 }
 

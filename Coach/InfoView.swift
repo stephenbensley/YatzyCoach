@@ -24,11 +24,9 @@ struct InfoView: View {
             ScrollView {
                 contents
             }
-            .padding(20.0)
+            .padding()
             .navigationTitle(title)
-            .toolbar {
-                Button("Done") { dismiss() }
-            }
+            .toolbar { Button("Done") { dismiss() } }
         }
     }
     
@@ -61,6 +59,5 @@ struct InfoView: View {
             InfoView(title: "About")
         }
     }
-    
     return InfoPreview()
 }

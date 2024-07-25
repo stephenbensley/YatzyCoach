@@ -15,7 +15,7 @@ struct ContentView: View {
     // Persistent app model.
     @State private var appModel = Coach.create()
     
-    // These control the various alerts and sheets activated from the toolbar.
+    // These control the various alerts and sheets activated from the toolbar menu.
     @State private var confirmNewGame = false
     @State private var showAbout = false
     @State private var showAnalysis = false
@@ -67,18 +67,10 @@ struct ContentView: View {
                             Button("New Game") { appModel.newGame() }
                             Button("Cancel") { }
                         }
-                        .sheet(isPresented: $showAbout) {
-                            InfoView(title: "About")
-                        }
-                        .sheet(isPresented: $showAnalysis) {
-                            AnalysisView()
-                        }
-                        .sheet(isPresented: $showHelp) {
-                            InfoView(title: "Help")
-                        }
-                        .sheet(isPresented: $showSettings) {
-                            SettingsView()
-                        }
+                        .sheet(isPresented: $showAbout) { InfoView(title: "About") }
+                        .sheet(isPresented: $showAnalysis) { AnalysisView() }
+                        .sheet(isPresented: $showHelp) { InfoView(title: "Help") }
+                        .sheet(isPresented: $showSettings) { SettingsView() }
                         .onChange(of: scenePhase) { _, phase in
                             if phase == .inactive { appModel.save() }
                         }
@@ -96,6 +88,5 @@ struct ContentView: View {
             ContentView()
         }
     }
-    
     return ContentPreview()
 }
