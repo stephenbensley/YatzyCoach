@@ -23,10 +23,8 @@ struct InfoView: View {
         NavigationStack {
             ScrollView {
                 contents
-                    .font(.custom("Helvetica", size: 18.0))
             }
             .padding(20.0)
-            .frame(maxWidth: 500.0)
             .navigationTitle(title)
             .toolbar {
                 Button("Done") { dismiss() }
