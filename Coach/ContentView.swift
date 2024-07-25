@@ -32,33 +32,37 @@ struct ContentView: View {
                         .frame(width: proxy.size.width, height: proxy.size.height)
                         .background(Palette.background)
                         .toolbar {
-                            Button {
-                                confirmNewGame = true
+                            Menu {
+                                Button {
+                                    confirmNewGame = true
+                                } label: {
+                                    Label("New Game", systemImage: "arrow.clockwise.circle")
+                                }
+                                Button {
+                                    showAnalysis = true
+                                } label: {
+                                    Label("Show Analysis", systemImage: "list.bullet.circle")
+                                }
+                                Button {
+                                    showAbout = true
+                                } label: {
+                                    Label("About", systemImage: "info.circle")
+                                }
+                                Button {
+                                    showHelp = true
+                                } label: {
+                                    Label("Help", systemImage: "questionmark.circle")
+                                }
+                                Button {
+                                    showSettings = true
+                                } label: {
+                                    Label("Settings", systemImage: "gearshape")
+                                }
                             } label: {
-                                Image(systemName: "arrow.clockwise.circle")
-                            }
-                            Button {
-                                showAnalysis = true
-                            } label: {
-                                Image(systemName: "list.bullet.circle")
-                            }
-                            Button {
-                                showAbout = true
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
-                            Button {
-                                showHelp = true
-                            } label: {
-                                Image(systemName: "questionmark.circle")
-                            }
-                            Button {
-                                showSettings = true
-                            } label: {
-                                Image(systemName: "gearshape")
+                                Label("Menu", systemImage: "ellipsis.circle")
+                                    .foregroundStyle(Palette.toolbar, Palette.toolbar)
                             }
                         }
-                        .accentColor(Palette.toolbar)
                         .alert("Start a new game?", isPresented: $confirmNewGame) {
                             Button("New Game") { appModel.newGame() }
                             Button("Cancel") { }
