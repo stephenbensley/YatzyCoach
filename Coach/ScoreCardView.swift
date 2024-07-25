@@ -18,6 +18,7 @@ struct ScoreCardTitle: View {
             Text("SCORECARD")
                 .font(.custom(Fonts.scoreCard, size: 20.0 * scaleFactor))
         }
+        .foregroundStyle(Palette.scoreCard)
         .frame(height: 45.0 * scaleFactor)
     }
 }
@@ -39,7 +40,7 @@ struct ScoreVStack<Content>: View where Content: View {
         }
         .background(
             GridLines(rowCount: rowCount, columnWidths: ScoreView.columnWidths)
-                .stroke(lineWidth: scaleFactor)
+                .stroke(Palette.scoreCard, lineWidth: scaleFactor)
         )
     }
 }
