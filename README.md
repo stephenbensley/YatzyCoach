@@ -6,4 +6,4 @@ Yatzy Coach is an iOS app that lets you play a solo game of [Yatzy](https://en.w
 - Screenshots contains the various screenshots for the app store listing.
 - Solver implements a MacOS app that solves the game of Yatzy offline and saves the results to a file.
 - Tests implements the unit tests for the core game logic.
-- Yahtzee contains the core Yatzy logic shared between Coach and Solver.
+- Yatzy contains the core Yatzy logic shared between Coach and Solver.

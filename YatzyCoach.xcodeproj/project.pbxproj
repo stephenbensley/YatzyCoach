@@ -185,7 +185,7 @@
 				DC3983742C431EFD0034D853 /* Products */,
 				DC3983752C431EFD0034D853 /* Solver */,
 				DC39839F2C431F5B0034D853 /* Tests */,
-				DC3983832C431F030034D853 /* Yahtzee */,
+				DC3983832C431F030034D853 /* Yatzy */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,7 +219,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DC3983832C431F030034D853 /* Yahtzee */ = {
+		DC3983832C431F030034D853 /* Yatzy */ = {
 			isa = PBXGroup;
 			children = (
 				DC9FF1822C45BD6300B66485 /* Action.swift */,
@@ -237,7 +237,7 @@
 				DC39838D2C431F100034D853 /* TurnValues.swift */,
 				DC39838B2C431F100034D853 /* UpperTotals.swift */,
 			);
-			path = Yahtzee;
+			path = Yatzy;
 			sourceTree = "<group>";
 		};
 		DC39839F2C431F5B0034D853 /* Tests */ = {
