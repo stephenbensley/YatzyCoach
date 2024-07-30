@@ -60,8 +60,8 @@ struct ScoreCardView: View {
             HStack(spacing: 16.0 * scaleFactor) {
                 ScoreVStack(rowCount: 9) {
                     ScoringOptionView(
-                        "Aces",
-                        option: .aces,
+                        "Ones",
+                        option: .ones,
                         gameModel: gameModel,
                         action: $appModel.action
                     )

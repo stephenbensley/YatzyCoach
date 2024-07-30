@@ -9,7 +9,7 @@ import Foundation
 
 // Different options for scoring in Yatzy
 enum ScoringOption: Int, CaseIterable, Codable {
-    case aces
+    case ones
     case twos
     case threes
     case fours

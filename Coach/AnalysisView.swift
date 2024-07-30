@@ -51,8 +51,8 @@ struct AnalysisView: View {
     
     func toString(_ option: ScoringOption) -> String {
         switch option {
-        case .aces:
-            return "Aces"
+        case .ones:
+            return "Ones"
         case .twos:
             return "Twos"
         case .threes:

@@ -10,11 +10,11 @@ import XCTest
 
 class PointsTests: TestCaseWithDice {
     func testCompute() throws {
-        var state = TurnState().next(scoringAs: .aces, points: 4)
+        var state = TurnState().next(scoringAs: .ones, points: 4)
         XCTAssert(Points.compute(
             state: state,
             dice: dice10(11133),
-            option: .aces
+            option: .ones
         ) == 0)
         XCTAssert(Points.compute(
             state: state.next(scoringAs: .Yatzy, points: 50),

@@ -48,7 +48,11 @@ class Coach {
     
     func newGame() {
         gameModel.newGame()
-        if alwaysShowBest { showBestAction() }
+        if alwaysShowBest {
+            showBestAction()
+        } else {
+            action = .rollDice(DiceSelection())
+        }
     }
     
     func showBestAction() {

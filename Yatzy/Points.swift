@@ -37,7 +37,7 @@ final class Points {
         var points = 0
         
         switch opt {
-        case .aces, .twos, .threes, .fours, .fives, .sixes:
+        case .ones, .twos, .threes, .fours, .fives, .sixes:
             let dieValue = opt.rawValue + 1
             points = dice.filter({ $0 == dieValue }).reduce(0, +)
         case .threeOfAKind:
