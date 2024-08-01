@@ -50,8 +50,6 @@ struct ContentView: View {
     @State private var writeError = ""
     @State private var showingWriteError = false
     
-    var myDoc = SolutionFile()
-    
     var body: some View {
         VStack {
             switch solverState {
