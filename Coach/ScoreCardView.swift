@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-// Displays the title above the scorecard
-struct ScoreCardTitle: View {
-    @Environment(\.scaleFactor) private var scaleFactor: Double
-    
-    var body: some View {
-        HStack(alignment: .lastTextBaseline) {
-            Text("Yatzy")
-                .font(.custom(Fonts.yatzyBrand, fixedSize: 30.0 * scaleFactor))
-            Text("SCORECARD")
-                .font(.custom(Fonts.scoreCard, fixedSize: 20.0 * scaleFactor))
-        }
-        .foregroundStyle(Palette.scoreCard)
-        .frame(height: 45.0 * scaleFactor)
-    }
-}
-
 // Displays a column of scores
 struct ScoreVStack<Content>: View where Content: View {
     @Environment(\.scaleFactor) private var scaleFactor: Double
@@ -52,10 +36,20 @@ struct ScoreCardView: View {
     
     var gameModel: GameModel { appModel.gameModel }
     
+    // The title displayed above the scorecard
+    var title: Text {
+        Text("Yatzy")
+            .font(.custom(Fonts.yatzyBrand, fixedSize: 30.0 * scaleFactor))
+        + Text(" SCORECARD")
+            .font(.custom(Fonts.scoreCard, fixedSize: 20.0 * scaleFactor))
+    }
+    
     var body: some View {
         @Bindable var appModel = appModel
         VStack(spacing: 15.0 * scaleFactor) {
-            ScoreCardTitle()
+            title
+                .foregroundStyle(Palette.scoreCard)
+                .frame(height: 45.0 * scaleFactor)
             
             HStack(spacing: 16.0 * scaleFactor) {
                 ScoreVStack(rowCount: 9) {
