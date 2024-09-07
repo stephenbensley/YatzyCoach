@@ -2,7 +2,7 @@
 
 # Yatzy Coach
 
-Yatzy Coach is an iOS app for the [American rules](https://en.wikipedia.org/wiki/Yahtzee) of the game of [Yatzy](https://en.wikipedia.org/wiki/Yatzy). The app lets you lets you play a solo game while it provides feedback on your moves. You also have the option of displaying a detailed analysis of all available moves.
+Yatzy Coach is an iOS app for the [American rules](https://en.wikipedia.org/wiki/Yahtzee) of the game of [Yatzy](https://en.wikipedia.org/wiki/Yatzy). The app lets you play a solo game while it provides feedback on your moves. You also have the option of displaying a detailed analysis of all available moves.
 
 ### Installation
 
