@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UtiliKit
 
 // Solves all turn states for the game of Yatzy.
 final class Solver {
@@ -59,7 +60,7 @@ final class Solver {
     
     private init(reportProgress: @escaping ReportProgress) {
         self.tracker = ProgressTracker(totalCount: TurnState.stateCount, onUpdate: reportProgress)
-        self.workerCount = ProcessInfo.processInfo.activeProcessorCount
+        self.workerCount = ProcessInfo.processInfo.performanceProcessorCount
         // Create a separate DiceStore for each worker. Retaining and releasing the same object
         // concurrently from multiple threads degrades rapidly as the number of threads increases
         // due to repeatedly evicting the cache line containing the refcount from peer CPU caches.

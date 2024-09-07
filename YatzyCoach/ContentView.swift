@@ -6,6 +6,15 @@
 //
 
 import SwiftUI
+import UtiliKit
+
+struct YatzyInfo: AboutInfo {
+    var appStoreId: Int = 6575389687
+    var copyright: String = "© 2024 Stephen E. Bensley"
+    var description: String = "Master the game of Yatzy"
+    var gitHubAccount: String = "stephenbensley"
+    var gitHubRepo: String = "YatzyCoach"
+}
 
 // Main app view
 struct ContentView: View {
@@ -67,7 +76,7 @@ struct ContentView: View {
                             Button("New Game") { appModel.newGame() }
                             Button("Cancel") { }
                         }
-                        .sheet(isPresented: $showAbout) { InfoView(title: "About") }
+                        .sheet(isPresented: $showAbout) { AboutView(info: YatzyInfo()) }
                         .sheet(isPresented: $showAnalysis) { AnalysisView() }
                         .sheet(isPresented: $showHelp) { InfoView(title: "Help") }
                         .sheet(isPresented: $showSettings) { SettingsView() }

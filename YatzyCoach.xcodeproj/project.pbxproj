@@ -53,7 +53,8 @@
 		DC3983BD2C431F810034D853 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
 		DC3983BE2C431F810034D853 /* TurnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983882C431F100034D853 /* TurnState.swift */; };
 		DC3983BF2C431F810034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
-		DC761F872C4EF58C00B7BEB2 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F862C4EF58C00B7BEB2 /* InfoView.swift */; };
+		DC61BC8B2C8C99A50078130F /* UtiliKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC61BC8A2C8C99A50078130F /* UtiliKit */; };
+		DC61BC8E2C8C99F50078130F /* UtiliKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC61BC8D2C8C99F50078130F /* UtiliKit */; };
 		DC761F892C4FEFFA00B7BEB2 /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F882C4FEFFA00B7BEB2 /* Coach.swift */; };
 		DC761F8B2C4FFDA400B7BEB2 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */; };
 		DC9FEBBA2C4ECBF000571BC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */; };
@@ -64,7 +65,6 @@
 		DC9FF1832C45BD6300B66485 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FF1822C45BD6300B66485 /* Action.swift */; };
 		DCBBA8832C4DE23D0096FFE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */; };
 		DCCE90652C501E6000A571CD /* ScaleFactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE90642C501E6000A571CD /* ScaleFactor.swift */; };
-		DCCE90672C51338700A571CD /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = DCCE90662C51338700A571CD /* About.md */; };
 		DCDB02582C4807C80049E6CD /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39838A2C431F100034D853 /* Points.swift */; };
 		DCDB02592C4807C80049E6CD /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983872C431F100034D853 /* ProgressTracker.swift */; };
 		DCDB025A2C4807C80049E6CD /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
@@ -133,7 +133,6 @@
 		DC3983AA2C431F780034D853 /* DiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceTests.swift; sourceTree = "<group>"; };
 		DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpperTotalsTests.swift; sourceTree = "<group>"; };
 		DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceSelectionTests.swift; sourceTree = "<group>"; };
-		DC761F862C4EF58C00B7BEB2 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DC761F882C4FEFFA00B7BEB2 /* Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
 		DC761F8A2C4FFDA400B7BEB2 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		DC9FEBB92C4ECBF000571BC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 		DC9FF1822C45BD6300B66485 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DCBBA8822C4DE23D0096FFE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DCCE90642C501E6000A571CD /* ScaleFactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleFactor.swift; sourceTree = "<group>"; };
-		DCCE90662C51338700A571CD /* About.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 		DCF4A8572C470DBD00E428AE /* Yatzy Coach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yatzy Coach.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF4A8592C470DBD00E428AE /* CoachApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachApp.swift; sourceTree = "<group>"; };
 		DCF4A85D2C470DBE00E428AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC61BC8E2C8C99F50078130F /* UtiliKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC61BC8B2C8C99A50078130F /* UtiliKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +184,7 @@
 				DC9FF1752C4425A800B66485 /* Resources */,
 				DCF4A8582C470DBD00E428AE /* YatzyCoach */,
 				DC3983752C431EFD0034D853 /* YatzySolver */,
+				DC61BC8C2C8C99F50078130F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,10 +247,16 @@
 			path = CoreTests;
 			sourceTree = "<group>";
 		};
+		DC61BC8C2C8C99F50078130F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DC9FF1752C4425A800B66485 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DCCE90662C51338700A571CD /* About.md */,
 				DC0ABA4D2C518D8F00E5082B /* Help.md */,
 				DC9FF1762C4425C700B66485 /* yatzySolution.json */,
 			);
@@ -269,7 +276,6 @@
 				DC1EA7BD2C4C8F66007F0895 /* GameControlsView.swift */,
 				DC1EA7BB2C4B403F007F0895 /* GameView.swift */,
 				DC1EA7B32C496759007F0895 /* GridLines.swift */,
-				DC761F862C4EF58C00B7BEB2 /* InfoView.swift */,
 				DCCE90642C501E6000A571CD /* ScaleFactor.swift */,
 				DC1EA7BF2C4D4A9B007F0895 /* ScoreView.swift */,
 				DC1EA7B72C4B4012007F0895 /* ScoreCardView.swift */,
@@ -297,6 +303,9 @@
 			dependencies = (
 			);
 			name = YatzySolver;
+			packageProductDependencies = (
+				DC61BC8D2C8C99F50078130F /* UtiliKit */,
+			);
 			productName = Solver;
 			productReference = DC3983732C431EFD0034D853 /* Yatzy Solver.app */;
 			productType = "com.apple.product-type.application";
@@ -332,6 +341,9 @@
 			dependencies = (
 			);
 			name = YatzyCoach;
+			packageProductDependencies = (
+				DC61BC8A2C8C99A50078130F /* UtiliKit */,
+			);
 			productName = Coach;
 			productReference = DCF4A8572C470DBD00E428AE /* Yatzy Coach.app */;
 			productType = "com.apple.product-type.application";
@@ -366,6 +378,9 @@
 				Base,
 			);
 			mainGroup = DC3983682C431EEA0034D853;
+			packageReferences = (
+				DC61BC892C8C99A50078130F /* XCRemoteSwiftPackageReference "UtiliKit" */,
+			);
 			productRefGroup = DC3983742C431EFD0034D853 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -398,7 +413,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCE90672C51338700A571CD /* About.md in Resources */,
 				DC0ABA4F2C518E3600E5082B /* Help.md in Resources */,
 				DCDB02652C480BA60049E6CD /* yatzySolution.json in Resources */,
 				DCF4A85E2C470DBE00E428AE /* Assets.xcassets in Resources */,
@@ -486,7 +500,6 @@
 				DC761F892C4FEFFA00B7BEB2 /* Coach.swift in Sources */,
 				DCDB02612C4807C80049E6CD /* DiceSelection.swift in Sources */,
 				DCDB02622C4807C80049E6CD /* UpperTotals.swift in Sources */,
-				DC761F872C4EF58C00B7BEB2 /* InfoView.swift in Sources */,
 				DCDB02632C4807C80049E6CD /* GameModel.swift in Sources */,
 				DC1EA7CB2C4D7AD7007F0895 /* DiceView.swift in Sources */,
 				DC1EA7CD2C4D831E007F0895 /* StatusText.swift in Sources */,
@@ -1011,6 +1024,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC61BC892C8C99A50078130F /* XCRemoteSwiftPackageReference "UtiliKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephenbensley/UtiliKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC61BC8A2C8C99A50078130F /* UtiliKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC61BC892C8C99A50078130F /* XCRemoteSwiftPackageReference "UtiliKit" */;
+			productName = UtiliKit;
+		};
+		DC61BC8D2C8C99F50078130F /* UtiliKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC61BC892C8C99A50078130F /* XCRemoteSwiftPackageReference "UtiliKit" */;
+			productName = UtiliKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC3983692C431EEA0034D853 /* Project object */;
 }
