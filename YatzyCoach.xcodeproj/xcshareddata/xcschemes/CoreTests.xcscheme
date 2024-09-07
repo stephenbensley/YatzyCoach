@@ -20,8 +20,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC39839D2C431F5B0034D853"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
+               BuildableName = "CoreTests.xctest"
+               BlueprintName = "CoreTests"
                ReferencedContainer = "container:YatzyCoach.xcodeproj">
             </BuildableReference>
          </TestableReference>

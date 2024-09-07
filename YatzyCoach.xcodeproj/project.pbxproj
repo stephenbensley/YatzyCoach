@@ -23,7 +23,6 @@
 		DC3983772C431EFD0034D853 /* SolverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983762C431EFD0034D853 /* SolverApp.swift */; };
 		DC3983792C431EFD0034D853 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983782C431EFD0034D853 /* ContentView.swift */; };
 		DC39837B2C431EFD0034D853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC39837A2C431EFD0034D853 /* Assets.xcassets */; };
-		DC39837E2C431EFD0034D853 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */; };
 		DC39838F2C431F100034D853 /* TurnAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983842C431F100034D853 /* TurnAnalyzer.swift */; };
 		DC3983902C431F100034D853 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983852C431F100034D853 /* Solver.swift */; };
 		DC3983912C431F100034D853 /* DicePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3983862C431F100034D853 /* DicePattern.swift */; };
@@ -109,12 +108,11 @@
 		DC1EA7C22C4D4C9C007F0895 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DC1EA7C42C4D55F8007F0895 /* ScoreWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreWrappers.swift; sourceTree = "<group>"; };
 		DC1EA7CC2C4D831E007F0895 /* StatusText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusText.swift; sourceTree = "<group>"; };
-		DC3983732C431EFD0034D853 /* Yahtzee Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yahtzee Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3983732C431EFD0034D853 /* Yatzy Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yatzy Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3983762C431EFD0034D853 /* SolverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverApp.swift; sourceTree = "<group>"; };
 		DC3983782C431EFD0034D853 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC39837A2C431EFD0034D853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DC39837F2C431EFD0034D853 /* Solver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solver.entitlements; sourceTree = "<group>"; };
+		DC39837F2C431EFD0034D853 /* YatzySolver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YatzySolver.entitlements; sourceTree = "<group>"; };
 		DC3983842C431F100034D853 /* TurnAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnAnalyzer.swift; sourceTree = "<group>"; };
 		DC3983852C431F100034D853 /* Solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		DC3983862C431F100034D853 /* DicePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DicePattern.swift; sourceTree = "<group>"; };
@@ -126,7 +124,7 @@
 		DC39838C2C431F100034D853 /* ScoringOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringOption.swift; sourceTree = "<group>"; };
 		DC39838D2C431F100034D853 /* TurnValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnValues.swift; sourceTree = "<group>"; };
 		DC39838E2C431F100034D853 /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
-		DC39839E2C431F5B0034D853 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC39839E2C431F5B0034D853 /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3983A52C431F780034D853 /* PointsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsTests.swift; sourceTree = "<group>"; };
 		DC3983A62C431F780034D853 /* TestCaseWithDice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCaseWithDice.swift; sourceTree = "<group>"; };
 		DC3983A72C431F780034D853 /* TurnAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnAnalyzerTests.swift; sourceTree = "<group>"; };
@@ -180,46 +178,37 @@
 		DC3983682C431EEA0034D853 = {
 			isa = PBXGroup;
 			children = (
-				DCF4A8582C470DBD00E428AE /* Coach */,
-				DC9FF1752C4425A800B66485 /* Resources */,
+				DC3983832C431F030034D853 /* Core */,
+				DC39839F2C431F5B0034D853 /* CoreTests */,
 				DC3983742C431EFD0034D853 /* Products */,
-				DC3983752C431EFD0034D853 /* Solver */,
-				DC39839F2C431F5B0034D853 /* Tests */,
-				DC3983832C431F030034D853 /* Yatzy */,
+				DC9FF1752C4425A800B66485 /* Resources */,
+				DCF4A8582C470DBD00E428AE /* YatzyCoach */,
+				DC3983752C431EFD0034D853 /* YatzySolver */,
 			);
 			sourceTree = "<group>";
 		};
 		DC3983742C431EFD0034D853 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DC3983732C431EFD0034D853 /* Yahtzee Solver.app */,
-				DC39839E2C431F5B0034D853 /* Tests.xctest */,
+				DC3983732C431EFD0034D853 /* Yatzy Solver.app */,
+				DC39839E2C431F5B0034D853 /* CoreTests.xctest */,
 				DCF4A8572C470DBD00E428AE /* Yatzy Coach.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DC3983752C431EFD0034D853 /* Solver */ = {
+		DC3983752C431EFD0034D853 /* YatzySolver */ = {
 			isa = PBXGroup;
 			children = (
 				DC3983762C431EFD0034D853 /* SolverApp.swift */,
 				DC3983782C431EFD0034D853 /* ContentView.swift */,
 				DC39837A2C431EFD0034D853 /* Assets.xcassets */,
-				DC39837F2C431EFD0034D853 /* Solver.entitlements */,
-				DC39837C2C431EFD0034D853 /* Preview Content */,
+				DC39837F2C431EFD0034D853 /* YatzySolver.entitlements */,
 			);
-			path = Solver;
+			path = YatzySolver;
 			sourceTree = "<group>";
 		};
-		DC39837C2C431EFD0034D853 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				DC39837D2C431EFD0034D853 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		DC3983832C431F030034D853 /* Yatzy */ = {
+		DC3983832C431F030034D853 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				DC9FF1822C45BD6300B66485 /* Action.swift */,
@@ -237,10 +226,10 @@
 				DC39838D2C431F100034D853 /* TurnValues.swift */,
 				DC39838B2C431F100034D853 /* UpperTotals.swift */,
 			);
-			path = Yatzy;
+			path = Core;
 			sourceTree = "<group>";
 		};
-		DC39839F2C431F5B0034D853 /* Tests */ = {
+		DC39839F2C431F5B0034D853 /* CoreTests */ = {
 			isa = PBXGroup;
 			children = (
 				DC3983AC2C431F780034D853 /* DiceSelectionTests.swift */,
@@ -254,7 +243,7 @@
 				DC9FF1772C446B4700B66485 /* TurnValuesTests.swift */,
 				DC3983AB2C431F780034D853 /* UpperTotalsTests.swift */,
 			);
-			path = Tests;
+			path = CoreTests;
 			sourceTree = "<group>";
 		};
 		DC9FF1752C4425A800B66485 /* Resources */ = {
@@ -267,7 +256,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DCF4A8582C470DBD00E428AE /* Coach */ = {
+		DCF4A8582C470DBD00E428AE /* YatzyCoach */ = {
 			isa = PBXGroup;
 			children = (
 				DC0ABA522C51DF1600E5082B /* Info.plist */,
@@ -289,15 +278,15 @@
 				DC1EA7CC2C4D831E007F0895 /* StatusText.swift */,
 				DC1EA7C22C4D4C9C007F0895 /* Style.swift */,
 			);
-			path = Coach;
+			path = YatzyCoach;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DC3983722C431EFD0034D853 /* Solver */ = {
+		DC3983722C431EFD0034D853 /* YatzySolver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "Solver" */;
+			buildConfigurationList = DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "YatzySolver" */;
 			buildPhases = (
 				DC39836F2C431EFD0034D853 /* Sources */,
 				DC3983702C431EFD0034D853 /* Frameworks */,
@@ -307,14 +296,14 @@
 			);
 			dependencies = (
 			);
-			name = Solver;
+			name = YatzySolver;
 			productName = Solver;
-			productReference = DC3983732C431EFD0034D853 /* Yahtzee Solver.app */;
+			productReference = DC3983732C431EFD0034D853 /* Yatzy Solver.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DC39839D2C431F5B0034D853 /* Tests */ = {
+		DC39839D2C431F5B0034D853 /* CoreTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "CoreTests" */;
 			buildPhases = (
 				DC39839A2C431F5B0034D853 /* Sources */,
 				DC39839B2C431F5B0034D853 /* Frameworks */,
@@ -325,14 +314,14 @@
 			);
 			dependencies = (
 			);
-			name = Tests;
+			name = CoreTests;
 			productName = Tests;
-			productReference = DC39839E2C431F5B0034D853 /* Tests.xctest */;
+			productReference = DC39839E2C431F5B0034D853 /* CoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DCF4A8562C470DBD00E428AE /* Coach */ = {
+		DCF4A8562C470DBD00E428AE /* YatzyCoach */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCF4A8642C470DBE00E428AE /* Build configuration list for PBXNativeTarget "Coach" */;
+			buildConfigurationList = DCF4A8642C470DBE00E428AE /* Build configuration list for PBXNativeTarget "YatzyCoach" */;
 			buildPhases = (
 				DCF4A8532C470DBD00E428AE /* Sources */,
 				DCF4A8542C470DBD00E428AE /* Frameworks */,
@@ -342,7 +331,7 @@
 			);
 			dependencies = (
 			);
-			name = Coach;
+			name = YatzyCoach;
 			productName = Coach;
 			productReference = DCF4A8572C470DBD00E428AE /* Yatzy Coach.app */;
 			productType = "com.apple.product-type.application";
@@ -381,9 +370,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DC3983722C431EFD0034D853 /* Solver */,
-				DC39839D2C431F5B0034D853 /* Tests */,
-				DCF4A8562C470DBD00E428AE /* Coach */,
+				DC39839D2C431F5B0034D853 /* CoreTests */,
+				DCF4A8562C470DBD00E428AE /* YatzyCoach */,
+				DC3983722C431EFD0034D853 /* YatzySolver */,
 			);
 		};
 /* End PBXProject section */
@@ -394,7 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0ABA4E2C518D8F00E5082B /* Help.md in Resources */,
-				DC39837E2C431EFD0034D853 /* Preview Assets.xcassets in Resources */,
 				DC39837B2C431EFD0034D853 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,13 +545,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = Solver/Solver.entitlements;
+				CODE_SIGN_ENTITLEMENTS = YatzySolver/YatzySolver.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"Solver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6X2P4HJBQW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -596,8 +584,8 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
-				PRODUCT_NAME = "Yahtzee Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.YatzySolver;
+				PRODUCT_NAME = "Yatzy Solver";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -641,13 +629,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = Solver/Solver.entitlements;
+				CODE_SIGN_ENTITLEMENTS = YatzySolver/YatzySolver.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"Solver/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6X2P4HJBQW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -673,8 +661,8 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.Solver;
-				PRODUCT_NAME = "Yahtzee Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.YatzySolver;
+				PRODUCT_NAME = "Yatzy Solver";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -878,7 +866,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Coach/Info.plist;
+				INFOPLIST_FILE = YatzyCoach/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -889,7 +877,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -958,7 +946,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Coach/Info.plist;
+				INFOPLIST_FILE = YatzyCoach/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -969,7 +957,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stephenbensley.YatzyCoach;
@@ -995,7 +983,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "Solver" */ = {
+		DC3983802C431EFD0034D853 /* Build configuration list for PBXNativeTarget "YatzySolver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC3983812C431EFD0034D853 /* Debug */,
@@ -1004,7 +992,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		DC3983A22C431F5B0034D853 /* Build configuration list for PBXNativeTarget "CoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC3983A32C431F5B0034D853 /* Debug */,
@@ -1013,7 +1001,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCF4A8642C470DBE00E428AE /* Build configuration list for PBXNativeTarget "Coach" */ = {
+		DCF4A8642C470DBE00E428AE /* Build configuration list for PBXNativeTarget "YatzyCoach" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCF4A8622C470DBE00E428AE /* Debug */,
