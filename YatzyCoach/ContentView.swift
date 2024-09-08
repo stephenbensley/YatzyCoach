@@ -9,11 +9,11 @@ import SwiftUI
 import UtiliKit
 
 struct YatzyInfo: AboutInfo {
-    var appStoreId: Int = 6575389687
-    var copyright: String = "© 2024 Stephen E. Bensley"
-    var description: String = "Master the game of Yatzy"
-    var gitHubAccount: String = "stephenbensley"
-    var gitHubRepo: String = "YatzyCoach"
+    let appStoreId: Int = 6575389687
+    let copyright: String = "© 2024 Stephen E. Bensley"
+    let description: String = "Master the game of Yatzy"
+    let gitHubAccount: String = "stephenbensley"
+    let gitHubRepo: String = "YatzyCoach"
 }
 
 // Main app view
