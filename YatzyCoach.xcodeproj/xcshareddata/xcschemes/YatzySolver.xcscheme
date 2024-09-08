@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC3983722C431EFD0034D853"
-               BuildableName = "Yahtzee Solver.app"
+               BuildableName = "Yatzy Solver.app"
                BlueprintName = "YatzySolver"
                ReferencedContainer = "container:YatzyCoach.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC3983722C431EFD0034D853"
-            BuildableName = "Yahtzee Solver.app"
+            BuildableName = "Yatzy Solver.app"
             BlueprintName = "YatzySolver"
             ReferencedContainer = "container:YatzyCoach.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC3983722C431EFD0034D853"
-            BuildableName = "Yahtzee Solver.app"
+            BuildableName = "Yatzy Solver.app"
             BlueprintName = "YatzySolver"
             ReferencedContainer = "container:YatzyCoach.xcodeproj">
          </BuildableReference>

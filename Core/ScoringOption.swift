@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UtiliKit
 
 // Different options for scoring in Yatzy
 enum ScoringOption: Int, CaseIterable, Codable {
@@ -53,46 +54,14 @@ struct ScoringOptions: Codable {
     mutating func setAll() { flags = 0x1fff }
     
     static func all(forTurn turn: Int) -> [ScoringOptions] {
-        var result = [ScoringOptions]()
-        
-        // Array of Bools indicating which options have been used.
-        var selectors = [Bool](repeating: false, count: ScoringOption.allCases.count)
         // Every turn an option must be used.
-        selectors.replaceSubrange(0..<turn, with: [Bool](repeating: true, count: turn))
-        
-        repeat {
-            // Convert the selectors to ScoringOptions and add to result
-            var options = ScoringOptions()
-            ScoringOption.allCases.filter({ selectors[$0.rawValue] }).forEach { options.set($0) }
-            result.append(options)
-            
-            // Cycle through the permutations
-        } while nextPermutation(&selectors)
-        
-        return result
+        BitPermutations.all(
+            bitCount: ScoringOption.allCases.count,
+            nonZeroCount: turn
+        ).map {
+            ScoringOptions(flags: $0)
+        }
     }
-    
+
     static func flag(_ opt: ScoringOption) -> Int { 1 << opt.rawValue }
-    
-    private static func nextPermutation(_ selectors: inout [Bool]) -> Bool {
-        // Counts of 0 and 1 only have one permutation, and the loop below can't handle these
-        // cases.
-        guard selectors.count > 1 else {
-            return false
-        }
-        
-        // Find first selector that's set where following selector isn't set.
-        for i in 0..<selectors.count - 1 where selectors[i] && !selectors[i+1] {
-            // Find first selector that's set. Guaranteed to succeed since count > 0
-            let j = selectors.firstIndex(of: true)!
-            // Swap these ...
-            selectors.swapAt(i + 1, j)
-            // ... and reverse all the preceding elements.
-            selectors[0...i].reverse()
-            return true
-        }
-        
-        // All the true selectors have been pushed to the end of the array, so we're done.
-        return false
-    }
 }
