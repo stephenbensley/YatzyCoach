@@ -9,7 +9,7 @@ import SwiftUI
 
 // Displays a detailed analysis of the current game state.
 struct AnalysisView: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.dismiss) private var dismiss
     
     var gameModel: GameModel { appModel.gameModel }
@@ -108,6 +108,7 @@ struct AnalysisView: View {
     struct AnalysisPreview: View {
         var body: some View {
             AnalysisView()
+                .environment(Coach.create())
         }
     }
     return AnalysisPreview()

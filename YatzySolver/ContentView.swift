@@ -24,17 +24,16 @@ struct SolutionFile: FileDocument {
         self.data = initialData
     }
     
-    static var readableContentTypes = [UTType.json]
+    static let readableContentTypes = [UTType.json]
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         return FileWrapper(regularFileWithContents: data)
     }
     
-    static var writableContentTypes = [UTType.json]
+    static let writableContentTypes = [UTType.json]
 }
 
 struct ContentView: View {
-
     enum SolverState {
         case readyToSolve
         case solving

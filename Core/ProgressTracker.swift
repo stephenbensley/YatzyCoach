@@ -8,7 +8,7 @@
 import Foundation
 
 // Callback to report progress. The Int parameter is in range 0...100.
-typealias ReportProgress = (Int) -> Void
+typealias ReportProgress = @MainActor (Int) -> Void
 
 // Tracks progress towards a count and reports progress every 1%.
 actor ProgressTracker {
@@ -23,10 +23,10 @@ actor ProgressTracker {
         let newProgress = (count * 100) / totalCount
         if newProgress > progress {
             progress = newProgress
-            reportProgress(newProgress)
+            Task { @MainActor in reportProgress(newProgress) }
         }
     }
-    
+
     init(totalCount: Int, onUpdate: @escaping ReportProgress) {
         self.totalCount = totalCount
         self.reportProgress = onUpdate

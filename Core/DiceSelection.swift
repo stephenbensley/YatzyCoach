@@ -41,7 +41,7 @@ struct DiceSelection: Codable, Equatable {
 
 // For each dice pattern, computes a necessary and sufficient set of DiceSelections that
 // will produce all possible results.
-final class DiceSelectionSets {
+final class DiceSelectionSets: Sendable {
     private let distinctSets: [[DiceSelection]]
     
     func distinct(for pattern: DicePattern) -> [DiceSelection] { distinctSets[pattern.rawValue] }

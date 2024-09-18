@@ -9,7 +9,7 @@ import Foundation
 import UtiliKit
 
 // Solves all turn states for the game of Yatzy.
-final class Solver {
+final class Solver: Sendable {
     private let tracker: ProgressTracker
     private let workerCount: Int
     private let diceStores: [DiceStore]

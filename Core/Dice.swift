@@ -9,7 +9,7 @@ import Foundation
 
 // Represents a roll of the dice. The Dice objects are read-only and shared. Dice can not be
 // created directly; they must be retrieved from the DiceStore.
-final class Dice: Equatable {
+final class Dice: Equatable, Sendable {
     static let minDieValue = 1
     static let maxDieValue = 6
     static let numDieValues = 6
@@ -150,11 +150,11 @@ final class Dice: Equatable {
     }
 }
 
-final class DiceStore {
-    private var byCount = [[Dice]](repeating: [Dice](), count: Dice.maxCount + 1)
-    private var byKey = [Int: Dice]()
-    private var add14 = [[Dice]]()
-    private var add23 = [[Dice]]()
+final class DiceStore:  Sendable {
+    private let byCount: [[Dice]]
+    private let byKey: [Int: Dice]
+    private let add14: [[Dice]]
+    private let add23: [[Dice]]
     
     func concatenate(_ lhs: Dice, _ rhs: Dice) -> Dice {
         // Concatenation is only supported if the result has count == Dice.maxCount. There are no
@@ -182,8 +182,7 @@ final class DiceStore {
     
     // Various functions to retrieve cached Dice objects
     func all(withCount count: Int) -> [Dice] { byCount[count] }
-    func find(byKey key: Int) -> Dice { byKey[key]! }
-    func find(byValue value: [Int]) -> Dice { find(byKey: Dice.computeKey(for: value)) }
+    func find(byValue value: [Int]) -> Dice { byKey[Dice.computeKey(for: value)]! }
     
     static func generateCombos(withCount count: Int) -> [[Int]] {
         var combos = [[Int]]()
@@ -208,25 +207,29 @@ final class DiceStore {
     }
     
     init() {
+        var byCount = [[Dice]](repeating: [Dice](), count: Dice.maxCount + 1)
+        var byKey = [Int: Dice]()
         for count in 0...Dice.maxCount {
             let combos = Self.generateCombos(withCount: count)
             combos.forEach {
                 let ordinal = byCount[count].count
-                let dice = Dice(value: $0, ordinal: ordinal, byKey: find)
+                let dice = Dice(value: $0, ordinal: ordinal, byKey: { key in byKey[key]! })
                 byCount[count].append(dice)
                 byKey[dice.key] = dice
             }
         }
-        
+        self.byCount = byCount
+        self.byKey = byKey
+
         add14 = byCount[1].map { dice1 in
             byCount[4].map { dice4 in
-                find(byKey: dice1.key + dice4.key)
+                byKey[dice1.key + dice4.key]!
             }
         }
-        
+
         add23 = byCount[2].map { dice2 in
             byCount[3].map { dice3 in
-                find(byKey: dice2.key + dice3.key)
+                byKey[dice2.key + dice3.key]!
             }
         }
     }

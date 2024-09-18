@@ -9,7 +9,7 @@ import SwiftUI
 
 // Displays the Settings sheet.
 struct SettingsView: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -61,6 +61,7 @@ struct SettingsView: View {
     struct SettingsPreview: View {
         var body: some View {
             SettingsView()
+                .environment(Coach.create())
         }
     }
     return SettingsPreview()

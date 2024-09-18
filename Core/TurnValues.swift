@@ -7,8 +7,9 @@
 
 import Foundation
 
-// Used to cache the value of each value.
-final class TurnValues {
+// Used to cache the value of each turn. Program logic assures that each value is only set once
+// and it's always set before it's read, so there are no data races.
+final class TurnValues: @unchecked Sendable {
     private var values: [Double]
     
     func find(turnState: TurnState) -> Double { return values[turnState.id] }

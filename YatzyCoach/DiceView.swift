@@ -74,7 +74,7 @@ struct DieView: View {
 
 // Displays all the dice
 struct DiceView: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
     var body: some View {
@@ -96,6 +96,7 @@ struct DiceView: View {
     struct DicePreview: View {
         var body: some View {
             DiceView()
+                .environment(Coach.create())
         }
     }
     return DicePreview()

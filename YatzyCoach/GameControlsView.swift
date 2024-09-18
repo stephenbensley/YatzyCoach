@@ -39,7 +39,7 @@ struct ControlButton: View {
 
 // Presents the ControlButtons and implements most of the behavior of the app.
 struct GameControlsView: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
     // Prompt the player to confirm their move.
@@ -106,6 +106,7 @@ struct GameControlsView: View {
     struct GameControlsPreview: View {
         var body: some View {
             GameControlsView()
+                .environment(Coach.create())
         }
     }    
     return GameControlsPreview()

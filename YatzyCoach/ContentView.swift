@@ -84,7 +84,7 @@ struct ContentView: View {
                             if phase == .inactive { appModel.save() }
                         }
                         .scaleView(design: GameView.designSize, actual: proxy.size)
-                        .appModel(appModel)
+                        .environment(appModel)
                 }
             }
         }

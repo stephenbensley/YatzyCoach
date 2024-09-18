@@ -31,7 +31,7 @@ struct ScoreVStack<Content>: View where Content: View {
 
 // Displays a Yatzy scorecard
 struct ScoreCardView: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
     var gameModel: GameModel { appModel.gameModel }
@@ -170,6 +170,7 @@ struct ScoreCardView: View {
     struct ScoreCardPreview: View {
         var body: some View {
             ScoreCardView()
+                .environment(Coach.create())
         }
     }
     return ScoreCardPreview()

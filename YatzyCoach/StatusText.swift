@@ -9,7 +9,7 @@ import SwiftUI
 
 // Displays a line of status.
 struct StatusText: View {
-    @Environment(\.appModel) private var appModel
+    @Environment(Coach.self) private var appModel
     @Environment(\.scaleFactor) private var scaleFactor: Double
     
     private var text: String {
@@ -40,6 +40,7 @@ struct StatusText: View {
     struct StatusTextPreview: View {
         var body: some View {
             StatusText()
+                .environment(Coach.create())
         }
     }
     return StatusTextPreview()

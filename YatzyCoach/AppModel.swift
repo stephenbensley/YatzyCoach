@@ -82,22 +82,3 @@ extension Coach {
         defaults.set(alwaysShowBest, forKey: "AlwaysShowBest")
     }
 }
-
-// Allow app model to be passed through the environment
-
-private struct AppModelKey: EnvironmentKey {
-    static let defaultValue = Coach.create()
-}
-
-extension EnvironmentValues {
-    var appModel: Coach {
-        get { self[AppModelKey.self] }
-        set { self[AppModelKey.self] = newValue }
-    }
-}
-
-extension View {
-    func appModel(_ value: Coach) -> some View {
-        environment(\.appModel, value)
-    }
-}
