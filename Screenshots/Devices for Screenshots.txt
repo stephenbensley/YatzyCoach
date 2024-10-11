@@ -1,5 +1,0 @@
-Screen_47    750x1334  iPhone SE (3rd generation)   
-Screen_55   1242x2208  None supported -- resize from 4.7"
-Screen_67   1290x2796  iPhone 15 Plus
-Screen_129  2048x2732  iPad Pro (12.9-inch) (2nd generation)
-Screen_130  2064x2752  iPad Pro 13-inch (M4)

@@ -38,7 +38,7 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 GeometryReader { proxy in
                     GameView()
-                        .frame(width: proxy.size.width, height: proxy.size.height)
+                        .frame(size: proxy.size)
                         .background(Palette.background)
                         .toolbar {
                             Menu {
